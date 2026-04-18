@@ -8,6 +8,10 @@
 
 Monetary policy shock and stance series from the empirical macroeconomics literature, bundled in R.
 
+## What is a monetary policy shock?
+
+When the Fed, Bank of England, or ECB announces a rate decision, part of the move is expected by markets and part is not. The unexpected part is what economists call a monetary policy shock: an exogenous change in policy that lets empirical macroeconomists separate the causal effect of policy from policy's response to the economy. Every paper running an impulse response function, local projection, VAR, or event study needs a shock series as its identifying input. Shadow-rate measures play the same role during zero-lower-bound episodes, when the policy rate itself is pinned at its floor.
+
 ## Why this package?
 
 Every paper that runs an impulse response function, local projection, or event study needs an exogenous monetary policy series as its identifying input. Those series live today as XLS and CSV files on individual authors' personal pages and Federal Reserve research data pages, with inconsistent column names, date formats, and update cadences. `mpshock` centralises them as tidy data frames with provenance, loaded in one call, no network required.
