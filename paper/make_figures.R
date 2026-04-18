@@ -111,7 +111,7 @@ p_coverage <- ggplot(meta, aes(y = series, colour = country_full)) +
   theme_wp(base_size = 10)
 
 ggsave(file.path(fig_dir, "coverage_timeline.pdf"),
-       p_coverage, width = 6.8, height = 4.2, device = cairo_pdf)
+       p_coverage, width = 5.5, height = 3.2, device = cairo_pdf)
 
 # ---- 2. US cross-series correlation heatmap ----------------------------------
 
@@ -166,7 +166,7 @@ p_cor <- ggplot(cor_long, aes(series_x, series_y, fill = rho)) +
   theme_wp_hmap(base_size = 10)
 
 ggsave(file.path(fig_dir, "us_correlations.pdf"),
-       p_cor, width = 5.6, height = 4.4, device = cairo_pdf)
+       p_cor, width = 5.0, height = 3.6, device = cairo_pdf)
 
 # ---- 3. Cumulative US shocks -------------------------------------------------
 
@@ -202,7 +202,7 @@ p_cum <- ggplot(cum_df, aes(date, shock_cum, colour = series,
   theme_wp(base_size = 10)
 
 ggsave(file.path(fig_dir, "cumulative_us.pdf"),
-       p_cum, width = 6.8, height = 4.6, device = cairo_pdf)
+       p_cum, width = 5.5, height = 3.4, device = cairo_pdf)
 
 # ---- 4. Cross-country cumulative shocks --------------------------------------
 
@@ -258,7 +258,7 @@ p_cross <- ggplot(cross_country, aes(date, shock_cum,
   theme_wp(base_size = 10)
 
 ggsave(file.path(fig_dir, "cross_country.pdf"),
-       p_cross, width = 7.0, height = 4.6, device = cairo_pdf)
+       p_cross, width = 5.5, height = 3.4, device = cairo_pdf)
 
 # ---- 5. Distribution of nonzero shocks ---------------------------------------
 
@@ -296,7 +296,7 @@ p_dist <- ggplot(dist_df, aes(x = series, y = shock, colour = country)) +
   theme_wp(base_size = 10)
 
 ggsave(file.path(fig_dir, "distribution.pdf"),
-       p_dist, width = 6.8, height = 4.4, device = cairo_pdf)
+       p_dist, width = 5.5, height = 3.2, device = cairo_pdf)
 
 # ---- LaTeX tables ------------------------------------------------------------
 

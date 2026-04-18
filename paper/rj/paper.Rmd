@@ -118,7 +118,7 @@ All event-study series are bundled at monthly frequency by summing event-level s
 
 Figure \ref{fig:cumulative_us} plots cumulative Federal Reserve monetary policy shocks under four identification strategies on the common sample February 2000 to March 2014.
 
-\begin{figure}[H]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\linewidth]{figures/cumulative_us.pdf}
 \caption{\textbf{Cumulative US monetary policy shocks under four identification strategies on a common sample, 2000-02 to 2014-03.} Series are Nakamura and Steinsson (2018) policy news shock, Bauer and Swanson (2023) orthogonalised surprise (MPS\_ORTH), Jarociński and Karadi (2020) pure monetary policy component under the median decomposition, and Miranda-Agrippino and Ricco (2021) informationally-robust shock. All four agree on direction and broad timing of major identified policy innovations but disagree materially on magnitude around the 2008 financial crisis and on the interpretation of the December 2013 tapering surprise. Each series is loaded with a single \texttt{mp\_shock()} call.}
@@ -127,7 +127,7 @@ Figure \ref{fig:cumulative_us} plots cumulative Federal Reserve monetary policy 
 
 Figure \ref{fig:correlations} presents the pairwise correlation matrix across all seven bundled US series on their common sample. The block across the four shock-type series shows correlations in the 0.4-0.7 range, matching @aeberhardt2024monetary. The practical implication: report results under several identification strategies rather than selecting a single preferred shock.
 
-\begin{figure}[H]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.85\linewidth]{figures/us_correlations.pdf}
 \caption{\textbf{Pairwise Pearson correlations among seven US shock and stance series, common monthly sample 2000-02 to 2014-03.} Short labels: NS = Nakamura-Steinsson (2018); BS = Bauer-Swanson (2023) MPS\_ORTH; GSS-T and GSS-P = the target and path factors from the Swanson (2021) three-factor decomposition; JK-MP and JK-CBI = Jarociński-Karadi (2020) pure monetary policy and central bank information shocks; MAR = Miranda-Agrippino-Ricco (2021) informationally-robust shock. The diagonal block across the four identified-shock series shows correlations in the 0.4-0.7 range, consistent with \protect\citet{aeberhardt2024monetary}.}
@@ -138,7 +138,7 @@ Figure \ref{fig:correlations} presents the pairwise correlation matrix across al
 
 Figure \ref{fig:cross_country} plots cumulative monthly monetary policy shocks for the United States, United Kingdom, and Australia, 2005 to 2022. The traces are `bauer_swanson` (MPS_ORTH), the `ukmpd` Target factor, and the `hambur_haque_au` action factor. No existing R resource produces this chart from a single pipeline.
 
-\begin{figure}[H]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\linewidth]{figures/cross_country.pdf}
 \caption{\textbf{Cross-country cumulative monetary policy shocks, standardised, January 2005 to December 2022.} Each series is divided by its full-sample standard deviation of nonzero shocks before cumulating, so the y-axis is in units of standard deviations; scales are comparable across countries despite different native units in the source data (percentage-point surprises for US and UK, unit-variance PC score for AU). The three traces are \texttt{bauer\_swanson} (United States, MPS\_ORTH), \texttt{ukmpd} Target factor (United Kingdom), and \texttt{hambur\_haque\_au} action factor (Australia). Shaded bands mark the global financial crisis (September 2008 to June 2009) and the COVID-19 monetary response (March to June 2020). The three central banks share the direction of policy around major global events but differ sharply in timing and magnitude.}

@@ -4,11 +4,18 @@
 % Stop figures floating into the bibliography.
 \usepackage{placeins}
 
-% [H] specifier = hard placement, no floating. Paired with raggedbottom
-% so LaTeX doesn't stretch pages to fill the text block when a figure
-% pushes content to the next page.
+% Allow figures to float to cleaner positions (top/bottom of nearby
+% pages) rather than leaving whitespace at hard [H] placement. Tune
+% LaTeX's float parameters so we can put a bigger fraction of a page
+% into a single figure before the algorithm gives up and leaves gaps.
 \usepackage{float}
-\raggedbottom
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\textfraction}{0.07}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
 
 % Suppress the auto-generated \address{...} trailer.
 \renewcommand{\address}[1]{}
@@ -29,3 +36,8 @@
   linkcolor=blue!60!black,
   urlcolor=blue!60!black,
   citecolor=blue!60!black}
+
+% Make DOIs in the bibliography clickable. natbib / plainnat prints
+% "doi: 10.xxxx" as plain text; redefine \doi so the string is wrapped
+% in \href and gets the blue colorlinks treatment.
+\renewcommand{\doi}[1]{\href{https://doi.org/#1}{doi:~#1}}
