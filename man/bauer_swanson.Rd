@@ -17,7 +17,7 @@ month, percentage points.}
 \source{
 Bauer, M. D., & Swanson, E. T. (2023). "An Alternative
 Explanation for the 'Fed Information Effect'." \emph{American Economic
-Review} 113(3): 664-700. \doi{10.1257/aer.20200994}. Data:
+Review} 113(3): 664-700. \doi{10.1257/aer.20201220}. Data:
 \url{https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/}.
 }
 \usage{

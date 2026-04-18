@@ -21,7 +21,7 @@ percentage points.}
 Braun, R., Miranda-Agrippino, S., & Saha, T. (2025).
 "Measuring Monetary Policy in the UK: The UK Monetary Policy
 Event-Study Database." \emph{Journal of Monetary Economics} 149.
-\doi{10.1016/j.jmoneco.2024.103670}. Data:
+\doi{10.1016/j.jmoneco.2024.103645}. Data:
 \url{https://www.bankofengland.co.uk/working-paper/2023/measuring-monetary-policy-in-the-uk-ukmpd}.
 }
 \usage{

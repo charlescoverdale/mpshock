@@ -33,7 +33,7 @@ bibentry(
   number = "3",
   pages = "664-700",
   year = 2023,
-  doi = "10.1257/aer.20200994",
+  doi = "10.1257/aer.20201220",
   header = "For the `bauer_swanson` series, additionally cite:"
 )
 
@@ -102,7 +102,7 @@ bibentry(
   journal = "Journal of Monetary Economics",
   volume = "149",
   year = 2025,
-  doi = "10.1016/j.jmoneco.2024.103670",
+  doi = "10.1016/j.jmoneco.2024.103645",
   header = "For the `ukmpd` series, additionally cite:"
 )
 

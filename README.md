@@ -264,12 +264,12 @@ Series citations:
 | Series | Reference | DOI |
 |---|---|---|
 | `nakamura_steinsson` | Nakamura and Steinsson (2018). *Quarterly Journal of Economics* 133(3): 1283-1330. | [10.1093/qje/qjy004](https://doi.org/10.1093/qje/qjy004) |
-| `bauer_swanson` | Bauer and Swanson (2023). *American Economic Review* 113(3): 664-700. | [10.1257/aer.20200994](https://doi.org/10.1257/aer.20200994) |
+| `bauer_swanson` | Bauer and Swanson (2023). *American Economic Review* 113(3): 664-700. | [10.1257/aer.20201220](https://doi.org/10.1257/aer.20201220) |
 | `gss_target`, `gss_path` | Swanson (2021). *Journal of Monetary Economics* 118: 32-53. | [10.1016/j.jmoneco.2020.09.003](https://doi.org/10.1016/j.jmoneco.2020.09.003) |
 | `jarocinski_karadi_mp`, `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020). *AEJ: Macroeconomics* 12(2): 1-43. | [10.1257/mac.20180090](https://doi.org/10.1257/mac.20180090) |
 | `miranda_agrippino_ricco` | Miranda-Agrippino and Ricco (2021). *AEJ: Macroeconomics* 13(3): 74-107. | [10.1257/mac.20180124](https://doi.org/10.1257/mac.20180124) |
 | `wu_xia` | Wu and Xia (2016). *Journal of Money, Credit and Banking* 48(2-3): 253-291. | [10.1111/jmcb.12300](https://doi.org/10.1111/jmcb.12300) |
-| `ukmpd` | Braun, Miranda-Agrippino, and Saha (2025). *Journal of Monetary Economics* 149. | [10.1016/j.jmoneco.2024.103670](https://doi.org/10.1016/j.jmoneco.2024.103670) |
+| `ukmpd` | Braun, Miranda-Agrippino, and Saha (2025). *Journal of Monetary Economics* 149. | [10.1016/j.jmoneco.2024.103645](https://doi.org/10.1016/j.jmoneco.2024.103645) |
 | `cesa_bianchi_uk` | Cesa-Bianchi, Thwaites, and Vicondoa (2020). *European Economic Review* 123: 103375. | [10.1016/j.euroecorev.2020.103375](https://doi.org/10.1016/j.euroecorev.2020.103375) |
 | `cloyne_hurtgen_uk` | Cloyne and Hurtgen (2016). *AEJ: Macroeconomics* 8(4): 75-102. | [10.1257/mac.20150093](https://doi.org/10.1257/mac.20150093) |
 | `hambur_haque_au` | Hambur and Haque (2023, RDP 2023-04); published in *Economic Record* 2024. | [10.1111/1475-4932.12786](https://doi.org/10.1111/1475-4932.12786) |

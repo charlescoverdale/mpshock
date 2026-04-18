@@ -2,7 +2,7 @@
 #
 # Source: Bauer, M. D., & Swanson, E. T. (2023). "An Alternative Explanation
 # for the 'Fed Information Effect'." American Economic Review 113(3):
-# 664-700. DOI: 10.1257/aer.20200994
+# 664-700. DOI: 10.1257/aer.20201220
 #
 # Data maintained by the Federal Reserve Bank of San Francisco at
 # https://www.frbsf.org/research-and-insights/data-and-indicators/
@@ -45,7 +45,7 @@ class(out) <- c("mp_shock", "data.frame")
 attr(out, "series") <- "bauer_swanson"
 attr(out, "frequency") <- "monthly"
 attr(out, "units") <- "percentage points"
-attr(out, "source_doi") <- "10.1257/aer.20200994"
+attr(out, "source_doi") <- "10.1257/aer.20201220"
 attr(out, "source_url") <- "https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/"
 attr(out, "license") <- "Federal Reserve Bank of San Francisco research output"
 attr(out, "downloaded") <- Sys.Date()

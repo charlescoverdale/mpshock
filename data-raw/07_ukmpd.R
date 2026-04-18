@@ -62,7 +62,7 @@ class(out) <- c("mp_shock", "data.frame")
 attr(out, "series") <- "ukmpd"
 attr(out, "frequency") <- "monthly"
 attr(out, "units") <- "percentage points"
-attr(out, "source_doi") <- "10.1016/j.jmoneco.2024.103670"
+attr(out, "source_doi") <- "10.1016/j.jmoneco.2024.103645"
 attr(out, "source_url") <- "https://www.bankofengland.co.uk/working-paper/2023/measuring-monetary-policy-in-the-uk-ukmpd"
 attr(out, "license") <- "Bank of England staff working paper supplement"
 attr(out, "downloaded") <- Sys.Date()
