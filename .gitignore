@@ -1,0 +1,19 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+.DS_Store
+docs/
+/doc/
+/Meta/
+mpshock.Rcheck/
+mpshock*.tar.gz
+mpshock*.tgz
+CRAN-SUBMISSION
+
+# Raw downloads used by data-raw scripts (scripts documented; downloads are
+# reproducible from source URLs and don't need to be in git)
+data-raw/ns_replication.zip
+data-raw/ns_extract/
+data-raw/WuXiaShadowRate.xlsx

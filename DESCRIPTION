@@ -1,0 +1,30 @@
+Package: mpshock
+Title: Monetary Policy Shock Series for Empirical Macroeconomics
+Version: 0.1.0
+Authors@R: person("Charles", "Coverdale", email = "charlesfcoverdale@gmail.com",
+    role = c("aut", "cre", "cph"))
+Description: Provides a curated collection of monetary policy shock and
+    stance series from the empirical macroeconomics literature, bundled as
+    tidy data frames with provenance metadata. Version 0.1.0 includes the
+    policy news shock from Nakamura and Steinsson (2018)
+    <doi:10.1093/qje/qjy004> and the shadow federal funds rate of Wu and
+    Xia (2016) <doi:10.1111/jmcb.12300>. Helpers support date alignment,
+    frequency conversion, and shock cumulation. All data is bundled; no
+    runtime network access is required.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Language: en-US
+URL: https://github.com/charlescoverdale/mpshock
+BugReports: https://github.com/charlescoverdale/mpshock/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends: R (>= 4.1.0)
+Imports:
+    cli (>= 3.6.0),
+    stats,
+    utils
+Suggests:
+    spelling,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+LazyData: true
