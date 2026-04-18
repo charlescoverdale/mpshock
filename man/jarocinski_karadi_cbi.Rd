@@ -25,11 +25,24 @@ Economic Journal: Macroeconomics} 12(2): 1-43.
 jarocinski_karadi_cbi
 }
 \description{
-The "central bank information" shock from Jarocinski and Karadi (2020),
-identified alongside the pure MP shock by sign restrictions. The
-information shock moves short rates and stock prices in the same
-direction, interpreted as the central bank revealing private
-information about the economy. Monthly US series from the authors'
-maintained update.
+The "central bank information" shock from Jarocinski and Karadi
+(2020), identified alongside the pure MP shock by sign restrictions
+on the joint rate-stock response. The information shock moves short
+rates and stock prices in the same direction, interpreted as the
+central bank revealing private information about the economy.
+Monthly US series from the authors' maintained update.
+}
+\details{
+See \link{jarocinski_karadi_mp} for the full identification scheme and
+caveats. The information shock is the companion component: if markets
+interpret a hawkish rate surprise as a sign the Fed has seen positive
+economic news, stocks rise rather than fall.
+
+\strong{Controversy.} Bauer-Swanson (2023) and Acosta (2023) argue the
+information shock is largely artefactual: an omitted-variables problem
+(Fed and markets reacting to the same pre-meeting public data) plus a
+weak sign-restriction identifier. Interpret with caution; if the
+information-effect literature is central to your result, read both
+critiques before citing.
 }
 \keyword{datasets}

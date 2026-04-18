@@ -27,7 +27,32 @@ bauer_swanson
 The monthly orthogonalised monetary policy surprise series (MPS_ORTH)
 from Bauer and Swanson (2023), with the raw MPS alongside. The
 orthogonalised series removes predictability from public economic
-information available before each FOMC meeting, isolating a
-genuinely exogenous monetary-policy innovation.
+information available before each FOMC meeting, isolating a genuinely
+exogenous monetary-policy innovation.
+}
+\details{
+\strong{Orthogonalisation.} MPS_ORTH is the OLS residual from regressing
+the raw MPS on six pre-announcement predictors: surprise in the most
+recent nonfarm payrolls release, trailing 12-month employment growth,
+log S&P 500 change over the prior three months, change in the 10-year
+minus 2-year Treasury slope over the same window, log commodity-price-
+index change, and Bauer-Chernov option-implied 10-year Treasury
+skewness. See Bauer and Swanson (2023) Appendix Table A.1 for exact
+predictor definitions and data sources.
+
+\strong{Relation to \link{nakamura_steinsson}.} Both series use a first
+principal component of tight-window futures surprises. MPS_ORTH
+additionally removes predictability from public data, which Bauer-
+Swanson argue isolates the policy shock from the "Fed response to
+news" that NS attribute to a Fed information effect.
+
+\strong{Critique.} Hoesch, Rossi, and Sekhposyan (2023) show alternative
+orthogonalisation choices yield different residuals. If the Fed has
+any informational advantage, the orthogonalisation throws it away by
+construction.
+
+\strong{Vintage.} Bundled from the FRBSF-maintained update covering through
+December 2023. For a frozen vintage, download directly from the source
+URL in \code{\link[=mp_source]{mp_source()}}.
 }
 \keyword{datasets}

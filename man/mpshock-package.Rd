@@ -37,6 +37,17 @@ network access is required.
 }
 }
 
+\section{Further reading}{
+
+
+For general background on shock identification, see Ramey (2016),
+"Macroeconomic Shocks and Their Propagation," \emph{Handbook of
+Macroeconomics} 2: 71-162. For a recent cross-series comparison of
+the identification strategies bundled here, see Aeberhardt, Bruno,
+and Fidora (2024), "Monetary Policy Shocks: Data or Methods?" \emph{FEDS
+Working Paper} 2024-011.
+}
+
 \seealso{
 Useful links:
 \itemize{

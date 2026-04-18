@@ -17,18 +17,41 @@ the returned series. If \code{NULL}, returns the full bundled span.}
 A data frame with class \code{c("mp_shock", "data.frame")} and
 columns:
 \itemize{
-\item \code{date}: \code{Date}, first day of the observation month (or event date).
+\item \code{date}: \code{Date}, first day of the observation month.
 \item \code{shock}: \code{numeric}, the shock value in the units published by the
-source (see \code{mp_source()}).
+source (see \code{\link[=mp_source]{mp_source()}} and the per-series help files for units
+and scaling conventions).
 \item \code{series}: \code{character}, the series identifier.
 }
 
-Some series include additional factor columns (for example \code{target},
-\code{path}, and \code{term_premium} for Bauer-Swanson).
+Some series carry additional columns. \link{bauer_swanson} returns
+\code{mps_raw} alongside \code{shock} (the orthogonalised surprise);
+\link{miranda_agrippino_ricco} returns \code{info}; \link{wu_xia} returns
+\code{shadow_rate} and \code{effr}.
 }
 \description{
 Loads a named shock series bundled with the package as a tidy data frame
 with class \code{mp_shock}. Optionally filters by date range.
+}
+\details{
+\strong{Aggregation.} All event-study series (\link{nakamura_steinsson},
+\link{bauer_swanson}, \link{gss_target}, \link{gss_path}, \link{jarocinski_karadi_mp},
+\link{jarocinski_karadi_cbi}, \link{miranda_agrippino_ricco}) are bundled at
+monthly frequency by summing FOMC-event-level surprises within each
+calendar month. Months with no scheduled FOMC meeting are coded zero,
+matching the convention in Gertler and Karadi (2015) and the authors'
+own maintained releases.
+
+Bu, Rogers, and Wu (2021, \emph{Journal of Monetary Economics} 118) argue
+that no-meeting months should be coded \code{NA} rather than zero when
+estimating proxy-SVAR or LP-IV models, to avoid downward-biased
+variance in weak-instrument F-statistics. \code{mpshock} does not apply
+this adjustment; recode after loading if needed.
+
+\strong{Scaling.} Units differ across series. \link{nakamura_steinsson} is
+rescaled to one-year nominal Treasury-yield equivalents;
+\link{bauer_swanson} and most others are in raw percentage-point
+surprises. See each series' help file.
 }
 \examples{
 ns <- mp_shock("nakamura_steinsson")

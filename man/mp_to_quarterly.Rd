@@ -23,6 +23,19 @@ column, and the series identifier. Class \code{c("mp_shock", "data.frame")}.
 Converts a monthly \code{mp_shock} object to quarterly observations using one
 of three aggregation methods.
 }
+\details{
+\strong{Method selection.} For identified shocks (\link{nakamura_steinsson},
+\link{bauer_swanson}, \link{jarocinski_karadi_mp}, \link{miranda_agrippino_ricco}),
+\code{"sum"} is the standard choice because the underlying objects are
+additive surprises at FOMC events. For the shadow rate (\link{wu_xia}),
+\code{"end"} returns end-of-quarter stance and matches the convention used
+in most zero-lower-bound regressions. \code{"mean"} is appropriate when
+the dependent variable is itself a quarterly-average interest rate.
+
+\strong{NA handling.} Missing monthly values are dropped within each
+quarter before aggregation. If a whole quarter is missing, the result
+is zero under \code{"sum"} / \code{"mean"} and \code{NA} under \code{"end"}.
+}
 \examples{
 ns_q <- mp_to_quarterly(mp_shock("nakamura_steinsson"), method = "sum")
 head(ns_q)

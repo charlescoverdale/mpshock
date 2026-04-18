@@ -13,9 +13,9 @@ A data frame with columns:
 }
 }
 \source{
-Swanson, E. T. (2021). "Measuring the Effects of Federal Reserve
-Forward Guidance and Asset Purchases on Financial Markets." \emph{Journal
-of Monetary Economics} 118: 32-53.
+Swanson, E. T. (2021). "Measuring the Effects of Federal
+Reserve Forward Guidance and Asset Purchases on Financial Markets."
+\emph{Journal of Monetary Economics} 118: 32-53.
 \doi{10.1016/j.jmoneco.2020.09.003}. Data:
 \url{https://sites.socsci.uci.edu/~swanson2/}.
 }
@@ -28,5 +28,16 @@ decomposition of high-frequency FOMC surprises, the direct extension
 of the original "path" factor in Gurkaynak, Sack, and Swanson (2005).
 Event-level factor values are summed within calendar months; months
 with no scheduled FOMC meeting are coded as zero.
+}
+\details{
+See \link{gss_target} for identification, rotation sensitivity, and
+aggregation details; the same caveats apply to both factors since
+they come from a joint rotation.
+
+\strong{Regime coverage.} The path factor picks up forward-guidance
+surprises and is the most informative Swanson factor during the
+zero-lower-bound period (2009 to 2015). Its variance rises sharply in
+that window relative to the pre-ZLB sample, consistent with forward
+guidance becoming the dominant policy tool.
 }
 \keyword{datasets}

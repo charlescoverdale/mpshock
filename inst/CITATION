@@ -1,0 +1,93 @@
+citHeader("To cite `mpshock` in academic work, cite both the package and the underlying paper(s) for the series you used:")
+
+bibentry(
+  bibtype = "Manual",
+  title = "mpshock: Monetary Policy Shock Series for Empirical Macroeconomics",
+  author = person("Charles", "Coverdale"),
+  year = 2026,
+  note = "R package version 0.1.0",
+  url = "https://github.com/charlescoverdale/mpshock"
+)
+
+bibentry(
+  bibtype = "Article",
+  key = "nakamura_steinsson_2018",
+  title = "High-Frequency Identification of Monetary Non-Neutrality: The Information Effect",
+  author = c(person("Emi", "Nakamura"), person("Jon", "Steinsson")),
+  journal = "Quarterly Journal of Economics",
+  volume = "133",
+  number = "3",
+  pages = "1283-1330",
+  year = 2018,
+  doi = "10.1093/qje/qjy004",
+  header = "For the `nakamura_steinsson` series, additionally cite:"
+)
+
+bibentry(
+  bibtype = "Article",
+  key = "bauer_swanson_2023",
+  title = "An Alternative Explanation for the `Fed Information Effect'",
+  author = c(person("Michael", "D. Bauer"), person("Eric", "T. Swanson")),
+  journal = "American Economic Review",
+  volume = "113",
+  number = "3",
+  pages = "664-700",
+  year = 2023,
+  doi = "10.1257/aer.20200994",
+  header = "For the `bauer_swanson` series, additionally cite:"
+)
+
+bibentry(
+  bibtype = "Article",
+  key = "swanson_2021",
+  title = "Measuring the Effects of Federal Reserve Forward Guidance and Asset Purchases on Financial Markets",
+  author = person("Eric", "T. Swanson"),
+  journal = "Journal of Monetary Economics",
+  volume = "118",
+  pages = "32-53",
+  year = 2021,
+  doi = "10.1016/j.jmoneco.2020.09.003",
+  header = "For the `gss_target` and `gss_path` series, additionally cite:"
+)
+
+bibentry(
+  bibtype = "Article",
+  key = "jarocinski_karadi_2020",
+  title = "Deconstructing Monetary Policy Surprises: The Role of Information Shocks",
+  author = c(person("Marek", "Jarocinski"), person("Peter", "Karadi")),
+  journal = "American Economic Journal: Macroeconomics",
+  volume = "12",
+  number = "2",
+  pages = "1-43",
+  year = 2020,
+  doi = "10.1257/mac.20180090",
+  header = "For the `jarocinski_karadi_mp` and `jarocinski_karadi_cbi` series, additionally cite:"
+)
+
+bibentry(
+  bibtype = "Article",
+  key = "miranda_agrippino_ricco_2021",
+  title = "The Transmission of Monetary Policy Shocks",
+  author = c(person("Silvia", "Miranda-Agrippino"), person("Giovanni", "Ricco")),
+  journal = "American Economic Journal: Macroeconomics",
+  volume = "13",
+  number = "3",
+  pages = "74-107",
+  year = 2021,
+  doi = "10.1257/mac.20180124",
+  header = "For the `miranda_agrippino_ricco` series, additionally cite:"
+)
+
+bibentry(
+  bibtype = "Article",
+  key = "wu_xia_2016",
+  title = "Measuring the Macroeconomic Impact of Monetary Policy at the Zero Lower Bound",
+  author = c(person("Jing", "Cynthia Wu"), person("Fan", "Dora Xia")),
+  journal = "Journal of Money, Credit and Banking",
+  volume = "48",
+  number = "2-3",
+  pages = "253-291",
+  year = 2016,
+  doi = "10.1111/jmcb.12300",
+  header = "For the `wu_xia` series, additionally cite:"
+)

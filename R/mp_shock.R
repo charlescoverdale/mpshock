@@ -10,13 +10,36 @@
 #'
 #' @return A data frame with class `c("mp_shock", "data.frame")` and
 #'   columns:
-#' * `date`: `Date`, first day of the observation month (or event date).
+#' * `date`: `Date`, first day of the observation month.
 #' * `shock`: `numeric`, the shock value in the units published by the
-#'   source (see `mp_source()`).
+#'   source (see [mp_source()] and the per-series help files for units
+#'   and scaling conventions).
 #' * `series`: `character`, the series identifier.
 #'
-#' Some series include additional factor columns (for example `target`,
-#' `path`, and `term_premium` for Bauer-Swanson).
+#' Some series carry additional columns. [bauer_swanson] returns
+#' `mps_raw` alongside `shock` (the orthogonalised surprise);
+#' [miranda_agrippino_ricco] returns `info`; [wu_xia] returns
+#' `shadow_rate` and `effr`.
+#'
+#' @details
+#' **Aggregation.** All event-study series ([nakamura_steinsson],
+#' [bauer_swanson], [gss_target], [gss_path], [jarocinski_karadi_mp],
+#' [jarocinski_karadi_cbi], [miranda_agrippino_ricco]) are bundled at
+#' monthly frequency by summing FOMC-event-level surprises within each
+#' calendar month. Months with no scheduled FOMC meeting are coded zero,
+#' matching the convention in Gertler and Karadi (2015) and the authors'
+#' own maintained releases.
+#'
+#' Bu, Rogers, and Wu (2021, *Journal of Monetary Economics* 118) argue
+#' that no-meeting months should be coded `NA` rather than zero when
+#' estimating proxy-SVAR or LP-IV models, to avoid downward-biased
+#' variance in weak-instrument F-statistics. `mpshock` does not apply
+#' this adjustment; recode after loading if needed.
+#'
+#' **Scaling.** Units differ across series. [nakamura_steinsson] is
+#' rescaled to one-year nominal Treasury-yield equivalents;
+#' [bauer_swanson] and most others are in raw percentage-point
+#' surprises. See each series' help file.
 #'
 #' @seealso [mp_list()], [mp_source()], [mp_align()], [mp_to_quarterly()].
 #'

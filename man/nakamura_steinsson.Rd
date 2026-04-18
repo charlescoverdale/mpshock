@@ -8,7 +8,8 @@
 A data frame with columns:
 \describe{
 \item{date}{\code{Date}. First day of the observation month.}
-\item{shock}{\code{numeric}. Policy news shock, percentage points.}
+\item{shock}{\code{numeric}. Policy news shock, scaled to one-year
+Treasury-yield equivalents (percentage points).}
 \item{series}{\code{character}. Series identifier \code{"nakamura_steinsson"}.}
 }
 }
@@ -31,5 +32,25 @@ announcement is the first principal component of changes in five
 interest-rate futures (Fed Funds and Eurodollar) in a 30-minute window
 bracketing the announcement. Months with no scheduled FOMC meeting are
 coded as zero.
+}
+\details{
+\strong{Scaling.} The raw first principal component is rescaled so that a
+unit change equals the contemporaneous change in the one-year nominal
+Treasury yield (NS Section II.B). Magnitudes are therefore not
+directly comparable to Kuttner (2001) basis-point fed-funds surprises
+or to raw FF1 / FF4 surprises without rescaling.
+
+\strong{Interpretation caveat.} NS frame their policy-news shock as
+evidence of a "Fed information effect": hawkish surprises raise
+private-sector growth forecasts. Bauer and Swanson (2023, AER 113(3))
+argue the pattern is better explained by the Fed and professional
+forecasters reacting to the same pre-meeting public data ("Fed
+response to news"). Users estimating causal macro effects of policy
+should consider \link{bauer_swanson} (MPS_ORTH) or
+\link{miranda_agrippino_ricco} as alternatives that address this bias.
+
+\strong{Unscheduled meetings.} Inter-meeting cuts (notably 22 January 2008
+and 8 October 2008) are included in the series and drive a large
+share of sample variance.
 }
 \keyword{datasets}

@@ -25,6 +25,15 @@
 #' * [miranda_agrippino_ricco]: informationally-robust MP shock, 1991-01 to 2019-06.
 #' * [wu_xia]: shadow federal funds rate, 1960-01 to 2022-02.
 #'
+#' @section Further reading:
+#'
+#' For general background on shock identification, see Ramey (2016),
+#' "Macroeconomic Shocks and Their Propagation," *Handbook of
+#' Macroeconomics* 2: 71-162. For a recent cross-series comparison of
+#' the identification strategies bundled here, see Aeberhardt, Bruno,
+#' and Fidora (2024), "Monetary Policy Shocks: Data or Methods?" *FEDS
+#' Working Paper* 2024-011.
+#'
 #' @keywords internal
 "_PACKAGE"
 

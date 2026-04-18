@@ -39,8 +39,27 @@ The companion effective federal funds rate (\code{effr}) is included for
 reference.
 }
 \details{
-The \code{shock} column is the first difference of \code{shadow_rate}, so that
-\code{wu_xia} can be used alongside identified-shock series in the same
-pipeline. Users who want the level can use \code{shadow_rate} directly.
+\strong{Stance vs shock.} The shadow rate is a \strong{stance measure}, not a
+policy shock. The \code{shock} column is the first difference of
+\code{shadow_rate} and is provided for pipeline compatibility with other
+series in the package. It conflates genuine policy news with Kalman-
+filter revisions of the latent state. Users estimating shock IRFs
+should prefer an event-study series (\link{nakamura_steinsson},
+\link{bauer_swanson}, \link{miranda_agrippino_ricco}) and reserve \code{wu_xia}
+for characterising the zero-lower-bound policy stance.
+
+\strong{Model sensitivity.} Krippner (2020, \emph{Journal of Money, Credit and
+Banking} 52(4)) documents that shadow-rate estimates are sensitive
+to the choice of effective lower bound, the number of factors (two
+versus three), and the set of yield maturities used in estimation.
+Wu-Xia's three-factor shadow-rate term-structure model (SRTSM) and
+Krippner's two-factor SSR can differ by 50 to 150 basis points at the
+2014 and 2021 troughs. Results that rely on Wu-Xia alone should be
+replicated with at least one alternative shadow-rate series.
+
+\strong{Vintage.} This bundled series is the Atlanta Fed monthly update
+current as of the package build. Historical values are filtered
+estimates and can change when new data arrives; users needing a
+fixed vintage should download the archived Atlanta Fed file directly.
 }
 \keyword{datasets}
