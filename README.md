@@ -17,16 +17,7 @@ Those series live today as XLS and CSV files scattered across individual authors
 
 ## Who is this for?
 
-Empirical macroeconomists, central-bank research staff, rates strategists, and PhD students. Typical R workflows where an `mpshock` series drops into the pipeline:
-
-- **Local projections or Bayesian VARs** with the shock as a right-hand-side impulse. Pairs naturally with [`lpirfs`](https://cran.r-project.org/package=lpirfs), [`BVAR`](https://cran.r-project.org/package=BVAR), or [`vars`](https://cran.r-project.org/package=vars).
-- **Proxy-SVAR or LP-IV** with the shock as the external instrument for the structural monetary policy innovation (Gertler and Karadi 2015; Stock and Watson 2018). Pairs with [`svars`](https://cran.r-project.org/package=svars) or [`bsvarSIGNs`](https://cran.r-project.org/package=bsvarSIGNs).
-- **Event studies** of asset-price, credit-spread, or exchange-rate responses in tight windows around FOMC, MPC, or RBA announcements.
-- **Cross-country monetary transmission comparisons** (US vs UK vs AU) using a common identification strategy on the same estimation window.
-- **State-dependent or nonlinear IRFs** (recession vs expansion, ZLB vs normal rate environment, forward-guidance intensive vs conventional periods).
-- **Teaching empirical macro**, where students need reproducible, citable shock data without hand-building from raw Excel.
-
-If your regression specification needs an identified monetary policy shock on the right-hand side, this package supplies it.
+`mpshock` is for empirical macroeconomists, central-bank research staff, rates strategists, and PhD students. Typical uses are supplying the identifying input to a local projection, VAR, proxy-SVAR, or event study of asset-price responses to FOMC, MPC, or RBA announcements. If your specification needs an exogenous monetary policy shock, this package supplies it.
 
 ## Installation
 
