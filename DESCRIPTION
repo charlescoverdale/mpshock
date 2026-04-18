@@ -3,22 +3,31 @@ Title: Monetary Policy Shock Series for Empirical Macroeconomics
 Version: 0.1.0
 Authors@R: person("Charles", "Coverdale", email = "charlesfcoverdale@gmail.com",
     role = c("aut", "cre", "cph"))
-Description: Provides a curated collection of monetary policy shock and
-    stance series from the empirical macroeconomics literature, bundled as
-    tidy data frames with provenance metadata. Version 0.1.0 includes
-    eight series for the United States: the policy news shock from
+Description: Provides a curated multi-country collection of monetary
+    policy shock and stance series from the empirical macroeconomics
+    literature, bundled as tidy data frames with provenance metadata.
+    Version 0.1.0 includes thirteen series covering the United States,
+    United Kingdom, and Australia: for the US, the policy news shock of
     Nakamura and Steinsson (2018) <doi:10.1093/qje/qjy004>, the
-    orthogonalised surprise from Bauer and Swanson (2023)
+    orthogonalised surprise of Bauer and Swanson (2023)
     <doi:10.1257/aer.20200994>, the target and path factors of the
     Swanson (2021) <doi:10.1016/j.jmoneco.2020.09.003> extension of
     Gurkaynak, Sack, and Swanson (2005), the pure monetary policy and
-    central bank information shocks from Jarocinski and Karadi (2020)
-    <doi:10.1257/mac.20180090>, the informationally-robust shock from
+    central bank information shocks of Jarocinski and Karadi (2020)
+    <doi:10.1257/mac.20180090>, the informationally-robust shock of
     Miranda-Agrippino and Ricco (2021) <doi:10.1257/mac.20180124>, and
     the shadow federal funds rate of Wu and Xia (2016)
-    <doi:10.1111/jmcb.12300>. Helpers support date alignment, frequency
-    conversion, and shock cumulation. All data is bundled; no runtime
-    network access is required.
+    <doi:10.1111/jmcb.12300>; for the UK, the UK Monetary Policy
+    Event-Study Database of Braun, Miranda-Agrippino, and Saha (2025)
+    <doi:10.1016/j.jmoneco.2024.103670>, the high-frequency surprise of
+    Cesa-Bianchi, Thwaites, and Vicondoa (2020)
+    <doi:10.1016/j.euroecorev.2020.103375>, and the narrative shock of
+    Cloyne and Hurtgen (2016) <doi:10.1257/mac.20150093>; for Australia,
+    the three-component RBA surprise of Hambur and Haque (2023)
+    <doi:10.1111/1475-4932.12786> and the credit-spread-augmented RBA
+    narrative shock of Beckers (2020). Helpers support date alignment,
+    frequency conversion, and shock cumulation. All data is bundled;
+    no runtime network access is required.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-US

@@ -91,3 +91,70 @@ bibentry(
   doi = "10.1111/jmcb.12300",
   header = "For the `wu_xia` series, additionally cite:"
 )
+
+bibentry(
+  bibtype = "Article",
+  key = "braun_miranda_agrippino_saha_2025",
+  title = "Measuring Monetary Policy in the UK: The UK Monetary Policy Event-Study Database",
+  author = c(person("Robin", "Braun"),
+             person("Silvia", "Miranda-Agrippino"),
+             person("Tuli", "Saha")),
+  journal = "Journal of Monetary Economics",
+  volume = "149",
+  year = 2025,
+  doi = "10.1016/j.jmoneco.2024.103670",
+  header = "For the `ukmpd` series, additionally cite:"
+)
+
+bibentry(
+  bibtype = "Article",
+  key = "cesa_bianchi_thwaites_vicondoa_2020",
+  title = "Monetary policy transmission in the United Kingdom: A high frequency identification approach",
+  author = c(person("Ambrogio", "Cesa-Bianchi"),
+             person("Gregory", "Thwaites"),
+             person("Alejandro", "Vicondoa")),
+  journal = "European Economic Review",
+  volume = "123",
+  pages = "103375",
+  year = 2020,
+  doi = "10.1016/j.euroecorev.2020.103375",
+  header = "For the `cesa_bianchi_uk` series, additionally cite:"
+)
+
+bibentry(
+  bibtype = "Article",
+  key = "cloyne_hurtgen_2016",
+  title = "The Macroeconomic Effects of Monetary Policy: A New Measure for the United Kingdom",
+  author = c(person("James", "Cloyne"), person("Patrick", "Hurtgen")),
+  journal = "American Economic Journal: Macroeconomics",
+  volume = "8",
+  number = "4",
+  pages = "75-102",
+  year = 2016,
+  doi = "10.1257/mac.20150093",
+  header = "For the `cloyne_hurtgen_uk` series, additionally cite:"
+)
+
+bibentry(
+  bibtype = "Article",
+  key = "hambur_haque_2023",
+  title = "Monetary Policy Transmission, Real Interest Rates and Credit Spreads: Evidence from Australia",
+  author = c(person("Jonathan", "Hambur"), person("Qazi", "Haque")),
+  journal = "Economic Record",
+  year = 2024,
+  doi = "10.1111/1475-4932.12786",
+  note = "Reserve Bank of Australia Research Discussion Paper 2023-04",
+  header = "For the `hambur_haque_au` series, additionally cite:"
+)
+
+bibentry(
+  bibtype = "TechReport",
+  key = "beckers_2020",
+  title = "Credit Spreads, Monetary Policy and the Price Puzzle in Australia",
+  author = person("Benjamin", "Beckers"),
+  institution = "Reserve Bank of Australia",
+  number = "RDP 2020-01",
+  year = 2020,
+  url = "https://www.rba.gov.au/publications/rdp/2020/2020-01/",
+  header = "For the `beckers_au` series, additionally cite:"
+)

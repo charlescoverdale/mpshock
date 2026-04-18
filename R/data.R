@@ -362,3 +362,215 @@
 #'   US Federal Reserve research output; not subject to copyright under
 #'   17 U.S.C. s. 105.
 "wu_xia"
+
+#' UK Monetary Policy Event-Study Database (Braun-Miranda-Agrippino-Saha)
+#'
+#' The UK equivalent of the Gurkaynak-Sack-Swanson three-factor
+#' decomposition: a principal-component rotation of high-frequency
+#' surprises in OIS rates, gilt yields, short-sterling futures, and the
+#' FTSE 100 around Bank of England MPC announcements and Monetary Policy
+#' Report press conferences. Bundled at monthly frequency; months with no
+#' MPC announcement are coded zero.
+#'
+#' @details
+#' **Three factors.** The UK Monetary Policy Event-Study Database (UKMPD)
+#' rotates three principal components into Target (current Bank Rate
+#' surprise), Path (forward-guidance surprise), and QE (long-end
+#' asset-purchase surprise). The package bundles `shock = Target`, with
+#' `path` and `qe` as additional columns for users running multi-factor
+#' local projections.
+#'
+#' **Maintenance.** UKMPD is the flagship UK shock database: live-
+#' maintained by the authors and published through the Bank of England
+#' Staff Working Paper series. The bundled version is a snapshot from
+#' the package build; check the source URL for the latest vintage if
+#' you need observations after the bundled end date.
+#'
+#' **Relation to older UK series.** UKMPD effectively supersedes the
+#' Gerko-Rey (2017) UK surprises and the pre-MPR vintage of
+#' [cesa_bianchi_uk]. Cesa-Bianchi-Thwaites-Vicondoa and Cloyne-Hurtgen
+#' remain useful for pre-1997 coverage and for narrative comparison.
+#'
+#' @format A data frame with columns:
+#' \describe{
+#'   \item{date}{`Date`. First day of the observation month.}
+#'   \item{shock}{`numeric`. Target factor (current Bank Rate surprise),
+#'     percentage points.}
+#'   \item{path}{`numeric`. Path factor (forward-guidance surprise),
+#'     percentage points.}
+#'   \item{qe}{`numeric`. QE factor (long-end asset-purchase surprise),
+#'     percentage points.}
+#'   \item{series}{`character`. Series identifier `"ukmpd"`.}
+#' }
+#'
+#' @source Braun, R., Miranda-Agrippino, S., & Saha, T. (2025).
+#'   "Measuring Monetary Policy in the UK: The UK Monetary Policy
+#'   Event-Study Database." *Journal of Monetary Economics* 149.
+#'   \doi{10.1016/j.jmoneco.2024.103670}. Data:
+#'   \url{https://www.bankofengland.co.uk/working-paper/2023/measuring-monetary-policy-in-the-uk-ukmpd}.
+"ukmpd"
+
+#' Cesa-Bianchi-Thwaites-Vicondoa UK high-frequency shock
+#'
+#' High-frequency monetary policy surprise for the United Kingdom,
+#' constructed from tight-window changes in the three-month sterling
+#' interbank rate around Bank of England MPC announcements. Kuttner-style
+#' identification adapted for the UK. Monthly frequency.
+#'
+#' @details
+#' **Identification.** Surprises are extracted as the change in the
+#' three-month sterling interbank rate in a 60-minute window around each
+#' MPC announcement, isolating the unexpected component of the policy
+#' decision. Event-level values are aggregated to monthly by summation;
+#' months with no MPC meeting are coded zero.
+#'
+#' **Superseded.** For the same identification strategy with a richer
+#' asset-price menu and ongoing maintenance, use [ukmpd]. The CTV series
+#' remains useful as a historical reference and for comparisons with
+#' pre-UKMPD empirical literature.
+#'
+#' **Vintage.** Static at the published version (1997-06 to 2015-01).
+#' No extension maintained by the authors.
+#'
+#' @format A data frame with columns:
+#' \describe{
+#'   \item{date}{`Date`. First day of the observation month.}
+#'   \item{shock}{`numeric`. UK HFI surprise, percentage points.}
+#'   \item{series}{`character`. Series identifier `"cesa_bianchi_uk"`.}
+#' }
+#'
+#' @source Cesa-Bianchi, A., Thwaites, G., & Vicondoa, A. (2020).
+#'   "Monetary policy transmission in the United Kingdom: A high
+#'   frequency identification approach." *European Economic Review*
+#'   123: 103375. \doi{10.1016/j.euroecorev.2020.103375}. Data:
+#'   \url{https://sites.google.com/site/ambropo/publications}.
+"cesa_bianchi_uk"
+
+#' Cloyne-Hurtgen UK narrative monetary policy shock
+#'
+#' Narrative Romer-Romer-style monetary policy shock for the United
+#' Kingdom. Cash-rate changes are purged of their systematic response
+#' to Bank of England internal forecasts, leaving a series of exogenous
+#' policy innovations. Monthly frequency.
+#'
+#' @details
+#' **Narrative identification.** Cloyne and Hurtgen (2016) read the
+#' Bank of England *Inflation Report* forecasts and regress each Bank
+#' Rate change on the Bank's own real-time projections for output,
+#' unemployment, and inflation at horizons up to two years. The
+#' residual is the "narrative" shock. The bundled series is the
+#' extension carried forward by Cesa-Bianchi, Thwaites, and Vicondoa
+#' using the same methodology; the original paper covers 1975 to 2007
+#' but the bundled vintage is the CTV re-compiled version from 1997-06
+#' onwards.
+#'
+#' **Comparison with HFI.** Narrative shocks are typically lower-
+#' frequency than high-frequency event-window surprises and capture
+#' broader policy reassessments. They can differ materially from
+#' [cesa_bianchi_uk] and [ukmpd] even on common sample.
+#'
+#' @format A data frame with columns:
+#' \describe{
+#'   \item{date}{`Date`. First day of the observation month.}
+#'   \item{shock}{`numeric`. UK narrative shock, percentage points.}
+#'   \item{series}{`character`. Series identifier `"cloyne_hurtgen_uk"`.}
+#' }
+#'
+#' @source Cloyne, J., & Hurtgen, P. (2016). "The Macroeconomic Effects
+#'   of Monetary Policy: A New Measure for the United Kingdom."
+#'   *American Economic Journal: Macroeconomics* 8(4): 75-102.
+#'   \doi{10.1257/mac.20150093}. Replication data on openICPSR
+#'   project 114114; bundled vintage is the Cesa-Bianchi-Thwaites-
+#'   Vicondoa (2020) re-compilation available at
+#'   \url{https://sites.google.com/site/ambropo/publications}.
+"cloyne_hurtgen_uk"
+
+#' Hambur-Haque Australian monetary policy shock
+#'
+#' High-frequency monetary policy surprise for Australia, decomposed
+#' into three components (action, path, and term premium) by a principal-
+#' component rotation of changes in overnight-indexed swap and Australian
+#' Government Securities yields around RBA cash-rate decisions. Monthly
+#' frequency; months with no RBA board meeting are coded zero.
+#'
+#' @details
+#' **Identification.** Three PC components are rotated to isolate
+#' (i) `action`, the current-meeting cash-rate surprise;
+#' (ii) `path`, the forward-guidance surprise in expected short rates;
+#' (iii) `term_premium`, the residual long-end move attributable to
+#' duration / term-premium effects. `shock` is set to `action` for
+#' pipeline compatibility; users running multi-factor IRFs should use
+#' the individual component columns.
+#'
+#' **Coverage.** The bundled series spans April 2001 to December 2019,
+#' matching the published paper. The RBA has not released a maintained
+#' extension covering the COVID-era LSAP period.
+#'
+#' **Licence.** Published as an RBA Research Discussion Paper under
+#' Commonwealth of Australia Creative Commons Attribution 4.0
+#' International licence.
+#'
+#' @format A data frame with columns:
+#' \describe{
+#'   \item{date}{`Date`. First day of the observation month.}
+#'   \item{shock}{`numeric`. Action factor (current cash-rate surprise),
+#'     percentage points.}
+#'   \item{action}{`numeric`. Current-meeting cash-rate surprise,
+#'     percentage points.}
+#'   \item{path}{`numeric`. Forward-guidance surprise, percentage points.}
+#'   \item{term_premium}{`numeric`. Long-end term-premium surprise,
+#'     percentage points.}
+#'   \item{series}{`character`. Series identifier `"hambur_haque_au"`.}
+#' }
+#'
+#' @source Hambur, J., & Haque, Q. (2023). "Monetary Policy Transmission,
+#'   Real Interest Rates and Credit Spreads: Evidence from Australia."
+#'   *Economic Record* (2024). \doi{10.1111/1475-4932.12786}. Data:
+#'   Reserve Bank of Australia Research Discussion Paper 2023-04,
+#'   \url{https://www.rba.gov.au/publications/rdp/2023/2023-04/}.
+#'   CC BY 4.0.
+"hambur_haque_au"
+
+#' Beckers Australian narrative monetary policy shock
+#'
+#' Narrative Romer-Romer-style monetary policy shock for Australia.
+#' RBA cash-rate changes are purged of their systematic response to the
+#' Bank's internal forecasts (Bishop-Tulip 2017 methodology) and further
+#' augmented with credit-spread information to separate genuine policy
+#' innovations from responses to financial conditions. Quarterly
+#' frequency. The headline bundled `shock` is Beckers's preferred
+#' credit-spread-augmented series ("BT-CS"); the pre-augmentation
+#' Bishop-Tulip series (`bt`) is included alongside for comparison.
+#'
+#' @details
+#' **Construction.** The BT-CS series regresses cash-rate changes on
+#' RBA internal forecasts (GDP, unemployment, CPI) plus measures of
+#' domestic credit spreads, at quarterly frequency. The residual is
+#' the identified policy shock.
+#'
+#' **Frequency note.** This is the only quarterly-frequency series
+#' currently bundled in `mpshock`. [mp_to_quarterly()] is unnecessary;
+#' pass `beckers_au` directly into quarterly VARs or LPs.
+#'
+#' **Licence.** RBA research output under Creative Commons Attribution
+#' 4.0 International.
+#'
+#' @format A data frame with columns:
+#' \describe{
+#'   \item{date}{`Date`. First day of the observation quarter.}
+#'   \item{shock}{`numeric`. BT-CS shock (preferred), percentage points.}
+#'   \item{bt}{`numeric`. Bishop-Tulip pre-augmentation shock,
+#'     percentage points.}
+#'   \item{rate_chg}{`numeric`. Raw quarterly cash-rate change,
+#'     percentage points.}
+#'   \item{series}{`character`. Series identifier `"beckers_au"`.}
+#' }
+#'
+#' @source Beckers, B. (2020). "Credit Spreads, Monetary Policy and the
+#'   Price Puzzle in Australia." Reserve Bank of Australia Research
+#'   Discussion Paper 2020-01.
+#'   \url{https://www.rba.gov.au/publications/rdp/2020/2020-01/}.
+#'   CC BY 4.0. Bishop-Tulip methodology: Bishop, J., & Tulip, P.
+#'   (2017). "Anticipatory Monetary Policy and the Price Puzzle." RBA
+#'   Research Discussion Paper 2017-02.
+"beckers_au"

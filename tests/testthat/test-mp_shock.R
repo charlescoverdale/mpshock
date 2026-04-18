@@ -2,7 +2,9 @@ test_that("mp_shock returns an mp_shock data frame with required columns", {
   for (s in c("nakamura_steinsson", "bauer_swanson",
               "gss_target", "gss_path",
               "jarocinski_karadi_mp", "jarocinski_karadi_cbi",
-              "miranda_agrippino_ricco", "wu_xia")) {
+              "miranda_agrippino_ricco", "wu_xia",
+              "ukmpd", "cesa_bianchi_uk", "cloyne_hurtgen_uk",
+              "hambur_haque_au", "beckers_au")) {
     x <- mp_shock(s)
     expect_s3_class(x, "mp_shock")
     expect_s3_class(x, "data.frame")

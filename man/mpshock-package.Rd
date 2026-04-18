@@ -25,6 +25,8 @@ network access is required.
 
 \section{Bundled datasets (v0.1.0)}{
 
+
+United States:
 \itemize{
 \item \link{nakamura_steinsson}: policy news shock, 2000-02 to 2014-03.
 \item \link{bauer_swanson}: orthogonalised MP surprise, 1988-02 to 2023-12.
@@ -34,6 +36,22 @@ network access is required.
 \item \link{jarocinski_karadi_cbi}: CB information shock, 1990-02 to 2024-01.
 \item \link{miranda_agrippino_ricco}: informationally-robust MP shock, 1991-01 to 2019-06.
 \item \link{wu_xia}: shadow federal funds rate, 1960-01 to 2022-02.
+}
+
+United Kingdom:
+\itemize{
+\item \link{ukmpd}: three-factor UK event-study database (Target / Path / QE),
+1997-06 to the latest BoE vintage.
+\item \link{cesa_bianchi_uk}: UK high-frequency surprise, 1997-06 to 2015-01.
+\item \link{cloyne_hurtgen_uk}: UK narrative shock, 1997-06 to 2009-02.
+}
+
+Australia:
+\itemize{
+\item \link{hambur_haque_au}: three-component RBA HFI shock (action / path /
+term premium), 2001-04 to 2019-12.
+\item \link{beckers_au}: RBA narrative shock (Bishop-Tulip + credit spreads),
+quarterly 1994-Q1 to 2018-Q4.
 }
 }
 

@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
-Monetary policy shock and stance series from the empirical macroeconomics literature, bundled in R.
+Monetary policy shock and stance series for the United States, United Kingdom, and Australia, bundled in R.
 
 ## What is a monetary policy shock?
 
@@ -189,18 +189,35 @@ A correlation in the 0.4 to 0.7 range is typical: the series agree on the bigges
 
 ## Series included in v0.1.0
 
-| Series | Author(s) | Type | Country | Frequency | Span |
-|---|---|---|---|---|---|
-| `nakamura_steinsson` | Nakamura and Steinsson (2018) | Identified shock | US | Monthly | 2000-02 to 2014-03 |
-| `bauer_swanson` | Bauer and Swanson (2023) | Orthogonalised surprise | US | Monthly | 1988-02 to 2023-12 |
-| `gss_target` | Swanson (2021), GSS (2005) | Target factor | US | Monthly | 1991-07 to 2015-10 |
-| `gss_path` | Swanson (2021), GSS (2005) | Forward-guidance factor | US | Monthly | 1991-07 to 2015-10 |
-| `jarocinski_karadi_mp` | Jarocinski and Karadi (2020) | Pure MP shock | US | Monthly | 1990-02 to 2024-01 |
-| `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020) | CB information shock | US | Monthly | 1990-02 to 2024-01 |
-| `miranda_agrippino_ricco` | Miranda-Agrippino and Ricco (2021) | Info-robust MP shock | US | Monthly | 1991-01 to 2019-06 |
-| `wu_xia` | Wu and Xia (2016) | Shadow rate (stance) | US | Monthly | 1960-01 to 2022-02 |
+### United States
 
-The Wu-Xia series ends in February 2022 because the Atlanta Fed paused the update once policy rates normalised. The series remains the standard reference for the two zero-lower-bound episodes (2008-12 to 2015-12 and 2020-03 to 2022-02).
+| Series | Author(s) | Type | Frequency | Span |
+|---|---|---|---|---|
+| `nakamura_steinsson` | Nakamura and Steinsson (2018) | Identified shock | Monthly | 2000-02 to 2014-03 |
+| `bauer_swanson` | Bauer and Swanson (2023) | Orthogonalised surprise | Monthly | 1988-02 to 2023-12 |
+| `gss_target` | Swanson (2021), GSS (2005) | Target factor | Monthly | 1991-07 to 2015-10 |
+| `gss_path` | Swanson (2021), GSS (2005) | Forward-guidance factor | Monthly | 1991-07 to 2015-10 |
+| `jarocinski_karadi_mp` | Jarocinski and Karadi (2020) | Pure MP shock | Monthly | 1990-02 to 2024-01 |
+| `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020) | CB information shock | Monthly | 1990-02 to 2024-01 |
+| `miranda_agrippino_ricco` | Miranda-Agrippino and Ricco (2021) | Info-robust MP shock | Monthly | 1991-01 to 2019-06 |
+| `wu_xia` | Wu and Xia (2016) | Shadow rate (stance) | Monthly | 1960-01 to 2022-02 |
+
+### United Kingdom
+
+| Series | Author(s) | Type | Frequency | Span |
+|---|---|---|---|---|
+| `ukmpd` | Braun, Miranda-Agrippino, Saha (2025) | Three-factor HFI (Target / Path / QE) | Monthly | 1997-06 onwards (BoE-maintained) |
+| `cesa_bianchi_uk` | Cesa-Bianchi, Thwaites, Vicondoa (2020) | High-frequency surprise | Monthly | 1997-06 to 2015-01 |
+| `cloyne_hurtgen_uk` | Cloyne and Hurtgen (2016) | Narrative shock | Monthly | 1997-06 to 2009-02 |
+
+### Australia
+
+| Series | Author(s) | Type | Frequency | Span |
+|---|---|---|---|---|
+| `hambur_haque_au` | Hambur and Haque (2023) | Three-component HFI (action / path / term premium) | Monthly | 2001-04 to 2019-12 |
+| `beckers_au` | Beckers (2020) | Narrative shock (Bishop-Tulip + credit spreads) | Quarterly | 1994-Q1 to 2018-Q4 |
+
+The Wu-Xia series ends in February 2022 because the Atlanta Fed paused the update once policy rates normalised. The series remains the standard reference for the two zero-lower-bound episodes (2008-12 to 2015-12 and 2020-03 to 2022-02). The UKMPD is live-maintained by the Bank of England and is the flagship UK source for post-1997 work.
 
 ## Methodology notes
 
@@ -214,7 +231,8 @@ Users should be aware of a few caveats. Each per-series help file (`?nakamura_st
 ## Planned for future versions
 
 * Euro-area shocks: Jarocinski-Karadi ECB version, Altavilla et al. (2019) Euro-Area Monetary Policy Database.
-* Romer and Romer (2004) narrative shocks.
+* Romer and Romer (2004) US narrative shocks.
+* Bolhuis, Das, and Yao (2024 IMF WP) cross-country panel of 29 central banks' HFI shocks.
 * A vignette reproducing a Gertler-Karadi (2015) style impulse response using `mpshock` plus `lpirfs`.
 * Aeberhardt, Bruno, and Fidora (2024) cross-series comparison helper.
 
@@ -247,6 +265,11 @@ Series citations:
 | `jarocinski_karadi_mp`, `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020). *AEJ: Macroeconomics* 12(2): 1-43. | [10.1257/mac.20180090](https://doi.org/10.1257/mac.20180090) |
 | `miranda_agrippino_ricco` | Miranda-Agrippino and Ricco (2021). *AEJ: Macroeconomics* 13(3): 74-107. | [10.1257/mac.20180124](https://doi.org/10.1257/mac.20180124) |
 | `wu_xia` | Wu and Xia (2016). *Journal of Money, Credit and Banking* 48(2-3): 253-291. | [10.1111/jmcb.12300](https://doi.org/10.1111/jmcb.12300) |
+| `ukmpd` | Braun, Miranda-Agrippino, and Saha (2025). *Journal of Monetary Economics* 149. | [10.1016/j.jmoneco.2024.103670](https://doi.org/10.1016/j.jmoneco.2024.103670) |
+| `cesa_bianchi_uk` | Cesa-Bianchi, Thwaites, and Vicondoa (2020). *European Economic Review* 123: 103375. | [10.1016/j.euroecorev.2020.103375](https://doi.org/10.1016/j.euroecorev.2020.103375) |
+| `cloyne_hurtgen_uk` | Cloyne and Hurtgen (2016). *AEJ: Macroeconomics* 8(4): 75-102. | [10.1257/mac.20150093](https://doi.org/10.1257/mac.20150093) |
+| `hambur_haque_au` | Hambur and Haque (2023, RDP 2023-04); published in *Economic Record* 2024. | [10.1111/1475-4932.12786](https://doi.org/10.1111/1475-4932.12786) |
+| `beckers_au` | Beckers (2020). RBA Research Discussion Paper 2020-01. | [link](https://www.rba.gov.au/publications/rdp/2020/2020-01/) |
 
 Original two-factor GSS: Gurkaynak, Sack, and Swanson (2005), *International Journal of Central Banking* 1(1): 55-93.
 
