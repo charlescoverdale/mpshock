@@ -15,11 +15,14 @@ suppressPackageStartupMessages({
   library(showtext)
 })
 
-# Embed Palatino reliably
-font_add("Palatino",
-         regular = "/System/Library/Fonts/Palatino.ttc",
-         bold = "/System/Library/Fonts/Palatino.ttc",
-         italic = "/System/Library/Fonts/Palatino.ttc")
+# Embed Helvetica Neue for the figures. R Journal uses Palatino (serif)
+# in the body text but its figures typically use a sans-serif family to
+# separate them visually. This follows the common QJE / AER convention
+# too. The font is resolved via showtext so it embeds reliably in PDF.
+font_add("HelveticaNeue",
+         regular = "/System/Library/Fonts/Helvetica.ttc",
+         bold = "/System/Library/Fonts/Helvetica.ttc",
+         italic = "/System/Library/Fonts/Helvetica.ttc")
 showtext_auto()
 showtext_opts(dpi = 300)
 
@@ -38,7 +41,7 @@ ok_purple <- "#CC79A7"
 ok_yellow <- "#F0E442"
 ok_sky    <- "#56B4E9"
 
-fam <- "Palatino"
+fam <- "HelveticaNeue"
 
 theme_wp <- function(base_size = 10) {
   theme_bw(base_size = base_size, base_family = fam) +

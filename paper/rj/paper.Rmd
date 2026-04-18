@@ -183,9 +183,3 @@ Sixth, licences vary across sources. The Nakamura-Steinsson replication archive 
 ## Acknowledgements {-}
 
 I thank the authors of each bundled series for making their data publicly available: Emi Nakamura, Jón Steinsson, Michael Bauer, Eric Swanson, Refet Gürkaynak, Brian Sack, Marek Jarociński, Peter Karadi, Silvia Miranda-Agrippino, Giovanni Ricco, Jing Cynthia Wu, Fan Dora Xia, Robin Braun, Tuli Saha, Ambrogio Cesa-Bianchi, Gregory Thwaites, Alejandro Vicondoa, James Cloyne, Patrick Hürtgen, Jonathan Hambur, Qazi Haque, and Benjamin Beckers.
-
-\address{%
-Charles Coverdale\\
-London, United Kingdom\\
-\email{charles.f.coverdale@gmail.com}%
-}

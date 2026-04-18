@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2026.4.18)  18 APR 2026 13:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2026.4.18)  18 APR 2026 13:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -437,7 +437,7 @@ File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
 \c@bookmark@seq@number=\count310
 \Hy@SectionHShift=\skip66
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 68.
+Package hyperref Info: Option `colorlinks' set `true' on input line 66.
 (/Users/charlescoverdale/Library/TinyTeX/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (/Users/charlescoverdale/Library/TinyTeX/texmf-dist/tex/latex/titlesec/titlesec.sty
@@ -837,7 +837,7 @@ Package pdftex.def Info: figures/cross_country.pdf  used on input line 385.
 [7 <./figures/cross_country.pdf>])
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 482.
+(Font)              using `T1/zi4/m/n' instead on input line 476.
 
 )
 
@@ -857,16 +857,16 @@ Package rerunfilecheck Info: File `RJwrapper.brf' has not changed.
 Here is how much of TeX's memory you used:
  27032 strings out of 475172
  497861 string characters out of 5764229
- 903238 words of memory out of 5000000
+ 903170 words of memory out of 5000000
  49268 multiletter control sequences out of 15000+600000
  596993 words of font info for 234 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 117i,12n,131p,1006b,815s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,12n,131p,1006b,817s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on RJwrapper.pdf (8 pages, 1189599 bytes).
+Output written on RJwrapper.pdf (8 pages, 695244 bytes).
 PDF statistics:
- 363 PDF objects out of 1000 (max. 8388607)
- 333 compressed objects within 4 object streams
+ 362 PDF objects out of 1000 (max. 8388607)
+ 332 compressed objects within 4 object streams
  50 named destinations out of 1000 (max. 500000)
  51332 words of extra memory for PDF output out of 51595 (max. 10000000)
 
