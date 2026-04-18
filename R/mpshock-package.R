@@ -14,9 +14,15 @@
 #' * [mp_to_quarterly()] aggregates monthly series to quarterly.
 #' * [mp_cumulate()] computes cumulative or rolling-window shock sums.
 #'
-#' @section Bundled datasets:
+#' @section Bundled datasets (v0.1.0):
 #'
 #' * [nakamura_steinsson]: policy news shock, 2000-02 to 2014-03.
+#' * [bauer_swanson]: orthogonalised MP surprise, 1988-02 to 2023-12.
+#' * [gss_target]: GSS target factor (Swanson extended), 1991-07 to 2015-10.
+#' * [gss_path]: GSS path factor (Swanson extended), 1991-07 to 2015-10.
+#' * [jarocinski_karadi_mp]: pure MP shock, 1990-02 to 2024-01.
+#' * [jarocinski_karadi_cbi]: CB information shock, 1990-02 to 2024-01.
+#' * [miranda_agrippino_ricco]: informationally-robust MP shock, 1991-01 to 2019-06.
 #' * [wu_xia]: shadow federal funds rate, 1960-01 to 2022-02.
 #'
 #' @keywords internal
