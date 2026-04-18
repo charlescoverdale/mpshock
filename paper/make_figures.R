@@ -206,25 +206,24 @@ ggsave(file.path(fig_dir, "cumulative_us.pdf"),
 
 # ---- 4. Cross-country cumulative shocks --------------------------------------
 
+standardise_and_cumulate <- function(series, country, from, to) {
+  # Z-score using the FULL-sample standard deviation of nonzero obs, so
+  # the normalisation is consistent across the plotted window. Cross-
+  # country comparison requires scale-free series because the bundled
+  # factors use different native units (pp-equivalent for US and UK,
+  # unit-variance PC score for AU).
+  full <- mp_shock(series)
+  sd_full <- sd(full$shock[!is.na(full$shock) & full$shock != 0])
+  d <- mp_shock(series, start = from, end = to)
+  z <- ifelse(is.na(d$shock), 0, d$shock) / sd_full
+  data.frame(date = d$date, country = country,
+             shock_cum = cumsum(z))
+}
+
 cross_country <- rbind(
-  local({
-    d <- mp_shock("bauer_swanson", start = "2005-01-01", end = "2022-12-31")
-    d$shock[is.na(d$shock)] <- 0
-    data.frame(date = d$date, country = "United States",
-               shock_cum = cumsum(d$shock))
-  }),
-  local({
-    d <- mp_shock("ukmpd", start = "2005-01-01", end = "2022-12-31")
-    d$shock[is.na(d$shock)] <- 0
-    data.frame(date = d$date, country = "United Kingdom",
-               shock_cum = cumsum(d$shock))
-  }),
-  local({
-    d <- mp_shock("hambur_haque_au", start = "2005-01-01", end = "2022-12-31")
-    d$shock[is.na(d$shock)] <- 0
-    data.frame(date = d$date, country = "Australia",
-               shock_cum = cumsum(d$shock))
-  })
+  standardise_and_cumulate("bauer_swanson",   "United States",  "2005-01-01", "2022-12-31"),
+  standardise_and_cumulate("ukmpd",           "United Kingdom", "2005-01-01", "2022-12-31"),
+  standardise_and_cumulate("hambur_haque_au", "Australia",      "2005-01-01", "2022-12-31")
 )
 cross_country$country <- factor(cross_country$country,
   levels = c("United States", "United Kingdom", "Australia"))
@@ -253,7 +252,8 @@ p_cross <- ggplot(cross_country, aes(date, shock_cum,
   scale_linetype_manual(values = c("United States"  = "solid",
                                    "United Kingdom" = "longdash",
                                    "Australia"      = "dotted")) +
-  labs(x = NULL, y = "Cumulative shock (percentage points)",
+  labs(x = NULL,
+       y = "Cumulative standardised shock (SD units)",
        title = NULL, subtitle = NULL) +
   theme_wp(base_size = 10)
 
