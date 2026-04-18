@@ -1,46 +1,56 @@
 ---
 title: "mpshock: A Multi-Country Monetary Policy Shock Database for R"
-author:
-  - name: Charles Coverdale
-    affiliation: WSP Global
-    email: charles.f.coverdale@gmail.com
+author: "Charles Coverdale"
 date: April 2026
 abstract: |
   Empirical monetary economics relies on identified policy shock series as the
   exogenous input to impulse response functions, local projections, and
-  proxy-SVARs. Those series live today as Excel and CSV files scattered across
-  individual authors' personal pages, Federal Reserve research data pages, and
-  GitHub mirrors, with inconsistent column names, date formats, and update
-  cadences. This paper introduces `mpshock`, an R package that bundles
-  thirteen monetary policy shock and stance series across three countries
-  (United States, United Kingdom, Australia) as tidy, versioned, and tested
-  data frames with provenance metadata. Each series is accessible in a single
-  call, carries its citation and source URL, and plugs directly into the
-  dominant downstream R packages for impulse response estimation (`lpirfs`,
-  `BVAR`, `vars`). We demonstrate the package by replicating cross-series
-  comparisons in the spirit of Aeberhardt, Bruno, and Fidora (2024), and by
-  producing the first published cross-country cumulative monetary-shock chart
-  using a single R pipeline. The package is available on CRAN and GitHub.
-keywords: monetary policy, impulse response functions, high-frequency
-  identification, local projections, R, reproducible research
-classification: "JEL: C87, E52, E58"
+  proxy-SVARs. Those series live today as Excel and CSV files. They are
+  scattered across individual authors' personal pages, Federal Reserve
+  research data pages, and GitHub mirrors. Column names, date formats, and
+  update cadences differ across sources.
+
+  This paper introduces `mpshock`, an R package that bundles thirteen
+  monetary policy shock and stance series across three countries (United
+  States, United Kingdom, Australia). Each series is a tidy, versioned,
+  tested data frame with provenance metadata. Each loads in a single
+  call. Each carries its paper citation and source URL. Each plugs
+  directly into the dominant downstream R packages for impulse response
+  estimation: `lpirfs`, `BVAR`, `vars`.
+
+  I demonstrate the package by replicating cross-series comparisons in
+  the spirit of Aeberhardt, Bruno, and Fidora (2024), and by producing
+  the first published cross-country cumulative monetary-shock chart from
+  a single R pipeline. The package is available on CRAN and GitHub.
+
+  \medskip
+  \noindent\textit{JEL classification}: C87, E52, E58.
+
+  \noindent\textit{Keywords}: monetary policy, impulse response functions, high-frequency identification, local projections, R, reproducible research.
 bibliography: refs.bib
-link-citations: true
 fontsize: 11pt
 geometry: a4paper, margin=25mm
 documentclass: article
+colorlinks: true
+linkcolor: "blue!60!black"
+citecolor: "blue!60!black"
+urlcolor: "blue!60!black"
+toc-own-page: true
 header-includes:
   - \usepackage{graphicx}
   - \usepackage[sc]{mathpazo}
   - \usepackage{microtype}
   - \usepackage{booktabs}
   - \usepackage{longtable}
+  - \usepackage{tabularx}
+  - "\\AtBeginDocument{\\author{Charles Coverdale\\thanks{Email: \\href{mailto:charles.f.coverdale@gmail.com}{charles.f.coverdale@gmail.com}. Package repository: \\href{https://github.com/charlescoverdale/mpshock}{github.com/charlescoverdale/mpshock}.}\\\\ London, United Kingdom}}"
   - \usepackage[font=small,labelfont=bf]{caption}
   - \usepackage{titlesec}
   - \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
   - \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
   - \usepackage{hyperref}
-  - \hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue}
+  - \usepackage{etoolbox}
+  - \pretocmd{\tableofcontents}{\clearpage}{}{}
   - \usepackage{xcolor}
   - \usepackage{listings}
   - \lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single,framerule=0.3pt,rulecolor=\color{gray!40},backgroundcolor=\color{gray!5}}
@@ -50,13 +60,15 @@ header-includes:
 
 Every paper that runs an impulse response function, local projection, proxy-SVAR, or event study of monetary policy transmission begins with the same question: *which shock series do I use as the identifying input?* Over the last three decades, the answer has multiplied. @romer2004new opened the modern literature with narrative identification of Federal Reserve policy. @kuttner2001monetary and @gurkaynak2005actions extended identification to high-frequency intraday windows around FOMC announcements, using futures surprises to isolate the unexpected component of policy moves. @nakamura2018high refined the factor structure and provided the first widely-used "policy news shock" series. @jarocinski2020deconstructing split the surprise into a "pure monetary policy" component and a "central bank information" component via sign restrictions on the joint response of short rates and stock prices. @miranda2021transmission orthogonalised high-frequency surprises against the Fed's own Greenbook information set. @bauer2023alternative made the same move against a tighter basket of pre-announcement public data and challenged the information-effect interpretation directly. @wu2016measuring estimated a shadow federal funds rate via a three-factor term-structure model. @swanson2021measuring extended the original two-factor Gürkaynak-Sack-Swanson decomposition with an LSAP factor to cover the zero-lower-bound era.
 
-These series are not interchangeable. Their correlations range from around 0.4 to 0.7 on common samples, and researchers who care about the identification of monetary policy's causal effects are increasingly expected to report impulse responses under several strategies as a robustness check [@aeberhardt2024monetary]. But running those robustness checks requires wrangling data from eight to ten different sources: an XLSX on the San Francisco Fed's research-data page, a maintained GitHub repository, an openICPSR replication archive, a Harvard Dataverse zip, an author's personal site. Each source has its own date format, column naming convention, aggregation choice, and update cadence. A graduate student can easily spend a weekend just assembling the raw inputs to a simple cross-comparison.
+These series are not interchangeable. Their correlations range from around 0.4 to 0.7 on common samples. Researchers who care about the identification of monetary policy's causal effects are increasingly expected to report impulse responses under several strategies as a robustness check [@aeberhardt2024monetary].
 
-This paper introduces `mpshock`, an R package that bundles thirteen monetary policy shock and stance series across the United States, United Kingdom, and Australia as tidy data frames with provenance metadata. Version 0.1.0 is available on CRAN. Each series is loaded in a single call, carries its paper citation and source URL, uses a common monthly frequency and date format, and plugs directly into the dominant downstream R packages for impulse response estimation: `lpirfs` [@adammer2019lpirfs], `BVAR` [@kuschnig2021bvar], and `vars` [@pfaff2008var].
+Running those robustness checks requires wrangling data from eight to ten sources. An XLSX on the San Francisco Fed's research-data page. A maintained GitHub repository. An openICPSR replication archive. A Harvard Dataverse zip. An author's personal site. Each source has its own date format, column naming convention, aggregation choice, and update cadence. A graduate student can easily spend a weekend just assembling the raw inputs to a simple cross-comparison.
 
-`mpshock` differs from existing R infrastructure for empirical macro in two respects. First, it is the first R package to bundle shock series for more than one country in a common schema. Comparable resources (the `hfdshocks` GitHub repository, individual replication archives) are single-country and unmaintained. Second, it emphasises *provenance* as the first-class design property. Each bundled dataset carries the DOI, URL, licence, and download-date of its upstream source; each method `?nakamura_steinsson`, `?bauer_swanson`, `?ukmpd`, etc. carries a substantive discussion of identification, known critiques, and aggregation caveats. The package is thus positioned not as a wrapper but as a curated, citable, teachable alternative to the current fragmented workflow.
+This paper introduces `mpshock`, an R package that bundles thirteen monetary policy shock and stance series across the United States, United Kingdom, and Australia as tidy data frames with provenance metadata. Version 0.1.0 is available on CRAN. Each series loads in a single call. Each carries its paper citation and source URL. Each uses a common monthly frequency and date format. Each plugs directly into the dominant downstream R packages for impulse response estimation: `lpirfs` [@adammer2019lpirfs], `BVAR` [@kuschnig2021bvar], and `vars` [@pfaff2008var].
 
-The rest of the paper proceeds as follows. Section 2 sketches the methodological landscape of monetary policy shock identification and identifies the gap `mpshock` fills. Section 3 documents the package design. Sections 4, 5, and 6 describe the bundled US, UK, and Australian series. Section 7 describes the helper functions. Section 8 replicates a canonical impulse response comparison using four identification strategies on the same US sample. Section 9 presents a cross-country cumulative shock chart that cannot currently be produced with any other single tool. Section 10 discusses limitations and methodological caveats. Section 11 concludes.
+`mpshock` differs from existing R infrastructure in two ways. First, it is the first R package to bundle shock series for more than one country in a common schema. Comparable resources, such as the `hfdshocks` GitHub repository and individual replication archives, are single-country and unmaintained. Second, `mpshock` treats *provenance* as a first-class design property. Each bundled dataset carries the DOI, URL, licence, and download date of its upstream source. Each help file discusses identification, known critiques, and aggregation caveats. The package is not a wrapper. It is a curated, citable, teachable alternative to the current fragmented workflow.
+
+The rest of the paper proceeds as follows. Section 2 sketches the methodological landscape of monetary policy shock identification. Section 3 documents the package design. Sections 4, 5, and 6 describe the bundled US, UK, and Australian series. Section 7 describes the helper functions. Section 8 replicates a canonical cross-series comparison on a common US sample. Section 9 presents a cross-country cumulative shock chart. Section 10 discusses limitations. Section 11 concludes.
 
 # 2. The measurement of monetary policy shocks
 
@@ -100,7 +112,9 @@ mp_shock(series, start = NULL, end = NULL)
 
 ## 3.5 Helpers
 
-Three transformation helpers are provided: `mp_align(shock, target)` left-joins a shock series onto a target data frame by date (useful for lining a shock up with a macro panel before an IRF estimation), `mp_to_quarterly(shock, method)` aggregates monthly series to quarterly frequency via summation, mean, or end-of-quarter value, and `mp_cumulate(shock, window)` computes cumulative or rolling-window shock sums. These helpers do not attempt to replicate the functionality of the downstream IRF packages; they provide the minimal preprocessing that every empirical user needs.
+Three transformation helpers are provided. `mp_align()` left-joins a shock series onto a target data frame by date, lining up a shock with a macro panel before IRF estimation. `mp_to_quarterly()` aggregates monthly series to quarterly frequency via summation, mean, or end-of-quarter value. `mp_cumulate()` computes cumulative or rolling-window shock sums.
+
+These helpers do the minimum preprocessing every empirical user needs. They do not try to replicate the full-power IRF packages downstream. For anything beyond basic preparation, users should reach for `lpirfs`, `BVAR`, or `vars`.
 
 ## 3.6 Reproducibility posture
 
@@ -110,7 +124,7 @@ The package ships a `data-raw/` directory (excluded from the build but checked i
 
 **`nakamura_steinsson`** [@nakamura2018high]. The policy news shock from the 2018 QJE paper, constructed as the first principal component of five interest-rate futures (Fed Funds and Eurodollar) in a 30-minute window around FOMC announcements and rescaled to one-year Treasury-yield equivalents. Bundled at monthly frequency by summing event-level values within each calendar month. 2000-02 to 2014-03, 170 observations. Data is from the Harvard Dataverse replication archive under CC0 1.0.
 
-**`bauer_swanson`** [@bauer2023alternative]. The orthogonalised monetary policy surprise (MPS_ORTH), constructed as the OLS residual of the raw MPS on six pre-announcement predictors: surprise in the most recent nonfarm payrolls release, trailing 12-month employment growth, log S&P 500 change over the prior three months, change in the 10-year minus 2-year Treasury slope over the same window, log commodity-price-index change, and option-implied 10-year Treasury yield skewness. 1988-02 to 2023-12, 431 observations. Maintained by the Federal Reserve Bank of San Francisco.
+**`bauer_swanson`** [@bauer2023alternative]. The orthogonalised monetary policy surprise (MPS_ORTH) is the OLS residual of the raw MPS on six pre-announcement predictors. The predictors are: the surprise in the most recent nonfarm payrolls release, trailing 12-month employment growth, log S&P 500 change over the prior three months, the change in the 10y-2y Treasury slope over the same window, log commodity-price-index change, and the Bauer-Chernov option-implied 10-year Treasury yield skewness. 1988-02 to 2023-12, 431 observations. Maintained by the Federal Reserve Bank of San Francisco.
 
 **`gss_target`** and **`gss_path`** [@swanson2021measuring; @gurkaynak2005actions]. The Federal Funds Rate factor and Forward Guidance factor from Swanson's three-factor decomposition, which extends the original Gürkaynak-Sack-Swanson (2005) two-factor model with an LSAP factor to cover the zero-lower-bound era. The target and path factors bundled here are the direct analogues of the original GSS factors; the LSAP factor is not bundled in v0.1.0. Rotation is conditional on the pre-ZLB window (1991-07 to 2008-12) used to pin down factor 3; users extending the series past the bundled end must re-estimate the rotation. 1991-07 to 2015-10, 292 observations each.
 
@@ -122,7 +136,7 @@ The package ships a `data-raw/` directory (excluded from the build but checked i
 
 # 5. Bundled UK series
 
-**`ukmpd`** [@braun2025measuring]. The UK Monetary Policy Event-Study Database, the UK analogue of the Swanson (2021) three-factor decomposition: `shock` (Target factor), `path` (Forward Guidance factor), and `qe` (QE factor), each computed from high-frequency surprises in OIS rates, gilt yields, short-sterling futures, and the FTSE 100 around MPC announcements and Monetary Policy Report press conferences. Live-maintained by the Bank of England; the bundled snapshot covers 1997-06 to 2026-02, 345 observations.
+**`ukmpd`** [@braun2025measuring]. The UK Monetary Policy Event-Study Database is the UK analogue of the Swanson (2021) three-factor decomposition. The package exposes three columns: `shock` (Target factor), `path` (Forward Guidance factor), and `qe` (QE factor). Each factor is computed from high-frequency surprises in OIS rates, gilt yields, short-sterling futures, and the FTSE 100. The surprise windows bracket MPC announcements and Monetary Policy Report press conferences. Live-maintained by the Bank of England. The bundled snapshot covers 1997-06 to 2026-02, 345 observations.
 
 **`cesa_bianchi_uk`** [@cesabianchi2020monetary]. The UK high-frequency surprise constructed from 60-minute tight-window changes in the three-month sterling interbank rate around MPC announcements. 1997-06 to 2015-01, 212 observations. Superseded in most use cases by `ukmpd` but retained for historical comparability with the pre-UKMPD empirical literature.
 
@@ -181,7 +195,7 @@ Estimating Gertler-Karadi-style impulse responses using any of these shocks as t
 
 # 9. Cross-country cumulative shocks: a first
 
-Figure 3 plots cumulative monthly monetary policy shocks for the United States, United Kingdom, and Australia from 2005 to 2022, drawn from Bauer-Swanson (MPS_ORTH), the UKMPD Target factor, and the Hambur-Haque action factor respectively. To the author's knowledge, this is the first chart of this type produced from a common R pipeline. Shaded regions mark the global financial crisis (September 2008 to June 2009) and the COVID-19 monetary response (March to June 2020).
+Figure 3 plots cumulative monthly monetary policy shocks for the United States, United Kingdom, and Australia from 2005 to 2022. The series are Bauer-Swanson (MPS_ORTH), the UKMPD Target factor, and the Hambur-Haque action factor respectively. I am not aware of any prior chart of this type produced from a common R pipeline. Shaded regions mark the global financial crisis (September 2008 to June 2009) and the COVID-19 monetary response (March to June 2020).
 
 \begin{figure}[t]
 \centering
@@ -190,7 +204,13 @@ Figure 3 plots cumulative monthly monetary policy shocks for the United States, 
 \label{fig:cross_country}
 \end{figure}
 
-The three central banks share the direction of policy around major global events (the GFC, the 2013 taper tantrum, the 2022-23 tightening cycle) but differ sharply in timing and magnitude. The Federal Reserve's MPS_ORTH trace shows the most compressed shock variance during the 2009-2015 ZLB period, consistent with the short end being pinned at the lower bound and most identified innovations being channelled through forward guidance rather than through conventional surprise (captured here by the target factor, not the path factor). The UKMPD Target trace shows the opposite pattern: non-trivial target-factor shocks right through the ZLB era, reflecting the MPC's occasional departures from the Bank Rate floor. The Hambur-Haque action factor for Australia shows the expected shallow-cut profile reflecting the RBA's later and shallower move to zero.
+The three central banks share the direction of policy around major global events. The GFC, the 2013 taper tantrum, and the 2022-23 tightening cycle all show up in every series. But timing and magnitude differ sharply.
+
+The Federal Reserve's MPS_ORTH trace shows compressed shock variance during the 2009-2015 ZLB period. This is consistent with the short end being pinned at the lower bound. Most identified innovations moved through forward guidance in this window, not through the target factor bundled here.
+
+The UKMPD Target trace shows the opposite pattern. Non-trivial target-factor shocks appear right through the ZLB era. This reflects the MPC's occasional departures from the Bank Rate floor.
+
+The Hambur-Haque action factor for Australia shows a shallow-cut profile. This reflects the RBA's later and shallower move to zero.
 
 This kind of comparison is the central motivation for a multi-country package. No existing R resource makes it achievable in 15 lines of code.
 
@@ -208,7 +228,7 @@ Fourth, shock identification itself is contested. The Nakamura-Steinsson (2018) 
 
 Fifth, every bundled series has a cut-off date that may not match the user's desired estimation window. The UKMPD is live-maintained by the Bank of England and is the most current; Bauer-Swanson is updated roughly annually; several series (Nakamura-Steinsson, Cesa-Bianchi-Thwaites-Vicondoa, Wu-Xia) are static at their paper's published end date and will not be extended. Users needing the most recent vintages should consult each series' source URL (available via `mp_source()`) before a final empirical cut.
 
-Sixth, the package bundles academic research data under a mixture of licence conditions. The Nakamura-Steinsson replication archive is CC0 1.0 public domain; the RBA Research Discussion Paper supplements are CC BY 4.0; the Federal Reserve Bank of San Francisco publishes Bauer-Swanson as public research output without a formal licence statement; author-hosted files (Swanson, Cesa-Bianchi-Thwaites-Vicondoa) carry no explicit licence but are distributed as customary academic replication material. Users should cite the underlying paper for any series used in academic work, not `mpshock` alone.
+Sixth, licences vary across sources. The Nakamura-Steinsson replication archive is CC0 1.0 public domain. The RBA Research Discussion Paper supplements are CC BY 4.0. The Federal Reserve Bank of San Francisco publishes Bauer-Swanson as public research output without a formal licence statement. Author-hosted files, such as Swanson and Cesa-Bianchi-Thwaites-Vicondoa, carry no explicit licence but are distributed as customary academic replication material. Users should cite the underlying paper for any series used in academic work, not `mpshock` alone.
 
 # 11. Conclusion
 
