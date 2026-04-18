@@ -18,11 +18,25 @@
 % Stop figures floating into the bibliography.
 \usepackage{placeins}
 
+% [H] specifier = hard placement, no floating. Paired with raggedbottom
+% so LaTeX doesn't stretch pages to fill the text block when a figure
+% pushes content to the next page.
+\usepackage{float}
+\raggedbottom
+
 % Suppress the auto-generated \address{...} trailer.
 \renewcommand{\address}[1]{}
 
 % Number sections and subsections (match recent R Journal convention).
+% pandoc maps ## to \subsection, which RJournal.sty leaves unnumbered by
+% default. Override the titleformat so subsections display a single
+% arabic counter ("1 Introduction", "2 Background", ...).
 \setcounter{secnumdepth}{3}
+\usepackage{titlesec}
+\renewcommand\thesubsection{\arabic{subsection}}
+\renewcommand\thesubsubsection{\arabic{subsection}.\arabic{subsubsection}}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
 
 % Blue DOI / URL / citation hyperlinks (RJournal.sty leaves colorlinks off).
 \hypersetup{colorlinks=true,
