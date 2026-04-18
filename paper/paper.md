@@ -51,6 +51,11 @@ header-includes:
   - \usepackage{hyperref}
   - \usepackage{etoolbox}
   - \pretocmd{\tableofcontents}{\clearpage}{}{}
+  - \usepackage{tocloft}
+  - \setlength{\cftbeforesecskip}{2pt}
+  - \setlength{\cftbeforesubsecskip}{0pt}
+  - \renewcommand{\cftsecfont}{\normalsize}
+  - \renewcommand{\cftsecpagefont}{\normalsize}
   - \usepackage{xcolor}
   - \usepackage{listings}
   - \lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single,framerule=0.3pt,rulecolor=\color{gray!40},backgroundcolor=\color{gray!5}}

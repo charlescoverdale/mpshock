@@ -335,16 +335,24 @@ tex_tab <- capture.output({
 })
 writeLines(tex_tab, file.path(tab_dir, "us_correlations.tex"))
 
-# Series summary: longtable with narrower author column so country/freq/type
-# columns don't get pushed off the page.
+# Series summary: longtable with explicit column widths sized to fit the
+# A4 text width. The crucial fix is that the Series column must be
+# BOUNDED (p{width}) rather than `l`, because `miranda_agrippino_ricco`
+# in texttt alone takes ~4.2cm at footnotesize; an unbounded column lets
+# that push the rest of the table off the page. The widths below sum
+# to ~14.7cm, which fits comfortably inside the 16cm A4 text block with
+# room for the default \tabcolsep.
 summary_tab <- capture.output({
-  cat("\\begin{longtable}{@{}l p{4.8cm} l l l l@{}}\n")
+  cat("{\\small\n")
+  cat("\\setlength{\\tabcolsep}{4pt}\n")
+  cat("\\renewcommand{\\arraystretch}{1.15}\n")
+  cat("\\begin{longtable}{@{}>{\\ttfamily\\scriptsize}p{3.8cm} p{4.6cm} c c c l@{}}\n")
   cat("\\toprule\n")
-  cat("Series & Author(s) & Country & Freq. & Type & Span \\\\\n")
+  cat("\\multicolumn{1}{l}{\\normalsize\\textnormal{Series}} & Author(s) & Country & Freq. & Type & Span \\\\\n")
   cat("\\midrule\n")
   cat("\\endfirsthead\n")
   cat("\\toprule\n")
-  cat("Series & Author(s) & Country & Freq. & Type & Span \\\\\n")
+  cat("\\multicolumn{1}{l}{\\normalsize\\textnormal{Series}} & Author(s) & Country & Freq. & Type & Span \\\\\n")
   cat("\\midrule\n")
   cat("\\endhead\n")
   cat("\\midrule\n")
@@ -354,7 +362,7 @@ summary_tab <- capture.output({
   cat("\\endlastfoot\n")
   for (i in seq_len(nrow(meta))) {
     r <- meta[i, ]
-    cat(sprintf("{\\footnotesize\\texttt{%s}} & {\\footnotesize %s} & %s & %s & %s & %s--%s \\\\\n",
+    cat(sprintf("%s & %s & %s & %s & %s & %s--%s \\\\\n",
                 tex_esc(r$series),
                 tex_esc(r$author),
                 tex_esc(r$country),
@@ -364,6 +372,7 @@ summary_tab <- capture.output({
                 format(as.Date(r$end),   "%Y-%m")))
   }
   cat("\\end{longtable}\n")
+  cat("}\n")
 })
 writeLines(summary_tab, file.path(tab_dir, "series_summary.tex"))
 

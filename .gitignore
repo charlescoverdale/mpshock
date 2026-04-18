@@ -18,3 +18,6 @@ data-raw/ns_replication.zip
 data-raw/ns_extract/
 data-raw/WuXiaShadowRate.xlsx
 paper/paper.pdf
+paper/rj/RJwrapper.pdf
+paper/rj/paper.tex
+paper/rj/paper.R
