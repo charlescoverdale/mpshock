@@ -46,12 +46,8 @@ fam <- "HelveticaNeue"
 theme_wp <- function(base_size = 10) {
   theme_bw(base_size = base_size, base_family = fam) +
     theme(
-      plot.title = element_text(size = base_size + 1, face = "bold",
-                                family = fam, colour = "grey15",
-                                margin = margin(b = 2)),
-      plot.subtitle = element_text(size = base_size - 1, face = "italic",
-                                   family = fam, colour = "grey40",
-                                   margin = margin(b = 8)),
+      plot.title = element_blank(),
+      plot.subtitle = element_blank(),
       plot.caption = element_blank(),
       panel.border = element_blank(),
       panel.grid.minor = element_blank(),
@@ -77,6 +73,7 @@ theme_wp_hmap <- function(base_size = 10) {
   theme_minimal(base_size = base_size, base_family = fam) +
     theme(
       plot.title = element_blank(),
+      plot.subtitle = element_blank(),
       panel.grid = element_blank(),
       axis.text = element_text(size = base_size, colour = "grey20",
                                family = fam),
@@ -110,8 +107,7 @@ p_coverage <- ggplot(meta, aes(y = series, colour = country_full)) +
                                  "United Kingdom" = ok_red,
                                  "Australia"      = ok_green)) +
   labs(x = NULL, y = NULL,
-       title = "Coverage span of the bundled shock and stance series",
-       subtitle = "Thirteen series across three countries") +
+       title = NULL, subtitle = NULL) +
   theme_wp(base_size = 10)
 
 ggsave(file.path(fig_dir, "coverage_timeline.pdf"),
@@ -166,17 +162,8 @@ p_cor <- ggplot(cor_long, aes(series_x, series_y, fill = rho)) +
                       guide = "none") +
   coord_fixed() +
   labs(fill = expression(rho),
-       title = "US shock-series pairwise correlations",
-       subtitle = sprintf("Common monthly sample: %s to %s",
-                          format(window_start, "%Y-%m"),
-                          format(window_end, "%Y-%m"))) +
-  theme_wp_hmap(base_size = 10) +
-  theme(plot.title = element_text(size = 11, face = "bold",
-                                  family = fam, colour = "grey15",
-                                  margin = margin(b = 2)),
-        plot.subtitle = element_text(size = 9, face = "italic",
-                                     family = fam, colour = "grey40",
-                                     margin = margin(b = 8)))
+       title = NULL, subtitle = NULL) +
+  theme_wp_hmap(base_size = 10)
 
 ggsave(file.path(fig_dir, "us_correlations.pdf"),
        p_cor, width = 5.6, height = 4.4, device = cairo_pdf)
@@ -210,8 +197,7 @@ p_cum <- ggplot(cum_df, aes(date, shock_cum, colour = series,
   scale_colour_manual(values = c(ok_blue, ok_red, ok_green, ok_orange)) +
   scale_linetype_manual(values = c("solid", "longdash", "dotted", "dotdash")) +
   labs(x = NULL, y = "Cumulative shock (percentage points)",
-       title = "Cumulative US monetary policy shocks",
-       subtitle = "Four identification strategies on a common sample") +
+       title = NULL, subtitle = NULL) +
   guides(colour = guide_legend(nrow = 2), linetype = guide_legend(nrow = 2)) +
   theme_wp(base_size = 10)
 
@@ -268,8 +254,7 @@ p_cross <- ggplot(cross_country, aes(date, shock_cum,
                                    "United Kingdom" = "longdash",
                                    "Australia"      = "dotted")) +
   labs(x = NULL, y = "Cumulative shock (percentage points)",
-       title = "Cross-country monetary policy shocks, 2005-2022",
-       subtitle = "US (Bauer-Swanson MPS_ORTH), UK (UKMPD Target), AU (Hambur-Haque action)") +
+       title = NULL, subtitle = NULL) +
   theme_wp(base_size = 10)
 
 ggsave(file.path(fig_dir, "cross_country.pdf"),
@@ -307,8 +292,7 @@ p_dist <- ggplot(dist_df, aes(x = series, y = shock, colour = country)) +
                                  "United Kingdom" = ok_red,
                                  "Australia"      = ok_green)) +
   labs(x = NULL, y = "Shock value (percentage points)",
-       title = "Distribution of nonzero monetary policy shocks",
-       subtitle = "Each point is a nonzero monthly observation") +
+       title = NULL, subtitle = NULL) +
   theme_wp(base_size = 10)
 
 ggsave(file.path(fig_dir, "distribution.pdf"),
