@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { color: #00769e; background-color: #f1f3f5; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #00769e; } /* Normal */
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #657422; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #00769e; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #00769e; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #00769e; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+<style>
+  div.csl-bib-body { }
+  div.csl-entry {
+    clear: both;
+      margin-bottom: 0em;
+    }
+  .hanging div.csl-entry {
+    margin-left:2em;
+    text-indent:-2em;
+  }
+  div.csl-left-margin {
+    min-width:2em;
+    float:left;
+  }
+  div.csl-right-inline {
+    margin-left:2em;
+    padding-left:1em;
+  }
+  div.csl-indent {
+    margin-left: 2em;
+  }
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Mpshock: An R Package for Cross-Country Monetary Policy Shock Analysis</title>
+
+  <meta property="description" itemprop="description" content="Empirical monetary economics relies on identified policy shock series as the exogenous input to impulse response functions, local projections, and proxy-SVARs. Those series live today as Excel and CSV files scattered across individual authors&#39; personal pages, Federal Reserve research data pages, and GitHub mirrors, with inconsistent column names, date formats, and update cadences. This paper introduces the mpshock package, an R package that bundles thirteen monetary policy shock and stance series across three countries (United States, United Kingdom, Australia) as tidy, versioned, and tested data frames with provenance metadata. Each series loads in a single call, carries its paper citation and source URL, and plugs directly into the dominant downstream R packages for impulse response estimation. The package is demonstrated by replicating cross-series comparisons and by producing the first published cross-country cumulative monetary-shock chart from a single R pipeline."/>
+
+  <link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/>
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2026-04-19"/>
+  <meta property="article:created" itemprop="dateCreated" content="2026-04-19"/>
+  <meta name="article:author" content="Charles Coverdale"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Mpshock: An R Package for Cross-Country Monetary Policy Shock Analysis"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Empirical monetary economics relies on identified policy shock series as the exogenous input to impulse response functions, local projections, and proxy-SVARs. Those series live today as Excel and CSV files scattered across individual authors&#39; personal pages, Federal Reserve research data pages, and GitHub mirrors, with inconsistent column names, date formats, and update cadences. This paper introduces the mpshock package, an R package that bundles thirteen monetary policy shock and stance series across three countries (United States, United Kingdom, Australia) as tidy, versioned, and tested data frames with provenance metadata. Each series loads in a single call, carries its paper citation and source URL, and plugs directly into the dominant downstream R packages for impulse response estimation. The package is demonstrated by replicating cross-series comparisons and by producing the first published cross-country cumulative monetary-shock chart from a single R pipeline."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Mpshock: An R Package for Cross-Country Monetary Policy Shock Analysis"/>
+  <meta property="twitter:description" content="Empirical monetary economics relies on identified policy shock series as the exogenous input to impulse response functions, local projections, and proxy-SVARs. Those series live today as Excel and CSV files scattered across individual authors&#39; personal pages, Federal Reserve research data pages, and GitHub mirrors, with inconsistent column names, date formats, and update cadences. This paper introduces the mpshock package, an R package that bundles thirteen monetary policy shock and stance series across three countries (United States, United Kingdom, Australia) as tidy, versioned, and tested data frames with provenance metadata. Each series loads in a single call, carries its paper citation and source URL, and plugs directly into the dominant downstream R packages for impulse response estimation. The package is demonstrated by replicating cross-series comparisons and by producing the first published cross-country cumulative monetary-shock chart from a single R pipeline."/>
+
+  <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
+  <meta name="citation_title" content="Mpshock: An R Package for Cross-Country Monetary Policy Shock Analysis"/>
+  <meta name="citation_pdf_url" content="mpshock.pdf"/>
+  <meta name="citation_journal_title" content="The R Journal"/>
+  <meta name="citation_issn" content="2073-4859"/>
+  <meta name="citation_firstpage" content="1"/>
+  <meta name="citation_fulltext_world_readable" content=""/>
+  <meta name="citation_online_date" content="2026/04/19"/>
+  <meta name="citation_publication_date" content="2026/04/19"/>
+  <meta name="citation_author" content="Charles Coverdale"/>
+  <meta name="citation_author_institution" content="Independent"/>
+  <!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_title=A new measure of monetary shocks: Derivation and implications;citation_volume=94;citation_doi=10.1257/0002828042002651;citation_author=Christina D Romer;citation_author=David H Romer"/>
+  <meta name="citation_reference" content="citation_title=Monetary policy surprises and interest rates: Evidence from the fed funds futures market;citation_volume=47;citation_doi=10.1016/S0304-3932(01)00055-1;citation_author=Kenneth N Kuttner"/>
+  <meta name="citation_reference" content="citation_title=Do actions speak louder than words? The response of asset prices to monetary policy actions and statements;citation_volume=1;citation_author=Refet S Gürkaynak;citation_author=Brian Sack;citation_author=Eric T Swanson"/>
+  <meta name="citation_reference" content="citation_title=High-frequency identification of monetary non-neutrality: The information effect;citation_volume=133;citation_doi=10.1093/qje/qjy004;citation_author=Emi Nakamura;citation_author=Jón Steinsson"/>
+  <meta name="citation_reference" content="citation_title=An alternative explanation for the “fed information effect”;citation_volume=113;citation_doi=10.1257/aer.20201220;citation_author=Michael D Bauer;citation_author=Eric T Swanson"/>
+  <meta name="citation_reference" content="citation_title=Measuring the effects of federal reserve forward guidance and asset purchases on financial markets;citation_volume=118;citation_doi=10.1016/j.jmoneco.2020.09.003;citation_author=Eric T Swanson"/>
+  <meta name="citation_reference" content="citation_title=Deconstructing monetary policy surprises: The role of information shocks;citation_volume=12;citation_doi=10.1257/mac.20180090;citation_author=Marek Jarociński;citation_author=Peter Karadi"/>
+  <meta name="citation_reference" content="citation_title=The transmission of monetary policy shocks;citation_volume=13;citation_doi=10.1257/mac.20180124;citation_author=Silvia Miranda-Agrippino;citation_author=Giovanni Ricco"/>
+  <meta name="citation_reference" content="citation_title=Measuring the macroeconomic impact of monetary policy at the zero lower bound;citation_volume=48;citation_doi=10.1111/jmcb.12300;citation_author=Jing Cynthia Wu;citation_author=Fan Dora Xia"/>
+  <meta name="citation_reference" content="citation_title=Measuring monetary policy in the UK: The UK monetary policy event-study database;citation_volume=149;citation_doi=10.1016/j.jmoneco.2024.103645;citation_author=Robin Braun;citation_author=Silvia Miranda-Agrippino;citation_author=Tuli Saha"/>
+  <meta name="citation_reference" content="citation_title=Monetary policy transmission in the united kingdom: A high frequency identification approach;citation_volume=123;citation_doi=10.1016/j.euroecorev.2020.103375;citation_author=Ambrogio Cesa-Bianchi;citation_author=Gregory Thwaites;citation_author=Alejandro Vicondoa"/>
+  <meta name="citation_reference" content="citation_title=The macroeconomic effects of monetary policy: A new measure for the united kingdom;citation_volume=8;citation_doi=10.1257/mac.20150093;citation_author=James Cloyne;citation_author=Patrick Hürtgen"/>
+  <meta name="citation_reference" content="citation_title=Monetary policy transmission, real interest rates and credit spreads: Evidence from australia;citation_doi=10.1111/1475-4932.12786;citation_author=Jonathan Hambur;citation_author=Qazi Haque"/>
+  <meta name="citation_reference" content="citation_title=Credit spreads, monetary policy and the price puzzle in australia;citation_publisher=Reserve Bank of Australia;citation_number=Research Discussion Paper 2020-01;citation_author=Benjamin Beckers"/>
+  <meta name="citation_reference" content="citation_title=Monetary policy surprises, credit costs, and economic activity;citation_volume=7;citation_doi=10.1257/mac.20130329;citation_author=Mark Gertler;citation_author=Peter Karadi"/>
+  <meta name="citation_reference" content="citation_title=A unified measure of fed monetary policy shocks;citation_volume=118;citation_doi=10.1016/j.jmoneco.2020.11.002;citation_author=Chunya Bu;citation_author=John Rogers;citation_author=Wenbin Wu"/>
+  <meta name="citation_reference" content="citation_title=A note of caution on shadow rate estimates;citation_volume=52;citation_doi=10.1111/jmcb.12613;citation_author=Leo Krippner"/>
+  <meta name="citation_reference" content="citation_title=The perceived causes of monetary policy surprises;citation_author=Miguel Acosta"/>
+  <meta name="citation_reference" content="citation_title=Monetary policy shocks: Data or methods?;citation_publisher=Federal Reserve Board;citation_number=FEDS Working Paper 2024-011;citation_author=Romain Aeberhardt;citation_author=Valentina Bruno;citation_author=Michael Fidora"/>
+  <meta name="citation_reference" content="citation_title=A new dataset of high-frequency monetary policy shocks;citation_publisher=International Monetary Fund;citation_number=Working Paper 24/224;citation_author=Marijn Bolhuis;citation_author=Prakash Loungani Das;citation_author=Bella Yao"/>
+  <meta name="citation_reference" content="citation_title=lpirfs: An r package to estimate impulse response functions by local projections;citation_volume=11;citation_author=Philipp Adämmer"/>
+  <meta name="citation_reference" content="citation_title=BVAR: Bayesian vector autoregressions with hierarchical prior selection in R;citation_volume=100;citation_doi=10.18637/jss.v100.i14;citation_author=Nikolas Kuschnig;citation_author=Lukas Vashold"/>
+  <meta name="citation_reference" content="citation_title=VAR, SVAR and SVEC models: Implementation within R package vars;citation_volume=27;citation_doi=10.18637/jss.v027.i04;citation_author=Bernhard Pfaff"/>
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","description","draft","author","type","journal","output","header-includes","bibliography","slug","pdf_url","creative_commons","packages","CTV","csl"]}},"value":[{"type":"character","attributes":{},"value":["Mpshock: An R Package for Cross-Country Monetary Policy Shock Analysis"]},{"type":"character","attributes":{},"value":["2026-04-19"]},{"type":"character","attributes":{},"value":["Empirical monetary economics relies on identified policy shock series as the exogenous input to impulse response functions, local projections, and proxy-SVARs. Those series live today as Excel and CSV files scattered across individual authors' personal pages, Federal Reserve research data pages, and GitHub mirrors, with inconsistent column names, date formats, and update cadences. This paper introduces the mpshock package, an R package that bundles thirteen monetary policy shock and stance series across three countries (United States, United Kingdom, Australia) as tidy, versioned, and tested data frames with provenance metadata. Each series loads in a single call, carries its paper citation and source URL, and plugs directly into the dominant downstream R packages for impulse response estimation. The package is demonstrated by replicating cross-series comparisons and by producing the first published cross-country cumulative monetary-shock chart from a single R pipeline.\n"]},{"type":"logical","attributes":{},"value":[false]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","affiliation","address","url","email"]}},"value":[{"type":"character","attributes":{},"value":["Charles Coverdale"]},{"type":"character","attributes":{},"value":["Independent"]},{"type":"character","attributes":{},"value":["London, United Kingdom"]},{"type":"character","attributes":{},"value":["https://github.com/charlescoverdale/mpshock"]},{"type":"character","attributes":{},"value":["charles.f.coverdale@gmail.com"]}]}]},{"type":"character","attributes":{},"value":["package"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","issn","firstpage","lastpage"]}},"value":[{"type":"character","attributes":{},"value":["The R Journal"]},{"type":"character","attributes":{},"value":["2073-4859"]},{"type":"double","attributes":{},"value":[1]},{"type":"NULL"}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["\\renewcommand{\\address}[1]{}"]},{"type":"character","attributes":{},"value":["RJreferences.bib"]},{"type":"character","attributes":{},"value":["mpshock"]},{"type":"character","attributes":{},"value":["mpshock.pdf"]},{"type":"character","attributes":{},"value":["CC BY"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["cran","bioc"]}},"value":[{"type":"character","attributes":{},"value":["mpshock","lpirfs","BVAR","vars","cli","tidyverse"]},{"type":"list","attributes":{},"value":[]}]},{"type":"character","attributes":{},"value":["Bayesian","ChemPhys","Econometrics","Finance","TimeSeries"]},{"type":"character","attributes":{},"value":["/Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/rjtools/rjournal.csl"]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["figures/coverage_timeline.pdf","figures/cross_country.pdf","figures/cumulative_us.pdf","figures/distribution.pdf","figures/us_correlations.pdf","motivation-letter/motivation-letter.md","mpshock.log","mpshock.pdf","mpshock.tex","RJournal.sty","RJreferences.bib","RJwrapper.log","RJwrapper.tex"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+    font-size: 100%;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  hr.section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0px;
+  }
+
+
+  d-byline {
+    border-top: none;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+    border-top: none;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  /* tweak for Pandoc numbered line within distill */
+  d-article pre.numberSource code > span {
+      left: -2em;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // separator
+    var separator = '<hr class="section-separator" style="clear: both"/>';
+    // prepend separator above appendix
+    $('.d-byline').before(separator);
+    $('.d-article').before(separator);
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme, except when numbering line
+    // in code chunk
+    $('pre:not(.numberLines) code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        var author_name = front_matter.authors[i].author
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', author_name ? 'ORCID ID for ' + author_name : 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="mpshock_files/header-attrs-2.30/header-attrs.js"></script>
+  <script src="mpshock_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="mpshock_files/popper-2.6.0/popper.min.js"></script>
+  <link href="mpshock_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="mpshock_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="mpshock_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="mpshock_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="mpshock_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="mpshock_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="mpshock_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+  <script>
+    $(function() {
+      console.log("Starting...")
+
+      // Mathjax config (add automatic linebreaks when supported)
+      // MathJax = {
+      //    tex: {
+      //        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      //        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      //        tags: 'ams',
+      //        multline: true,
+      //    },
+      //    options: {
+      //        linebreaks: { automatic: true },
+      //    },
+      // };
+
+      // Always show Published - distill hides it if not set
+      function show_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'visible');
+      }
+
+      show_byline_column('Published')
+
+      // tweak function
+      var rmd_meta = JSON.parse($("#radix-rmarkdown-metadata").html());
+      function get_meta(name, meta) {
+        var ind = meta.attributes.names.value.findIndex((e) => e == name)
+        var val = meta.value[ind]
+        if (val.type != 'list') {
+          return val.value.toString()
+        }
+        return val
+      }
+
+      // tweak description
+      // Add clickable tags
+      const slug = get_meta('slug', rmd_meta)
+      const cite_url = get_meta('citation_url', rmd_meta)
+
+      var title = $("d-title").text
+
+      const buttons = $('<div class="dt-tags" style="grid-column: page;">')
+      buttons.append('<a href="#citation" class="dt-tag"><i class="fas fa-quote-left"></i> Cite</a>')
+      buttons.append('<a href="' + slug + '.pdf" class="dt-tag"><i class="fas fa-file-pdf"></i> PDF</a>')
+      buttons.append('<a href="' + slug + '.zip" class="dt-tag"><i class="fas fa-file-zipper"></i> Supplement</a>')
+
+      // adds Abstract: in front of the first <p> in the title section --
+      // unless it happens to be the subtitle (FIXME: this is a bad hack - can't distill do this?)
+      var tpar = $("d-title p:not(:empty)").filter(function() {
+        return !$(this).hasClass("subtitle");
+      }).first();
+      if (tpar) {
+        const abstract = $('<d-abstract>')
+        abstract.append('<b>Abstract:</b><br>')
+        abstract.append(tpar) // Move description to d-abstract
+        $("d-title p:empty").remove() // Remove empty paragraphs after title
+        abstract.append(buttons)
+        abstract.insertAfter($('d-title')) // Add abstract section after title */
+      }
+
+      // tweak by-line
+      var byline = $("d-byline div.byline")
+      ind = rmd_meta.attributes.names.value.findIndex((e) => e == "journal")
+      const journal = get_meta('journal', rmd_meta)
+      const volume = get_meta('volume', rmd_meta)
+      const issue = get_meta('issue', rmd_meta)
+      const jrtitle = get_meta('title', journal)
+      const year = ((jrtitle == "R News") ? 2000 : 2008) + parseInt(volume)
+      const firstpage = get_meta('firstpage', journal)
+      const lastpage = get_meta('lastpage', journal)
+      byline.append('<div class="rjournal grid">')
+      $('div.rjournal').append('<h3>Volume</h3>')
+      $('div.rjournal').append('<h3>Pages</h3>')
+      $('div.rjournal').append('<a class="volume" href="../../issues/'+year+'-'+issue+'">'+volume+'/'+issue+'</a>')
+      $('div.rjournal').append('<p class="pages">'+firstpage+' - '+lastpage+'</p>')
+
+      const received_date = new Date(get_meta('date_received', rmd_meta))
+      byline.find('h3:contains("Published")').parent().append('<h3>Received</h3><p>'+received_date.toLocaleDateString('en-US', {month: 'short'})+' '+received_date.getDate()+', '+received_date.getFullYear()+'</p>')
+
+    })
+  </script>
+
+  <style>
+      /*
+    .nav-dropdown-content .nav-dropdown-header {
+      text-transform: lowercase;
+    }
+    */
+
+    d-byline .byline {
+      grid-template-columns: 2fr 2fr 2fr 2fr;
+    }
+
+    d-byline .rjournal {
+      grid-column-end: span 2;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 0;
+    }
+
+    d-title h1, d-title p, d-title figure,
+    d-abstract p, d-abstract b {
+      grid-column: page;
+    }
+
+    d-title .dt-tags {
+      grid-column: page;
+    }
+
+    .dt-tags .dt-tag {
+      text-transform: lowercase;
+    }
+
+    d-article h1 {
+      line-height: 1.1em;
+    }
+
+    d-abstract p, d-article p {
+      text-align: justify;
+    }
+
+    @media(min-width: 1000px) {
+      .d-contents.d-contents-float {
+        justify-self: end;
+      }
+
+      nav.toc {
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-right-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .posts-list .dt-tags .dt-tag {
+      text-transform: lowercase;
+    }
+
+    @keyframes highlight-target {
+      0% {
+        background-color: #ffa;
+      }
+      66% {
+        background-color: #ffa;
+      }
+      100% {
+        background-color: none;
+      }
+    }
+
+    d-article :target, d-appendix :target {
+       animation: highlight-target 3s;
+    }
+
+    .header-section-number {
+      margin-right: 0.5em;
+    }
+    
+    d-appendix .citation-appendix,
+    .d-appendix .citation-appendix {
+      color: rgb(60, 60, 60);
+    }
+
+    d-article h2 {
+      border-bottom: 0px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 0rem;
+    }
+    d-article h3 {
+      font-size: 20px;
+    }
+    d-article h4 {
+      font-size: 18px;
+      text-transform: none;
+    }
+
+    @media (min-width: 1024px) {
+      d-article h2 {
+        font-size: 32px;
+      }
+      d-article h3 {
+        font-size: 24px;
+      }
+      d-article h4 {
+        font-size: 20px;
+      }
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Mpshock: An R Package for Cross-Country Monetary Policy Shock Analysis","description":"Empirical monetary economics relies on identified policy shock series as the exogenous input to impulse response functions, local projections, and proxy-SVARs. Those series live today as Excel and CSV files scattered across individual authors' personal pages, Federal Reserve research data pages, and GitHub mirrors, with inconsistent column names, date formats, and update cadences. This paper introduces the mpshock package, an R package that bundles thirteen monetary policy shock and stance series across three countries (United States, United Kingdom, Australia) as tidy, versioned, and tested data frames with provenance metadata. Each series loads in a single call, carries its paper citation and source URL, and plugs directly into the dominant downstream R packages for impulse response estimation. The package is demonstrated by replicating cross-series comparisons and by producing the first published cross-country cumulative monetary-shock chart from a single R pipeline.","authors":[{"author":"Charles Coverdale","authorURL":"https://github.com/charlescoverdale/mpshock","affiliation":"Independent","affiliationURL":"#","orcidID":""}],"publishedDate":"2026-04-19T00:00:00.000+01:00","citationText":"Coverdale, 2026"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Mpshock: An R Package for Cross-Country Monetary Policy Shock Analysis</h1>
+
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Empirical monetary economics relies on identified policy shock series as the exogenous input to impulse response functions, local projections, and proxy-SVARs. Those series live today as Excel and CSV files scattered across individual authors’ personal pages, Federal Reserve research data pages, and GitHub mirrors, with inconsistent column names, date formats, and update cadences. This paper introduces the mpshock package, an R package that bundles thirteen monetary policy shock and stance series across three countries (United States, United Kingdom, Australia) as tidy, versioned, and tested data frames with provenance metadata. Each series loads in a single call, carries its paper citation and source URL, and plugs directly into the dominant downstream R packages for impulse response estimation. The package is demonstrated by replicating cross-series comparisons and by producing the first published cross-country cumulative monetary-shock chart from a single R pipeline.</p></p>
+</div>
+
+<div class="d-byline">
+  Charles Coverdale <a href="https://github.com/charlescoverdale/mpshock" class="uri">https://github.com/charlescoverdale/mpshock</a> (Independent)
+  
+<br/>2026-04-19
+</div>
+
+<div class="d-article">
+<h2 data-number="1" id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<p>The <a href="https://cran.r-project.org/package=mpshock">mpshock</a> package bundles thirteen monetary policy shock and stance series from the empirical macroeconomics literature. Series span three countries (United States, United Kingdom, Australia), load in a single call, carry citation and source metadata, and plug into the dominant downstream R packages for impulse response estimation: <a href="https://cran.r-project.org/package=lpirfs">lpirfs</a> <span class="citation" data-cites="adammer2019lpirfs">(<a href="#ref-adammer2019lpirfs" role="doc-biblioref">Adämmer 2019</a>)</span>, <a href="https://cran.r-project.org/package=BVAR">BVAR</a> <span class="citation" data-cites="kuschnig2021bvar">(<a href="#ref-kuschnig2021bvar" role="doc-biblioref">Kuschnig and Vashold 2021</a>)</span>, and <a href="https://cran.r-project.org/package=vars">vars</a> <span class="citation" data-cites="pfaff2008var">(<a href="#ref-pfaff2008var" role="doc-biblioref">Pfaff 2008</a>)</span>. Version 0.1.0 is available on CRAN.</p>
+<p>The motivating problem is fragmentation. Identified monetary policy shock series live today as XLS and CSV files on individual authors’ personal pages, Federal Reserve research data pages, openICPSR replication archives, and GitHub mirrors, with inconsistent column names, date formats, and update cadences. Correlations between alternative series on common samples range from 0.4 to 0.7 <span class="citation" data-cites="aeberhardt2024monetary">(<a href="#ref-aeberhardt2024monetary" role="doc-biblioref">Aeberhardt et al. 2024</a>)</span>. Reporting impulse responses under several identification strategies as a robustness check is now standard practice, but assembling the inputs has remained a research-time tax.</p>
+<p><a href="https://cran.r-project.org/package=mpshock">mpshock</a> is the first R package to bundle shock series for more than one country in a common schema. Comparable resources, such as the <code>hfdshocks</code> GitHub repository and individual replication archives, are single-country and unmaintained. The package treats provenance as a first-class design property: each bundled dataset carries the DOI, URL, licence, and download date of its upstream source, and each help file discusses identification, known critiques, and aggregation caveats.</p>
+<h2 data-number="2" id="background"><span class="header-section-number">2</span> Background</h2>
+<p>A monetary policy shock is the component of a central bank’s policy decision orthogonal to the bank’s real-time information set. Five identification strategies dominate the current literature, and the bundled series span all five.</p>
+<p><strong>Narrative identification.</strong> <span class="citation" data-cites="romer2004new">Romer and Romer (<a href="#ref-romer2004new" role="doc-biblioref">2004</a>)</span> regress policy-rate changes on the Fed’s Greenbook forecasts and interpret the residual as the exogenous policy innovation. <span class="citation" data-cites="cloyne2016macroeconomic">Cloyne and Hürtgen (<a href="#ref-cloyne2016macroeconomic" role="doc-biblioref">2016</a>)</span> produce the United Kingdom equivalent from Bank of England <em>Inflation Report</em> forecasts. <span class="citation" data-cites="beckers2020credit">Beckers (<a href="#ref-beckers2020credit" role="doc-biblioref">2020</a>)</span> produce an Australian series from Reserve Bank of Australia internal forecasts, augmented with credit-spread information following <span class="citation" data-cites="hambur2023monetary">Hambur and Haque (<a href="#ref-hambur2023monetary" role="doc-biblioref">2024</a>)</span>.</p>
+<p><strong>High-frequency identification.</strong> <span class="citation" data-cites="kuttner2001monetary">Kuttner (<a href="#ref-kuttner2001monetary" role="doc-biblioref">2001</a>)</span> identifies the unexpected component of policy moves from 30-minute jumps in federal funds futures around FOMC announcements. <span class="citation" data-cites="gurkaynak2005actions">Gürkaynak et al. (<a href="#ref-gurkaynak2005actions" role="doc-biblioref">2005</a>)</span> decompose several futures surprises into two factors: a target factor capturing the current-meeting move and a path factor capturing guidance about future rates. <span class="citation" data-cites="nakamura2018high">Nakamura and Steinsson (<a href="#ref-nakamura2018high" role="doc-biblioref">2018</a>)</span> refine this using five interest-rate futures and rescaling to one-year Treasury-yield equivalents. <span class="citation" data-cites="cesabianchi2020monetary">Cesa-Bianchi et al. (<a href="#ref-cesabianchi2020monetary" role="doc-biblioref">2020</a>)</span> produce the UK analogue from sterling interbank rate surprises. <span class="citation" data-cites="hambur2023monetary">Hambur and Haque (<a href="#ref-hambur2023monetary" role="doc-biblioref">2024</a>)</span> produce the Australian equivalent from OIS and AGS yields around RBA board meetings.</p>
+<p><strong>Sign restrictions.</strong> <span class="citation" data-cites="jarocinski2020deconstructing">Jarociński and Karadi (<a href="#ref-jarocinski2020deconstructing" role="doc-biblioref">2020</a>)</span> exploit the joint response of short-term interest rates and stock prices. A positive pure monetary policy shock raises rates and lowers stocks; a positive central bank information shock raises both. The identification is set-valued, so the package bundles the median rotation. <span class="citation" data-cites="acosta2023perceived">Acosta (<a href="#ref-acosta2023perceived" role="doc-biblioref">2023</a>)</span> shows that the rate-stock sign pattern is a weak discriminator between the two shock types.</p>
+<p><strong>Informationally-robust.</strong> <span class="citation" data-cites="miranda2021transmission">Miranda-Agrippino and Ricco (<a href="#ref-miranda2021transmission" role="doc-biblioref">2021</a>)</span> project high-frequency FF4 surprises onto the Fed’s Greenbook forecast revisions for GDP, unemployment, and inflation at horizons zero to four quarters. The residual addresses the information effect directly.</p>
+<p><strong>Shadow-rate term-structure models.</strong> <span class="citation" data-cites="wu2016measuring">Wu and Xia (<a href="#ref-wu2016measuring" role="doc-biblioref">2016</a>)</span> estimate a three-factor affine model for Treasury yields in which the observed short rate equals <span class="math inline">\(\max(r^*_t, r^{\mathrm{ELB}})\)</span>. The latent shadow rate <span class="math inline">\(r^*_t\)</span> can go negative during zero-lower-bound episodes. Shadow rates are stance measures, not shocks; first differences are a reasonable proxy <span class="citation" data-cites="krippner2020comparison">(<a href="#ref-krippner2020comparison" role="doc-biblioref">Krippner 2020</a>)</span>.</p>
+<h2 data-number="3" id="package-design"><span class="header-section-number">3</span> Package design</h2>
+<h3 data-number="3.1" id="architecture-and-dependencies"><span class="header-section-number">3.1</span> Architecture and dependencies</h3>
+<p>Each bundled series lives as a compressed R data object under <code>data/</code>. The package provides a uniform loader, a provenance accessor, and a small set of transformation helpers. Imports are <a href="https://cran.r-project.org/package=cli">cli</a>, <code>stats</code>, and <code>utils</code>. No runtime dependency on <a href="https://cran.r-project.org/package=tidyverse">tidyverse</a> or any HTTP client, because all data is bundled at build time. R 4.1.0 or later is required.</p>
+<h3 data-number="3.2" id="the-mp_shock-class"><span class="header-section-number">3.2</span> The mp_shock class</h3>
+<p>Every bundled series is a <code>data.frame</code> carrying the <code>mp_shock</code> S3 class, with three required columns: <code>date</code> (first of the month, <code>Date</code>), <code>shock</code> (percentage points), and <code>series</code> (identifier). Multi-factor series carry additional columns: <code>target</code>, <code>path</code>, and <code>qe</code> for the UK Monetary Policy Event-Study Database <span class="citation" data-cites="braun2025measuring">(<a href="#ref-braun2025measuring" role="doc-biblioref">Braun et al. 2025</a>)</span>; <code>action</code>, <code>path</code>, and <code>term_premium</code> for the Australian three-factor decomposition <span class="citation" data-cites="hambur2023monetary">(<a href="#ref-hambur2023monetary" role="doc-biblioref">Hambur and Haque 2024</a>)</span>; <code>shadow_rate</code> and <code>effr</code> for Wu-Xia. A <code>print.mp_shock</code> method emits a one-line provenance header before the tabular output.</p>
+<h3 data-number="3.3" id="the-loader"><span class="header-section-number">3.3</span> The loader</h3>
+<p>The single entry point is <code>mp_shock(series, start, end)</code>. The <code>series</code> argument is matched against an internal allow-list; unknown names raise a structured error listing the available series. Optional <code>start</code> and <code>end</code> arguments filter by date. Input validation uses <code>cli::cli_abort</code>.</p>
+<h3 data-number="3.4" id="metadata"><span class="header-section-number">3.4</span> Metadata</h3>
+<p><code>mp_list()</code> returns a metadata table with one row per series and eleven columns: <code>series</code>, <code>author</code>, <code>country</code>, <code>frequency</code>, <code>type</code>, <code>start</code>, <code>end</code>, <code>n</code>, <code>doi</code>, <code>source_url</code>, and <code>description</code>. <code>mp_source(series)</code> returns the one-row subset and prints the citation to the console.</p>
+<h3 data-number="3.5" id="helpers"><span class="header-section-number">3.5</span> Helpers</h3>
+<p>Three helpers cover the pre-modelling preparation every user needs. <code>mp_align()</code> left-joins a shock series onto a target data frame by date. <code>mp_to_quarterly()</code> aggregates monthly series to quarterly via sum, mean, or end-of-quarter value. <code>mp_cumulate()</code> computes cumulative or rolling-window shock sums. For anything beyond preparation, users should reach for <a href="https://cran.r-project.org/package=lpirfs">lpirfs</a>, <a href="https://cran.r-project.org/package=BVAR">BVAR</a>, or <a href="https://cran.r-project.org/package=vars">vars</a>.</p>
+<h3 data-number="3.6" id="reproducibility"><span class="header-section-number">3.6</span> Reproducibility</h3>
+<p>The package ships a <code>data-raw/</code> directory containing an R script per bundled series. Each script records the upstream URL, the download date, and the exact transformations applied. Re-running the scripts regenerates the bundled data from source, subject to upstream availability.</p>
+<h2 data-number="4" id="us-series"><span class="header-section-number">4</span> US series</h2>
+<p><code>nakamura_steinsson</code> <span class="citation" data-cites="nakamura2018high">(<a href="#ref-nakamura2018high" role="doc-biblioref">Nakamura and Steinsson 2018</a>)</span>: policy news shock, first principal component of five interest-rate futures in a 30-minute FOMC window, rescaled to one-year Treasury-yield equivalents. 2000-02 to 2014-03, 170 monthly observations. Harvard Dataverse replication archive, CC0 1.0.</p>
+<p>The series <code>bauer_swanson</code> <span class="citation" data-cites="bauer2023alternative">(<a href="#ref-bauer2023alternative" role="doc-biblioref">Bauer and Swanson 2023</a>)</span> is the orthogonalised monetary policy surprise (MPS_ORTH), computed as the OLS residual of the raw MPS on six pre-announcement predictors: nonfarm payrolls surprise, trailing 12-month employment growth, log S&amp;P 500 change over the prior three months, 10y-2y Treasury slope change, log commodity-price-index change, and Bauer-Chernov option-implied 10-year Treasury yield skewness. 1988-02 to 2023-12, 431 observations. Maintained by the San Francisco Fed.</p>
+<p><code>gss_target</code> and <code>gss_path</code> <span class="citation" data-cites="swanson2021measuring gurkaynak2005actions">(<a href="#ref-gurkaynak2005actions" role="doc-biblioref">Gürkaynak et al. 2005</a>; <a href="#ref-swanson2021measuring" role="doc-biblioref">Swanson 2021</a>)</span>: the federal funds rate factor and forward guidance factor from the Swanson three-factor extension of Gürkaynak-Sack-Swanson. 1991-07 to 2015-10, 292 observations each.</p>
+<p><code>jarocinski_karadi_mp</code> and <code>jarocinski_karadi_cbi</code> <span class="citation" data-cites="jarocinski2020deconstructing">(<a href="#ref-jarocinski2020deconstructing" role="doc-biblioref">Jarociński and Karadi 2020</a>)</span>: pure monetary policy and central bank information shocks identified by sign restrictions on the joint response of 3-month fed funds futures and the S&amp;P 500 in 30-minute FOMC windows. Median decomposition. 1990-02 to 2024-01, 404 observations each.</p>
+<p><code>miranda_agrippino_ricco</code> <span class="citation" data-cites="miranda2021transmission">(<a href="#ref-miranda2021transmission" role="doc-biblioref">Miranda-Agrippino and Ricco 2021</a>)</span>: informationally-robust monetary policy shock, residual of the FF4 surprise projected on the Fed’s Greenbook forecast revisions. 1991-01 to 2019-06, 342 observations.</p>
+<p><code>wu_xia</code> <span class="citation" data-cites="wu2016measuring">(<a href="#ref-wu2016measuring" role="doc-biblioref">Wu and Xia 2016</a>)</span>: monthly shadow federal funds rate from the three-factor SRTSM. 1960-01 to 2022-02, 746 observations. Maintained by the Atlanta Fed. Updates paused in February 2022 once policy rates normalised.</p>
+<h2 data-number="5" id="uk-series"><span class="header-section-number">5</span> UK series</h2>
+<p><code>ukmpd</code> <span class="citation" data-cites="braun2025measuring">(<a href="#ref-braun2025measuring" role="doc-biblioref">Braun et al. 2025</a>)</span>: the UK Monetary Policy Event-Study Database, the UK analogue of the Swanson three-factor decomposition. Columns <code>shock</code> (Target factor), <code>path</code> (Forward Guidance factor), and <code>qe</code> (QE factor) are computed from high-frequency surprises in OIS rates, gilt yields, short-sterling futures, and the FTSE 100 around MPC announcements and Monetary Policy Report press conferences. Live-maintained by the Bank of England. 1997-06 to 2026-02, 345 observations.</p>
+<p><code>cesa_bianchi_uk</code> <span class="citation" data-cites="cesabianchi2020monetary">(<a href="#ref-cesabianchi2020monetary" role="doc-biblioref">Cesa-Bianchi et al. 2020</a>)</span>: UK high-frequency surprise from 60-minute tight-window changes in the three-month sterling interbank rate around MPC announcements. 1997-06 to 2015-01, 212 observations.</p>
+<p><code>cloyne_hurtgen_uk</code> <span class="citation" data-cites="cloyne2016macroeconomic">(<a href="#ref-cloyne2016macroeconomic" role="doc-biblioref">Cloyne and Hürtgen 2016</a>)</span>: UK narrative monetary policy shock. 1997-06 to 2009-02, 141 observations.</p>
+<h2 data-number="6" id="australian-series"><span class="header-section-number">6</span> Australian series</h2>
+<p><code>hambur_haque_au</code> <span class="citation" data-cites="hambur2023monetary">(<a href="#ref-hambur2023monetary" role="doc-biblioref">Hambur and Haque 2024</a>)</span>: three-component high-frequency shock with columns <code>shock</code> (action factor, current-meeting cash-rate surprise), <code>path</code> (forward guidance), and <code>term_premium</code>. 2001-04 to 2019-12, 225 observations. RBA Research Discussion Paper 2023-04, CC BY 4.0.</p>
+<p><code>beckers_au</code> <span class="citation" data-cites="beckers2020credit">(<a href="#ref-beckers2020credit" role="doc-biblioref">Beckers 2020</a>)</span>: Australian narrative shock from RBA cash-rate changes residualised on the Bank’s internal forecasts and credit-spread information. Quarterly 1994-Q1 to 2018-Q4, 100 observations.</p>
+<h2 data-number="7" id="aggregation-convention"><span class="header-section-number">7</span> Aggregation convention</h2>
+<p>All event-study series are bundled at monthly frequency by summing event-level surprises within each calendar month; months with no meeting are coded zero. This follows <span class="citation" data-cites="gertler2015monetary">Gertler and Karadi (<a href="#ref-gertler2015monetary" role="doc-biblioref">2015</a>)</span> and the authors’ own maintained releases. <span class="citation" data-cites="bu2021unified">Bu et al. (<a href="#ref-bu2021unified" role="doc-biblioref">2021</a>)</span> argue for <code>NA</code>-coding of no-meeting months in proxy-SVAR or LP-IV estimation. Users who want this can recode after loading.</p>
+<h2 data-number="8" id="cross-series-replication"><span class="header-section-number">8</span> Cross-series replication</h2>
+<p>Figure <a href="#fig:cumulative-us">1</a> plots cumulative Federal Reserve monetary policy shocks under four identification strategies on the common sample February 2000 to March 2014.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cumulative-us"></span>
+<embed src="figures/cumulative_us.pdf" title="A line chart showing four cumulative US monetary policy shock series from February 2000 to March 2014. All four series broadly track each other, with sharp downward moves during the 2007 to 2009 financial crisis and smaller moves around the December 2013 tapering announcement. The Nakamura-Steinsson, Bauer-Swanson, Jarocinski-Karadi, and Miranda-Agrippino-Ricco series are plotted in different colours and agree on direction but diverge in magnitude, especially in the 2008 to 2010 window." width="100%" type="application/pdf" />
+<p class="caption">
+Figure 1: Cumulative US monetary policy shocks under four identification strategies on a common sample, 2000-02 to 2014-03. Series are Nakamura and Steinsson (2018) policy news shock, Bauer and Swanson (2023) orthogonalised surprise (MPS_ORTH), Jarocinski and Karadi (2020) pure monetary policy component under the median decomposition, and Miranda-Agrippino and Ricco (2021) informationally-robust shock. All four agree on direction and broad timing of major identified policy innovations but disagree materially on magnitude around the 2008 financial crisis and on the interpretation of the December 2013 tapering surprise. Each series is loaded with a single call.
+</p>
+</div>
+</div>
+<p>Figure <a href="#fig:correlations">2</a> presents the pairwise correlation matrix across all seven bundled US series on their common sample. The block across the four shock-type series shows correlations in the 0.4-0.7 range, matching <span class="citation" data-cites="aeberhardt2024monetary">Aeberhardt et al. (<a href="#ref-aeberhardt2024monetary" role="doc-biblioref">2024</a>)</span>. The practical implication: report results under several identification strategies rather than selecting a single preferred shock.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:correlations"></span>
+<embed src="figures/us_correlations.pdf" title="A correlation heatmap showing pairwise Pearson correlations among seven US monetary policy shock and stance series on their common monthly sample 2000 to 2014. Cells are shaded from dark red for strong positive correlations to dark blue for strong negative correlations, with numeric values in each cell. The block across the four identified-shock series shows values clustered in the 0.4 to 0.7 range." width="100%" type="application/pdf" />
+<p class="caption">
+Figure 2: Pairwise Pearson correlations among seven US shock and stance series, common monthly sample 2000-02 to 2014-03. Short labels: NS = Nakamura-Steinsson (2018); BS = Bauer-Swanson (2023) MPS_ORTH; GSS-T and GSS-P = the target and path factors from the Swanson (2021) three-factor decomposition; JK-MP and JK-CBI = Jarocinski-Karadi (2020) pure monetary policy and central bank information shocks; MAR = Miranda-Agrippino-Ricco (2021) informationally-robust shock. The diagonal block across the four identified-shock series shows correlations in the 0.4 to 0.7 range, consistent with Aeberhardt and others (2024).
+</p>
+</div>
+</div>
+<h2 data-number="9" id="cross-country-shocks"><span class="header-section-number">9</span> Cross-country shocks</h2>
+<p>Figure <a href="#fig:cross-country">3</a> plots cumulative monthly monetary policy shocks for the United States, United Kingdom, and Australia, 2005 to 2022. The traces are <code>bauer_swanson</code> (MPS_ORTH), the <code>ukmpd</code> Target factor, and the <code>hambur_haque_au</code> action factor. No existing R resource produces this chart from a single pipeline.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:cross-country"></span>
+<embed src="figures/cross_country.pdf" title="A line chart showing three cumulative standardised monetary policy shock series for the United States, United Kingdom, and Australia from January 2005 to December 2022. All three series move together around major global events. Two shaded vertical bands mark the global financial crisis and the COVID-19 monetary response period. The US trace shows compressed variance through the zero-lower-bound period from roughly 2009 to 2015, while the UK and Australian traces continue to move over the same window." width="100%" type="application/pdf" />
+<p class="caption">
+Figure 3: Cross-country cumulative monetary policy shocks, standardised, January 2005 to December 2022. Each series is divided by its full-sample standard deviation of nonzero shocks before cumulating, so the y-axis is in units of standard deviations; scales are comparable across countries despite different native units in the source data (percentage-point surprises for US and UK, unit-variance PC score for AU). The three traces are (United States, MPS_ORTH), Target factor (United Kingdom), and action factor (Australia). Shaded bands mark the global financial crisis (September 2008 to June 2009) and the COVID-19 monetary response (March to June 2020). The three central banks share the direction of policy around major global events but differ sharply in timing and magnitude.
+</p>
+</div>
+</div>
+<p>Directions align around major global events (GFC, 2013 taper tantrum, 2022-23 tightening cycle). Magnitudes differ. The US trace shows compressed shock variance through the 2009-2015 zero-lower-bound period. The UK trace shows non-trivial target-factor shocks throughout, reflecting the MPC’s occasional departures from the Bank Rate floor. The Australian trace shows a shallower and later move to zero.</p>
+<h2 data-number="10" id="limitations"><span class="header-section-number">10</span> Limitations</h2>
+<p>Six limitations apply.</p>
+<ol type="1">
+<li><a href="https://cran.r-project.org/package=mpshock">mpshock</a> is a data-curation project. It does not propose a new identification strategy, a new aggregation rule, or a new econometric test.</li>
+<li>Version 0.1.0 covers three countries. Euro-area shocks (Jarocinski-Karadi ECB, Altavilla Event-Study Database) are the v0.2.0 priority. The cross-country panel of <span class="citation" data-cites="bolhuis2024new">Bolhuis et al. (<a href="#ref-bolhuis2024new" role="doc-biblioref">2024</a>)</span> is a candidate for v0.3.0 subject to licence.</li>
+<li>Monthly aggregation sums event-level surprises within each calendar month and codes no-meeting months zero. <span class="citation" data-cites="bu2021unified">Bu et al. (<a href="#ref-bu2021unified" role="doc-biblioref">2021</a>)</span> argue for <code>NA</code>-coding in LP-IV estimation.</li>
+<li>Identification itself is contested. The Nakamura-Steinsson information-effect interpretation is challenged by <span class="citation" data-cites="bauer2023alternative">Bauer and Swanson (<a href="#ref-bauer2023alternative" role="doc-biblioref">2023</a>)</span> and <span class="citation" data-cites="miranda2021transmission">Miranda-Agrippino and Ricco (<a href="#ref-miranda2021transmission" role="doc-biblioref">2021</a>)</span>. The Jarocinski-Karadi sign restrictions are critiqued by <span class="citation" data-cites="acosta2023perceived">Acosta (<a href="#ref-acosta2023perceived" role="doc-biblioref">2023</a>)</span>. Wu-Xia shadow rate estimates are sensitive to the lower-bound choice, number of factors, and yield maturities <span class="citation" data-cites="krippner2020comparison">(<a href="#ref-krippner2020comparison" role="doc-biblioref">Krippner 2020</a>)</span>.</li>
+<li>Series cut-off dates differ. UKMPD is live-maintained by the Bank of England. Bauer-Swanson is updated annually. Nakamura-Steinsson, Cesa-Bianchi-Thwaites-Vicondoa, and Wu-Xia are static at their published end dates.</li>
+<li>Licences vary across sources. Users should cite the underlying paper for any series used in academic work, not <a href="https://cran.r-project.org/package=mpshock">mpshock</a> alone.</li>
+</ol>
+<h2 data-number="11" id="conclusion"><span class="header-section-number">11</span> Conclusion</h2>
+<p><a href="https://cran.r-project.org/package=mpshock">mpshock</a> lowers the cost of cross-series and cross-country robustness checks from hours to minutes. The package is available on CRAN; source and issue tracker are at the <a href="https://github.com/charlescoverdale/mpshock">GitHub repository</a>.</p>
+<h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2>
+<p>The author thanks the authors of each bundled series for making their data publicly available: Emi Nakamura, Jon Steinsson, Michael Bauer, Eric Swanson, Refet Gurkaynak, Brian Sack, Marek Jarocinski, Peter Karadi, Silvia Miranda-Agrippino, Giovanni Ricco, Jing Cynthia Wu, Fan Dora Xia, Robin Braun, Tuli Saha, Ambrogio Cesa-Bianchi, Gregory Thwaites, Alejandro Vicondoa, James Cloyne, Patrick Hurtgen, Jonathan Hambur, Qazi Haque, and Benjamin Beckers.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h3 class="appendix" data-number="11.1" id="cran-packages-used"><span class="header-section-number">11.1</span> CRAN packages used</h3>
+<p><a href="https://cran.r-project.org/package=mpshock">mpshock</a>, <a href="https://cran.r-project.org/package=lpirfs">lpirfs</a>, <a href="https://cran.r-project.org/package=BVAR">BVAR</a>, <a href="https://cran.r-project.org/package=vars">vars</a>, <a href="https://cran.r-project.org/package=cli">cli</a>, <a href="https://cran.r-project.org/package=tidyverse">tidyverse</a></p>
+<h3 class="appendix" data-number="11.2" id="cran-task-views-implied-by-cited-packages"><span class="header-section-number">11.2</span> CRAN Task Views implied by cited packages</h3>
+<p><a href="https://cran.r-project.org/view=Bayesian">Bayesian</a>, <a href="https://cran.r-project.org/view=ChemPhys">ChemPhys</a>, <a href="https://cran.r-project.org/view=Econometrics">Econometrics</a>, <a href="https://cran.r-project.org/view=Finance">Finance</a>, <a href="https://cran.r-project.org/view=TimeSeries">TimeSeries</a></p>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-acosta2023perceived" class="csl-entry" role="listitem">
+M. Acosta. The perceived causes of monetary policy surprises. <em>Journal of Monetary Economics</em>, 2023. Working paper, Columbia University.
+</div>
+<div id="ref-adammer2019lpirfs" class="csl-entry" role="listitem">
+P. Adämmer. <code>lpirfs</code>: An r package to estimate impulse response functions by local projections. <em>R Journal</em>, 11(2): 421–438, 2019.
+</div>
+<div id="ref-aeberhardt2024monetary" class="csl-entry" role="listitem">
+R. Aeberhardt, V. Bruno and M. Fidora. Monetary policy shocks: Data or methods? FEDS Working Paper 2024-011. Federal Reserve Board. 2024.
+</div>
+<div id="ref-bauer2023alternative" class="csl-entry" role="listitem">
+M. D. Bauer and E. T. Swanson. An alternative explanation for the <span>“fed information effect.”</span> <em>American Economic Review</em>, 113(3): 664–700, 2023. DOI <a href="https://doi.org/10.1257/aer.20201220">10.1257/aer.20201220</a>.
+</div>
+<div id="ref-beckers2020credit" class="csl-entry" role="listitem">
+B. Beckers. Credit spreads, monetary policy and the price puzzle in australia. Research Discussion Paper 2020-01. Reserve Bank of Australia. 2020.
+</div>
+<div id="ref-bolhuis2024new" class="csl-entry" role="listitem">
+M. Bolhuis, P. L. Das and B. Yao. A new dataset of high-frequency monetary policy shocks. Working Paper 24/224. International Monetary Fund. 2024.
+</div>
+<div id="ref-braun2025measuring" class="csl-entry" role="listitem">
+R. Braun, S. Miranda-Agrippino and T. Saha. Measuring monetary policy in the UK: The UK monetary policy event-study database. <em>Journal of Monetary Economics</em>, 149: 2025. DOI <a href="https://doi.org/10.1016/j.jmoneco.2024.103645">10.1016/j.jmoneco.2024.103645</a>.
+</div>
+<div id="ref-bu2021unified" class="csl-entry" role="listitem">
+C. Bu, J. Rogers and W. Wu. A unified measure of fed monetary policy shocks. <em>Journal of Monetary Economics</em>, 118: 331–349, 2021. DOI <a href="https://doi.org/10.1016/j.jmoneco.2020.11.002">10.1016/j.jmoneco.2020.11.002</a>.
+</div>
+<div id="ref-cesabianchi2020monetary" class="csl-entry" role="listitem">
+A. Cesa-Bianchi, G. Thwaites and A. Vicondoa. Monetary policy transmission in the united kingdom: A high frequency identification approach. <em>European Economic Review</em>, 123: 103375, 2020. DOI <a href="https://doi.org/10.1016/j.euroecorev.2020.103375">10.1016/j.euroecorev.2020.103375</a>.
+</div>
+<div id="ref-cloyne2016macroeconomic" class="csl-entry" role="listitem">
+J. Cloyne and P. Hürtgen. The macroeconomic effects of monetary policy: A new measure for the united kingdom. <em>American Economic Journal: Macroeconomics</em>, 8(4): 75–102, 2016. DOI <a href="https://doi.org/10.1257/mac.20150093">10.1257/mac.20150093</a>.
+</div>
+<div id="ref-gertler2015monetary" class="csl-entry" role="listitem">
+M. Gertler and P. Karadi. Monetary policy surprises, credit costs, and economic activity. <em>American Economic Journal: Macroeconomics</em>, 7(1): 44–76, 2015. DOI <a href="https://doi.org/10.1257/mac.20130329">10.1257/mac.20130329</a>.
+</div>
+<div id="ref-gurkaynak2005actions" class="csl-entry" role="listitem">
+R. S. Gürkaynak, B. Sack and E. T. Swanson. Do actions speak louder than words? The response of asset prices to monetary policy actions and statements. <em>International Journal of Central Banking</em>, 1(1): 55–93, 2005.
+</div>
+<div id="ref-hambur2023monetary" class="csl-entry" role="listitem">
+J. Hambur and Q. Haque. Monetary policy transmission, real interest rates and credit spreads: Evidence from australia. <em>Economic Record</em>, 2024. DOI <a href="https://doi.org/10.1111/1475-4932.12786">10.1111/1475-4932.12786</a>. Reserve Bank of Australia Research Discussion Paper 2023-04.
+</div>
+<div id="ref-jarocinski2020deconstructing" class="csl-entry" role="listitem">
+M. Jarociński and P. Karadi. Deconstructing monetary policy surprises: The role of information shocks. <em>American Economic Journal: Macroeconomics</em>, 12(2): 1–43, 2020. DOI <a href="https://doi.org/10.1257/mac.20180090">10.1257/mac.20180090</a>.
+</div>
+<div id="ref-krippner2020comparison" class="csl-entry" role="listitem">
+L. Krippner. A note of caution on shadow rate estimates. <em>Journal of Money, Credit and Banking</em>, 52(4): 951–962, 2020. DOI <a href="https://doi.org/10.1111/jmcb.12613">10.1111/jmcb.12613</a>.
+</div>
+<div id="ref-kuschnig2021bvar" class="csl-entry" role="listitem">
+N. Kuschnig and L. Vashold. <code>BVAR</code>: Bayesian vector autoregressions with hierarchical prior selection in <code>R</code>. <em>Journal of Statistical Software</em>, 100(14): 1–27, 2021. DOI <a href="https://doi.org/10.18637/jss.v100.i14">10.18637/jss.v100.i14</a>.
+</div>
+<div id="ref-kuttner2001monetary" class="csl-entry" role="listitem">
+K. N. Kuttner. Monetary policy surprises and interest rates: Evidence from the fed funds futures market. <em>Journal of Monetary Economics</em>, 47(3): 523–544, 2001. DOI <a href="https://doi.org/10.1016/S0304-3932(01)00055-1">10.1016/S0304-3932(01)00055-1</a>.
+</div>
+<div id="ref-miranda2021transmission" class="csl-entry" role="listitem">
+S. Miranda-Agrippino and G. Ricco. The transmission of monetary policy shocks. <em>American Economic Journal: Macroeconomics</em>, 13(3): 74–107, 2021. DOI <a href="https://doi.org/10.1257/mac.20180124">10.1257/mac.20180124</a>.
+</div>
+<div id="ref-nakamura2018high" class="csl-entry" role="listitem">
+E. Nakamura and J. Steinsson. High-frequency identification of monetary non-neutrality: The information effect. <em>Quarterly Journal of Economics</em>, 133(3): 1283–1330, 2018. DOI <a href="https://doi.org/10.1093/qje/qjy004">10.1093/qje/qjy004</a>.
+</div>
+<div id="ref-pfaff2008var" class="csl-entry" role="listitem">
+B. Pfaff. VAR, SVAR and SVEC models: Implementation within <code>R</code> package <code>vars</code>. <em>Journal of Statistical Software</em>, 27(4): 1–32, 2008. DOI <a href="https://doi.org/10.18637/jss.v027.i04">10.18637/jss.v027.i04</a>.
+</div>
+<div id="ref-romer2004new" class="csl-entry" role="listitem">
+C. D. Romer and D. H. Romer. A new measure of monetary shocks: Derivation and implications. <em>American Economic Review</em>, 94(4): 1055–1084, 2004. DOI <a href="https://doi.org/10.1257/0002828042002651">10.1257/0002828042002651</a>.
+</div>
+<div id="ref-swanson2021measuring" class="csl-entry" role="listitem">
+E. T. Swanson. Measuring the effects of federal reserve forward guidance and asset purchases on financial markets. <em>Journal of Monetary Economics</em>, 118: 32–53, 2021. DOI <a href="https://doi.org/10.1016/j.jmoneco.2020.09.003">10.1016/j.jmoneco.2020.09.003</a>.
+</div>
+<div id="ref-wu2016measuring" class="csl-entry" role="listitem">
+J. C. Wu and F. D. Xia. Measuring the macroeconomic impact of monetary policy at the zero lower bound. <em>Journal of Money, Credit and Banking</em>, 48(2-3): 253–291, 2016. DOI <a href="https://doi.org/10.1111/jmcb.12300">10.1111/jmcb.12300</a>.
+</div>
+</div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom">
+<h3 id="references">References</h3>
+<div id="references-listing"></div>
+<h3 id="reuse">Reuse</h3>
+<p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
+<h3 id="citation">Citation</h3>
+<p>For attribution, please cite this work as</p>
+<pre class="citation-appendix short">Coverdale, "Mpshock: An R Package for Cross-Country Monetary Policy Shock Analysis", The R Journal, 2026</pre>
+<p>BibTeX citation</p>
+<pre class="citation-appendix long">@article{mpshock,
+  author = {Coverdale, Charles},
+  title = {Mpshock: An R Package for Cross-Country Monetary Policy Shock Analysis},
+  journal = {The R Journal},
+  year = {2026},
+  issn = {2073-4859},
+  pages = {1}
+}</pre>
+</div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
