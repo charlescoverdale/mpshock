@@ -52,7 +52,7 @@ A monetary policy shock is the component of a central bank's policy decision ort
 
 **Sign restrictions.** @jarocinski2020deconstructing exploit the joint response of short-term interest rates and stock prices. A positive pure monetary policy shock raises rates and lowers stocks; a positive central bank information shock raises both. The identification is set-valued, so the package bundles the median rotation. @acosta2023perceived shows that the rate-stock sign pattern is a weak discriminator between the two shock types.
 
-**Informationally-robust identification.** @miranda2021transmission project high-frequency FF4 surprises onto the Fed's Greenbook forecast revisions for GDP, unemployment, and inflation at horizons zero to four quarters. The residual addresses the Fed information effect at its source.
+**Informationally-robust.** @miranda2021transmission project high-frequency FF4 surprises onto the Fed's Greenbook forecast revisions for GDP, unemployment, and inflation at horizons zero to four quarters. The residual addresses the information effect directly.
 
 **Shadow-rate term-structure models.** @wu2016measuring estimate a three-factor affine model for Treasury yields in which the observed short rate equals $\max(r^*_t, r^{\mathrm{ELB}})$. The latent shadow rate $r^*_t$ can go negative during zero-lower-bound episodes. Shadow rates are stance measures, not shocks; first differences are a reasonable proxy [@krippner2020comparison].
 
@@ -86,7 +86,7 @@ The package ships a `data-raw/` directory containing an R script per bundled ser
 
 `nakamura_steinsson` [@nakamura2018high]: policy news shock, first principal component of five interest-rate futures in a 30-minute FOMC window, rescaled to one-year Treasury-yield equivalents. 2000-02 to 2014-03, 170 monthly observations. Harvard Dataverse replication archive, CC0 1.0.
 
-`bauer_swanson` [@bauer2023alternative]: orthogonalised monetary policy surprise (MPS_ORTH), the OLS residual of the raw MPS on six pre-announcement predictors (nonfarm payrolls surprise, trailing 12-month employment growth, log S&P 500 change over the prior three months, 10y-2y Treasury slope change, log commodity-price-index change, Bauer-Chernov option-implied 10-year Treasury yield skewness). 1988-02 to 2023-12, 431 observations. Maintained by the San Francisco Fed.
+The series `bauer_swanson` [@bauer2023alternative] is the orthogonalised monetary policy surprise (MPS_ORTH), computed as the OLS residual of the raw MPS on six pre-announcement predictors: nonfarm payrolls surprise, trailing 12-month employment growth, log S&P 500 change over the prior three months, 10y-2y Treasury slope change, log commodity-price-index change, and Bauer-Chernov option-implied 10-year Treasury yield skewness. 1988-02 to 2023-12, 431 observations. Maintained by the San Francisco Fed.
 
 `gss_target` and `gss_path` [@swanson2021measuring; @gurkaynak2005actions]: the federal funds rate factor and forward guidance factor from the Swanson three-factor extension of Gürkaynak-Sack-Swanson. 1991-07 to 2015-10, 292 observations each.
 
@@ -118,7 +118,7 @@ All event-study series are bundled at monthly frequency by summing event-level s
 
 Figure \ref{fig:cumulative_us} plots cumulative Federal Reserve monetary policy shocks under four identification strategies on the common sample February 2000 to March 2014.
 
-\begin{figure}[tbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/cumulative_us.pdf}
 \caption{\textbf{Cumulative US monetary policy shocks under four identification strategies on a common sample, 2000-02 to 2014-03.} Series are Nakamura and Steinsson (2018) policy news shock, Bauer and Swanson (2023) orthogonalised surprise (MPS\_ORTH), Jarociński and Karadi (2020) pure monetary policy component under the median decomposition, and Miranda-Agrippino and Ricco (2021) informationally-robust shock. All four agree on direction and broad timing of major identified policy innovations but disagree materially on magnitude around the 2008 financial crisis and on the interpretation of the December 2013 tapering surprise. Each series is loaded with a single \texttt{mp\_shock()} call.}
@@ -127,7 +127,7 @@ Figure \ref{fig:cumulative_us} plots cumulative Federal Reserve monetary policy 
 
 Figure \ref{fig:correlations} presents the pairwise correlation matrix across all seven bundled US series on their common sample. The block across the four shock-type series shows correlations in the 0.4-0.7 range, matching @aeberhardt2024monetary. The practical implication: report results under several identification strategies rather than selecting a single preferred shock.
 
-\begin{figure}[tbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{figures/us_correlations.pdf}
 \caption{\textbf{Pairwise Pearson correlations among seven US shock and stance series, common monthly sample 2000-02 to 2014-03.} Short labels: NS = Nakamura-Steinsson (2018); BS = Bauer-Swanson (2023) MPS\_ORTH; GSS-T and GSS-P = the target and path factors from the Swanson (2021) three-factor decomposition; JK-MP and JK-CBI = Jarociński-Karadi (2020) pure monetary policy and central bank information shocks; MAR = Miranda-Agrippino-Ricco (2021) informationally-robust shock. The diagonal block across the four identified-shock series shows correlations in the 0.4-0.7 range, consistent with \protect\citet{aeberhardt2024monetary}.}
@@ -138,7 +138,7 @@ Figure \ref{fig:correlations} presents the pairwise correlation matrix across al
 
 Figure \ref{fig:cross_country} plots cumulative monthly monetary policy shocks for the United States, United Kingdom, and Australia, 2005 to 2022. The traces are `bauer_swanson` (MPS_ORTH), the `ukmpd` Target factor, and the `hambur_haque_au` action factor. No existing R resource produces this chart from a single pipeline.
 
-\begin{figure}[tbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/cross_country.pdf}
 \caption{\textbf{Cross-country cumulative monetary policy shocks, standardised, January 2005 to December 2022.} Each series is divided by its full-sample standard deviation of nonzero shocks before cumulating, so the y-axis is in units of standard deviations; scales are comparable across countries despite different native units in the source data (percentage-point surprises for US and UK, unit-variance PC score for AU). The three traces are \texttt{bauer\_swanson} (United States, MPS\_ORTH), \texttt{ukmpd} Target factor (United Kingdom), and \texttt{hambur\_haque\_au} action factor (Australia). Shaded bands mark the global financial crisis (September 2008 to June 2009) and the COVID-19 monetary response (March to June 2020). The three central banks share the direction of policy around major global events but differ sharply in timing and magnitude.}
@@ -160,7 +160,7 @@ Six limitations apply.
 
 ## Conclusion
 
-\CRANpkg{mpshock} lowers the cost of cross-series and cross-country robustness checks from hours to minutes. The package is available on CRAN; source and issue tracker at \url{https://github.com/charlescoverdale/mpshock}.
+\CRANpkg{mpshock} lowers the cost of cross-series and cross-country robustness checks from hours to minutes. The package is available on CRAN; source and issue tracker are at the [GitHub repository](https://github.com/charlescoverdale/mpshock).
 
 ## Acknowledgements {-}
 

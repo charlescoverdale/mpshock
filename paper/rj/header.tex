@@ -17,8 +17,25 @@
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
 
+% Leave page bottoms ragged rather than stretching vertical space
+% between figures or sections to justify to the bottom margin.
+\raggedbottom
+
 % Suppress the auto-generated \address{...} trailer.
 \renewcommand{\address}[1]{}
+
+% Title-page byline override. The R Journal's \maketitle (RJournal.sty)
+% prints \RJ@author in italics. Hook \maketitle so the byline shows
+% "London, United Kingdom" on a second line, with email and repository
+% in a thanks footnote. This avoids pandoc YAML escaping issues that
+% mangle commas and backslashes in multi-line author strings.
+\makeatletter
+\let\RJ@origmaketitle\maketitle
+\renewcommand{\maketitle}{%
+  \def\RJ@author{by Charles Coverdale\thanks{Email: \href{mailto:charles.f.coverdale@gmail.com}{charles.f.coverdale@gmail.com}. Package repository: \href{https://github.com/charlescoverdale/mpshock}{github.com/charlescoverdale/mpshock}. Other publications: \href{https://charlescoverdale.github.io/publications/}{charlescoverdale.github.io/publications}.}\\ London, United Kingdom}%
+  \RJ@origmaketitle%
+}
+\makeatother
 
 % Number sections and subsections (match recent R Journal convention).
 % pandoc maps ## to \subsection, which RJournal.sty leaves unnumbered by
@@ -38,6 +55,7 @@
   citecolor=blue!60!black}
 
 % Make DOIs in the bibliography clickable. natbib / plainnat prints
-% "doi: 10.xxxx" as plain text; redefine \doi so the string is wrapped
-% in \href and gets the blue colorlinks treatment.
-\renewcommand{\doi}[1]{\href{https://doi.org/#1}{doi:~#1}}
+% "doi: 10.xxxx" as plain text; define \doi so the string is wrapped
+% in \href and gets the blue colorlinks treatment. Use providecommand
+% to avoid clashes with natbib or doi.sty.
+\providecommand{\doi}[1]{\href{https://doi.org/#1}{doi:~#1}}
