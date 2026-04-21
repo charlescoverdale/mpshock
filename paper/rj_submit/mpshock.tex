@@ -94,9 +94,9 @@ All event-study series are bundled at monthly frequency by summing event-level s
 
 Figure \ref{fig:cumulative-us} plots cumulative Federal Reserve monetary policy shocks under four identification strategies on the common sample February 2000 to March 2014.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=1\linewidth,alt={A line chart showing four cumulative US monetary policy shock series from February 2000 to March 2014. All four series broadly track each other, with sharp downward moves during the 2007 to 2009 financial crisis and smaller moves around the December 2013 tapering announcement. The Nakamura-Steinsson, Bauer-Swanson, Jarocinski-Karadi, and Miranda-Agrippino-Ricco series are plotted in different colours and agree on direction but diverge in magnitude, especially in the 2008 to 2010 window.}]{figures/cumulative_us} 
+{\centering \includegraphics[width=1\linewidth,alt={A line chart showing four cumulative US monetary policy shock series from February 2000 to March 2014. All four series broadly track each other, with sharp downward moves during the 2007 to 2009 financial crisis and smaller moves around the December 2013 tapering announcement. The Nakamura-Steinsson, Bauer-Swanson, Jarocinski-Karadi, and Miranda-Agrippino-Ricco series are plotted in different colours and agree on direction but diverge in magnitude, especially in the 2008 to 2010 window.},]{figures/cumulative_us} 
 
 }
 
@@ -105,9 +105,9 @@ Figure \ref{fig:cumulative-us} plots cumulative Federal Reserve monetary policy 
 
 Figure \ref{fig:correlations} presents the pairwise correlation matrix across all seven bundled US series on their common sample. The block across the four shock-type series shows correlations in the 0.4-0.7 range, matching \citet{aeberhardt2024monetary}. The practical implication: report results under several identification strategies rather than selecting a single preferred shock.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=1\linewidth,alt={A correlation heatmap showing pairwise Pearson correlations among seven US monetary policy shock and stance series on their common monthly sample 2000 to 2014. Cells are shaded from dark red for strong positive correlations to dark blue for strong negative correlations, with numeric values in each cell. The block across the four identified-shock series shows values clustered in the 0.4 to 0.7 range.}]{figures/us_correlations} 
+{\centering \includegraphics[width=1\linewidth,alt={A correlation heatmap showing pairwise Pearson correlations among seven US monetary policy shock and stance series on their common monthly sample 2000 to 2014. Cells are shaded from dark red for strong positive correlations to dark blue for strong negative correlations, with numeric values in each cell. The block across the four identified-shock series shows values clustered in the 0.4 to 0.7 range.},]{figures/us_correlations} 
 
 }
 
@@ -118,9 +118,9 @@ Figure \ref{fig:correlations} presents the pairwise correlation matrix across al
 
 Figure \ref{fig:cross-country} plots cumulative monthly monetary policy shocks for the United States, United Kingdom, and Australia, 2005 to 2022. The traces are \texttt{bauer\_swanson} (MPS\_ORTH), the \texttt{ukmpd} Target factor, and the \texttt{hambur\_haque\_au} action factor. No existing R resource produces this chart from a single pipeline.
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=1\linewidth,alt={A line chart showing three cumulative standardised monetary policy shock series for the United States, United Kingdom, and Australia from January 2005 to December 2022. All three series move together around major global events. Two shaded vertical bands mark the global financial crisis and the COVID-19 monetary response period. The US trace shows compressed variance through the zero-lower-bound period from roughly 2009 to 2015, while the UK and Australian traces continue to move over the same window.}]{figures/cross_country} 
+{\centering \includegraphics[width=1\linewidth,alt={A line chart showing three cumulative standardised monetary policy shock series for the United States, United Kingdom, and Australia from January 2005 to December 2022. All three series move together around major global events. Two shaded vertical bands mark the global financial crisis and the COVID-19 monetary response period. The US trace shows compressed variance through the zero-lower-bound period from roughly 2009 to 2015, while the UK and Australian traces continue to move over the same window.},]{figures/cross_country} 
 
 }
 
@@ -159,7 +159,6 @@ Six limitations apply.
 
 The author thanks the authors of each bundled series for making their data publicly available: Emi Nakamura, Jon Steinsson, Michael Bauer, Eric Swanson, Refet Gurkaynak, Brian Sack, Marek Jarocinski, Peter Karadi, Silvia Miranda-Agrippino, Giovanni Ricco, Jing Cynthia Wu, Fan Dora Xia, Robin Braun, Tuli Saha, Ambrogio Cesa-Bianchi, Gregory Thwaites, Alejandro Vicondoa, James Cloyne, Patrick Hurtgen, Jonathan Hambur, Qazi Haque, and Benjamin Beckers.
 
-\section*{References}
 \bibliography{RJreferences.bib}
 
 \address{%

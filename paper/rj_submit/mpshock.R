@@ -3,7 +3,8 @@
 
 ## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
-                      fig.align = "center", out.width = "100%")
+                      fig.align = "center", out.width = "100%",
+                      fig.pos = "H", out.extra = "")
 
 
 ## ----cumulative-us, fig.cap = "Cumulative US monetary policy shocks under four identification strategies on a common sample, 2000-02 to 2014-03. Series are Nakamura and Steinsson (2018) policy news shock, Bauer and Swanson (2023) orthogonalised surprise (MPS\\_ORTH), Jarocinski and Karadi (2020) pure monetary policy component under the median decomposition, and Miranda-Agrippino and Ricco (2021) informationally-robust shock. All four agree on direction and broad timing of major identified policy innovations but disagree materially on magnitude around the 2008 financial crisis and on the interpretation of the December 2013 tapering surprise. Each series is loaded with a single \\texttt{mp\\_shock()} call.", fig.alt = "A line chart showing four cumulative US monetary policy shock series from February 2000 to March 2014. All four series broadly track each other, with sharp downward moves during the 2007 to 2009 financial crisis and smaller moves around the December 2013 tapering announcement. The Nakamura-Steinsson, Bauer-Swanson, Jarocinski-Karadi, and Miranda-Agrippino-Ricco series are plotted in different colours and agree on direction but diverge in magnitude, especially in the 2008 to 2010 window."----
