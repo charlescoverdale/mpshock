@@ -46,13 +46,13 @@ The motivating problem is fragmentation. Identified monetary policy shock series
 
 A monetary policy shock is the component of a central bank's policy decision orthogonal to the bank's real-time information set. Five identification strategies dominate the current literature, and the bundled series span all five.
 
-**Narrative identification.** @romer2004new regress policy-rate changes on the Fed's Greenbook forecasts and interpret the residual as the exogenous policy innovation. @cloyne2016macroeconomic produce the United Kingdom equivalent from Bank of England *Inflation Report* forecasts. @beckers2020credit produce an Australian series from Reserve Bank of Australia internal forecasts, augmented with credit-spread information following @hambur2023monetary.
+**Narrative identification.** @romer2004new regress policy-rate changes on the Fed's Greenbook forecasts and interpret the residual as the exogenous policy innovation. @cloyne2016macroeconomic produce the United Kingdom equivalent from Bank of England *Inflation Report* forecasts. @beckers2020credit produces an Australian series from Reserve Bank of Australia internal forecasts augmented with credit-spread information, motivated by the price-puzzle evidence that the RBA responds systematically to credit market conditions.
 
-**High-frequency identification.** @kuttner2001monetary identifies the unexpected component of policy moves from 30-minute jumps in federal funds futures around FOMC announcements. @gurkaynak2005actions decompose several futures surprises into two factors: a target factor capturing the current-meeting move and a path factor capturing guidance about future rates. @nakamura2018high refine this using five interest-rate futures and rescaling to one-year Treasury-yield equivalents. @cesabianchi2020monetary produce the UK analogue from sterling interbank rate surprises. @hambur2023monetary produce the Australian equivalent from OIS and AGS yields around RBA board meetings.
+**High-frequency identification.** @kuttner2001monetary identifies the unexpected component of policy moves from daily changes in federal funds futures on FOMC announcement days. @gurkaynak2005actions sharpen this using a 30-minute intraday window around announcements and decompose several futures surprises into two factors: a target factor capturing the current-meeting move and a path factor capturing guidance about future rates. @nakamura2018high refine this using five interest-rate futures and rescaling to one-year Treasury-yield equivalents. @cesabianchi2020monetary produce the UK analogue from sterling interbank rate surprises. @hambur2023monetary produce the Australian equivalent from OIS and AGS yields around RBA board meetings.
 
 **Sign restrictions.** @jarocinski2020deconstructing exploit the joint response of short-term interest rates and stock prices. A positive pure monetary policy shock raises rates and lowers stocks; a positive central bank information shock raises both. The identification is set-valued, so the package bundles the median rotation. @acosta2023perceived shows that the rate-stock sign pattern is a weak discriminator between the two shock types.
 
-**Informationally-robust.** @miranda2021transmission project high-frequency FF4 surprises onto the Fed's Greenbook forecast revisions for GDP, unemployment, and inflation at horizons zero to four quarters. The residual addresses the information effect directly.
+**Informationally-robust.** @miranda2021transmission project high-frequency FF4 surprises (30-minute window around FOMC announcements) onto the Fed's Greenbook forecasts and forecast revisions for output, inflation, and unemployment at horizons `-1` to `3` quarters relative to the current quarter, plus lagged surprises. The residual addresses the information effect directly.
 
 **Shadow-rate term-structure models.** @wu2016measuring estimate a three-factor affine model for Treasury yields in which the observed short rate equals $\max(r^*_t, r^{\mathrm{ELB}})$. The latent shadow rate $r^*_t$ can go negative during zero-lower-bound episodes. Shadow rates are stance measures, not shocks; first differences are a reasonable proxy [@krippner2020comparison].
 
@@ -64,7 +64,7 @@ Each bundled series lives as a compressed R data object under `data/`. The packa
 
 ### The mp_shock class
 
-Every bundled series is a `data.frame` carrying the `mp_shock` S3 class, with three required columns: `date` (first of the month, `Date`), `shock` (percentage points), and `series` (identifier). Multi-factor series carry additional columns: `target`, `path`, and `qe` for the UK Monetary Policy Event-Study Database [@braun2025measuring]; `action`, `path`, and `term_premium` for the Australian three-factor decomposition [@hambur2023monetary]; `shadow_rate` and `effr` for Wu-Xia. A `print.mp_shock` method emits a one-line provenance header before the tabular output.
+Every bundled series is a `data.frame` carrying the `mp_shock` S3 class, with three required columns: `date` (first of the month, `Date`), `shock` (percentage points), and `series` (identifier). For multi-factor series, the `shock` column holds the primary factor and additional columns carry the remaining factors: `path` and `qe` alongside `shock` (the Target factor) for the UK Monetary Policy Event-Study Database [@braun2025measuring]; `action` (aliased to `shock`), `path`, and `term_premium` for the Australian three-factor decomposition [@hambur2023monetary]; `shadow_rate` and `effr` for Wu-Xia. A `print.mp_shock` method emits a one-line provenance header before the tabular output.
 
 ### The loader
 
@@ -90,7 +90,7 @@ The series `bauer_swanson` [@bauer2023reassessment] is the orthogonalised moneta
 
 `gss_target` and `gss_path` [@swanson2021measuring; @gurkaynak2005actions]: the federal funds rate factor and forward guidance factor from the Swanson three-factor extension of Gürkaynak-Sack-Swanson. 1991-07 to 2015-10, 292 observations each.
 
-`jarocinski_karadi_mp` and `jarocinski_karadi_cbi` [@jarocinski2020deconstructing]: pure monetary policy and central bank information shocks identified by sign restrictions on the joint response of 3-month fed funds futures and the S&P 500 in 30-minute FOMC windows. Median decomposition. 1990-02 to 2024-01, 404 observations each.
+`jarocinski_karadi_mp` and `jarocinski_karadi_cbi` [@jarocinski2020deconstructing]: pure monetary policy and central bank information shocks identified by sign restrictions on the joint response of 3-month fed funds futures and the S&P 500 in 30-minute FOMC windows. Median rotation. 1990-02 to 2024-01, 408 observations each.
 
 `miranda_agrippino_ricco` [@miranda2021transmission]: informationally-robust monetary policy shock, residual of the FF4 surprise projected on the Fed's Greenbook forecast revisions. 1991-01 to 2019-06, 342 observations.
 
