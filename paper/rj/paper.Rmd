@@ -38,7 +38,7 @@ output:
 
 The \CRANpkg{mpshock} package bundles thirteen monetary policy shock and stance series from the empirical macroeconomics literature. Series span three countries (United States, United Kingdom, Australia), load in a single call, carry citation and source metadata, and plug into the dominant downstream R packages for impulse response estimation: \CRANpkg{lpirfs} [@adammer2019lpirfs], \CRANpkg{BVAR} [@kuschnig2021bvar], and \CRANpkg{vars} [@pfaff2008var]. Version 0.1.0 is available on CRAN.
 
-The motivating problem is fragmentation. Identified monetary policy shock series live today as XLS and CSV files on individual authors' personal pages, Federal Reserve research data pages, openICPSR replication archives, and GitHub mirrors, with inconsistent column names, date formats, and update cadences. Correlations between alternative series on common samples range from 0.4 to 0.7 [@aeberhardt2024monetary]. Reporting impulse responses under several identification strategies as a robustness check is now standard practice, but assembling the inputs has remained a research-time tax.
+The motivating problem is fragmentation. Identified monetary policy shock series live today as XLS and CSV files on individual authors' personal pages, Federal Reserve research data pages, openICPSR replication archives, and GitHub mirrors, with inconsistent column names, date formats, and update cadences. Correlations between alternative series on common samples range from 0.4 to 0.7 [@brennan2024monetary]. Reporting impulse responses under several identification strategies as a robustness check is now standard practice, but assembling the inputs has remained a research-time tax.
 
 \CRANpkg{mpshock} is the first R package to bundle shock series for more than one country in a common schema. Comparable resources, such as the `hfdshocks` GitHub repository and individual replication archives, are single-country and unmaintained. The package treats provenance as a first-class design property: each bundled dataset carries the DOI, URL, licence, and download date of its upstream source, and each help file discusses identification, known critiques, and aggregation caveats.
 
@@ -125,12 +125,12 @@ Figure \ref{fig:cumulative_us} plots cumulative Federal Reserve monetary policy 
 \label{fig:cumulative_us}
 \end{figure}
 
-Figure \ref{fig:correlations} presents the pairwise correlation matrix across all seven bundled US series on their common sample. The block across the four shock-type series shows correlations in the 0.4-0.7 range, matching @aeberhardt2024monetary. The practical implication: report results under several identification strategies rather than selecting a single preferred shock.
+Figure \ref{fig:correlations} presents the pairwise correlation matrix across all seven bundled US series on their common sample. The block across the four shock-type series shows correlations in the 0.4-0.7 range, matching @brennan2024monetary. The practical implication: report results under several identification strategies rather than selecting a single preferred shock.
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{figures/us_correlations.pdf}
-\caption{\textbf{Pairwise Pearson correlations among seven US shock and stance series, common monthly sample 2000-02 to 2014-03.} Short labels: NS = Nakamura-Steinsson (2018); BS = Bauer-Swanson (2023) MPS\_ORTH; GSS-T and GSS-P = the target and path factors from the Swanson (2021) three-factor decomposition; JK-MP and JK-CBI = Jarociński-Karadi (2020) pure monetary policy and central bank information shocks; MAR = Miranda-Agrippino-Ricco (2021) informationally-robust shock. The diagonal block across the four identified-shock series shows correlations in the 0.4-0.7 range, consistent with \protect\citet{aeberhardt2024monetary}.}
+\caption{\textbf{Pairwise Pearson correlations among seven US shock and stance series, common monthly sample 2000-02 to 2014-03.} Short labels: NS = Nakamura-Steinsson (2018); BS = Bauer-Swanson (2023) MPS\_ORTH; GSS-T and GSS-P = the target and path factors from the Swanson (2021) three-factor decomposition; JK-MP and JK-CBI = Jarociński-Karadi (2020) pure monetary policy and central bank information shocks; MAR = Miranda-Agrippino-Ricco (2021) informationally-robust shock. The diagonal block across the four identified-shock series shows correlations in the 0.4-0.7 range, consistent with \protect\citet{brennan2024monetary}.}
 \label{fig:correlations}
 \end{figure}
 

@@ -187,7 +187,7 @@ head(panel)
 cor(panel$shock_ns, panel$shock_bs, use = "pairwise.complete.obs")
 ```
 
-A correlation in the 0.4 to 0.7 range is typical: the series agree on the biggest FOMC surprises but diverge on the harder-to-classify meetings. Papers should report IRF results under at least two shock series for robustness (Aeberhardt, Bruno, and Fidora 2024, FEDS working paper).
+A correlation in the 0.4 to 0.7 range is typical: the series agree on the biggest FOMC surprises but diverge on the harder-to-classify meetings. Papers should report IRF results under at least two shock series for robustness (Brennan, Jacobson, Matthes, and Walker 2024, FEDS 2024-011).
 
 ## Series included in v0.1.0
 
@@ -236,7 +236,7 @@ Users should be aware of a few caveats. Each per-series help file (`?nakamura_st
 * Romer and Romer (2004) US narrative shocks.
 * Bolhuis, Das, and Yao (2024 IMF WP) cross-country panel of 29 central banks' HFI shocks.
 * A vignette reproducing a Gertler-Karadi (2015) style impulse response using `mpshock` plus `lpirfs`.
-* Aeberhardt, Bruno, and Fidora (2024) cross-series comparison helper.
+* Brennan, Jacobson, Matthes, and Walker (2024) cross-series comparison helper.
 
 ## Functions
 
