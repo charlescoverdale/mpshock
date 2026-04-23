@@ -86,7 +86,7 @@ The package ships a `data-raw/` directory containing an R script per bundled ser
 
 `nakamura_steinsson` [@nakamura2018high]: policy news shock, first principal component of five interest-rate futures in a 30-minute FOMC window, rescaled to one-year Treasury-yield equivalents. 2000-02 to 2014-03, 170 monthly observations. Harvard Dataverse replication archive, CC0 1.0.
 
-The series `bauer_swanson` [@bauer2023alternative] is the orthogonalised monetary policy surprise (MPS_ORTH), computed as the OLS residual of the raw MPS on six pre-announcement predictors: nonfarm payrolls surprise, trailing 12-month employment growth, log S&P 500 change over the prior three months, 10y-2y Treasury slope change, log commodity-price-index change, and Bauer-Chernov option-implied 10-year Treasury yield skewness. 1988-02 to 2023-12, 431 observations. Maintained by the San Francisco Fed.
+The series `bauer_swanson` [@bauer2023reassessment] is the orthogonalised monetary policy surprise (MPS_ORTH), computed as the OLS residual of the raw MPS on six pre-announcement predictors: nonfarm payrolls surprise, trailing 12-month employment growth, log S&P 500 change over the prior three months, 10y-2y Treasury slope change, log commodity-price-index change, and Bauer-Chernov option-implied 10-year Treasury yield skewness. 1988-02 to 2023-12, 431 observations. Maintained by the San Francisco Fed.
 
 `gss_target` and `gss_path` [@swanson2021measuring; @gurkaynak2005actions]: the federal funds rate factor and forward guidance factor from the Swanson three-factor extension of Gürkaynak-Sack-Swanson. 1991-07 to 2015-10, 292 observations each.
 

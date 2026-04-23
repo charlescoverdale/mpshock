@@ -1,6 +1,6 @@
 Package: mpshock
 Title: Monetary Policy Shock Series for Empirical Macroeconomics
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person("Charles", "Coverdale", email = "charlesfcoverdale@gmail.com",
     role = c("aut", "cre", "cph"))
 Description: Provides a curated multi-country collection of monetary
@@ -10,7 +10,7 @@ Description: Provides a curated multi-country collection of monetary
     United Kingdom, and Australia: for the US, the policy news shock of
     Nakamura and Steinsson (2018) <doi:10.1093/qje/qjy004>, the
     orthogonalised surprise of Bauer and Swanson (2023)
-    <doi:10.1257/aer.20201220>, the target and path factors of the
+    <doi:10.1086/723574>, the target and path factors of the
     Swanson (2021) <doi:10.1016/j.jmoneco.2020.09.003> extension of
     Gurkaynak, Sack, and Swanson (2005), the pure monetary policy and
     central bank information shocks of Jarocinski and Karadi (2020)

@@ -26,14 +26,13 @@ bibentry(
 bibentry(
   bibtype = "Article",
   key = "bauer_swanson_2023",
-  title = "An Alternative Explanation for the `Fed Information Effect'",
+  title = "A Reassessment of Monetary Policy Surprises and High-Frequency Identification",
   author = c(person("Michael", "D. Bauer"), person("Eric", "T. Swanson")),
-  journal = "American Economic Review",
-  volume = "113",
-  number = "3",
-  pages = "664-700",
+  journal = "NBER Macroeconomics Annual",
+  volume = "37",
+  pages = "87-155",
   year = 2023,
-  doi = "10.1257/aer.20201220",
+  doi = "10.1086/723574",
   header = "For the `bauer_swanson` series, additionally cite:"
 )
 
@@ -138,7 +137,7 @@ bibentry(
 bibentry(
   bibtype = "Article",
   key = "hambur_haque_2023",
-  title = "Monetary Policy Transmission, Real Interest Rates and Credit Spreads: Evidence from Australia",
+  title = "Can we Use High-Frequency Data to Better Understand the Effects of Monetary Policy and its Communication? Yes and No!",
   author = c(person("Jonathan", "Hambur"), person("Qazi", "Haque")),
   journal = "Economic Record",
   year = 2024,

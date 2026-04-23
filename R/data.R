@@ -86,10 +86,10 @@
 #'   \item{series}{`character`. Series identifier `"bauer_swanson"`.}
 #' }
 #'
-#' @source Bauer, M. D., & Swanson, E. T. (2023). "An Alternative
-#'   Explanation for the 'Fed Information Effect'." *American Economic
-#'   Review* 113(3): 664-700. \doi{10.1257/aer.20201220}. Data:
-#'   \url{https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/}.
+#' @source Bauer, M. D., & Swanson, E. T. (2023). "A Reassessment of
+#'   Monetary Policy Surprises and High-Frequency Identification."
+#'   *NBER Macroeconomics Annual* 37: 87-155. \doi{10.1086/723574}.
+#'   Data: \url{https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/}.
 "bauer_swanson"
 
 #' GSS target factor (Swanson extended)

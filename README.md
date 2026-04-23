@@ -262,7 +262,7 @@ Series citations:
 | Series | Reference | DOI |
 |---|---|---|
 | `nakamura_steinsson` | Nakamura and Steinsson (2018). *Quarterly Journal of Economics* 133(3): 1283-1330. | [10.1093/qje/qjy004](https://doi.org/10.1093/qje/qjy004) |
-| `bauer_swanson` | Bauer and Swanson (2023). *American Economic Review* 113(3): 664-700. | [10.1257/aer.20201220](https://doi.org/10.1257/aer.20201220) |
+| `bauer_swanson` | Bauer and Swanson (2023). *NBER Macroeconomics Annual* 37: 87-155. | [10.1086/723574](https://doi.org/10.1086/723574) |
 | `gss_target`, `gss_path` | Swanson (2021). *Journal of Monetary Economics* 118: 32-53. | [10.1016/j.jmoneco.2020.09.003](https://doi.org/10.1016/j.jmoneco.2020.09.003) |
 | `jarocinski_karadi_mp`, `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020). *AEJ: Macroeconomics* 12(2): 1-43. | [10.1257/mac.20180090](https://doi.org/10.1257/mac.20180090) |
 | `miranda_agrippino_ricco` | Miranda-Agrippino and Ricco (2021). *AEJ: Macroeconomics* 13(3): 74-107. | [10.1257/mac.20180124](https://doi.org/10.1257/mac.20180124) |
