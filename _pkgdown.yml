@@ -27,3 +27,25 @@ reference:
   - title: "Package"
     contents:
       - mpshock-package
+
+  - title: "Shock Series Data"
+    desc: "Individual monetary policy shock datasets"
+    contents:
+      - bauer_swanson
+      - beckers_au
+      - cesa_bianchi_uk
+      - cloyne_hurtgen_uk
+      - gss_path
+      - gss_target
+      - hambur_haque_au
+      - jarocinski_karadi_cbi
+      - jarocinski_karadi_mp
+      - miranda_agrippino_ricco
+      - nakamura_steinsson
+      - ukmpd
+      - wu_xia
+
+  - title: "S3 Methods"
+    desc: "Print method for mp_shock objects"
+    contents:
+      - print.mp_shock
