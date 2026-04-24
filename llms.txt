@@ -1,0 +1,21 @@
+# mpshock
+
+> Provides a curated multi-country collection of monetary policy shock and stance series from the empirical macroeconomics literature, bundled as tidy data frames with provenance metadata. Install with `install.packages("mpshock")`.
+
+Version: 0.1.1. License: MIT.
+
+## Functions
+
+- [`mp_align()`](https://charlescoverdale.github.io/mpshock/reference/mp_align.html): Align a shock series to a target data frame by date
+- [`mp_cumulate()`](https://charlescoverdale.github.io/mpshock/reference/mp_cumulate.html): Cumulate a shock series
+- [`mp_list()`](https://charlescoverdale.github.io/mpshock/reference/mp_list.html): List available monetary policy shock series
+- [`mp_shock()`](https://charlescoverdale.github.io/mpshock/reference/mp_shock.html): Load a monetary policy shock series
+- [`mp_source()`](https://charlescoverdale.github.io/mpshock/reference/mp_source.html): Citation and provenance for a shock series
+- [`mp_to_quarterly()`](https://charlescoverdale.github.io/mpshock/reference/mp_to_quarterly.html): Aggregate a monthly shock series to quarterly frequency
+
+## Documentation
+
+- [Full reference](https://charlescoverdale.github.io/mpshock/reference/)
+- [GitHub](https://github.com/charlescoverdale/mpshock)
+- [CRAN](https://CRAN.R-project.org/package=mpshock)
+

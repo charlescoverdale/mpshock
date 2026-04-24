@@ -1,0 +1,25 @@
+url: https://charlescoverdale.github.io/mpshock/
+
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left:  [intro, reference, articles, news]
+    right: [search, github]
+
+reference:
+  - title: "Data Access"
+    desc: "Load and list monetary policy shock series"
+    contents:
+      - mp_shock
+      - mp_list
+      - mp_source
+
+  - title: "Transformation"
+    desc: "Align and aggregate shock series"
+    contents:
+      - mp_align
+      - mp_to_quarterly
+      - mp_cumulate
+
