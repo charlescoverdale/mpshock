@@ -1,0 +1,70 @@
+# UK Monetary Policy Event-Study Database (Braun-Miranda-Agrippino-Saha)
+
+The UK equivalent of the Gurkaynak-Sack-Swanson three-factor
+decomposition: a principal-component rotation of high-frequency
+surprises in OIS rates, gilt yields, short-sterling futures, and the
+FTSE 100 around Bank of England MPC announcements and Monetary Policy
+Report press conferences. Bundled at monthly frequency; months with no
+MPC announcement are coded zero.
+
+## Usage
+
+``` r
+ukmpd
+```
+
+## Format
+
+A data frame with columns:
+
+- date:
+
+  `Date`. First day of the observation month.
+
+- shock:
+
+  `numeric`. Target factor (current Bank Rate surprise), percentage
+  points.
+
+- path:
+
+  `numeric`. Path factor (forward-guidance surprise), percentage points.
+
+- qe:
+
+  `numeric`. QE factor (long-end asset-purchase surprise), percentage
+  points.
+
+- series:
+
+  `character`. Series identifier `"ukmpd"`.
+
+## Source
+
+Braun, R., Miranda-Agrippino, S., & Saha, T. (2025). "Measuring Monetary
+Policy in the UK: The UK Monetary Policy Event-Study Database." *Journal
+of Monetary Economics* 149.
+[doi:10.1016/j.jmoneco.2024.103645](https://doi.org/10.1016/j.jmoneco.2024.103645)
+. Data:
+<https://www.bankofengland.co.uk/working-paper/2023/measuring-monetary-policy-in-the-uk-ukmpd>.
+
+## Details
+
+**Three factors.** The UK Monetary Policy Event-Study Database (UKMPD)
+rotates three principal components into Target (current Bank Rate
+surprise), Path (forward-guidance surprise), and QE (long-end
+asset-purchase surprise). The package bundles `shock = Target`, with
+`path` and `qe` as additional columns for users running multi-factor
+local projections.
+
+**Maintenance.** UKMPD is the flagship UK shock database: live-
+maintained by the authors and published through the Bank of England
+Staff Working Paper series. The bundled version is a snapshot from the
+package build; check the source URL for the latest vintage if you need
+observations after the bundled end date.
+
+**Relation to older UK series.** UKMPD effectively supersedes the
+Gerko-Rey (2017) UK surprises and the pre-MPR vintage of
+[cesa_bianchi_uk](https://charlescoverdale.github.io/mpshock/reference/cesa_bianchi_uk.md).
+Cesa-Bianchi-Thwaites-Vicondoa and Cloyne-Hurtgen remain useful for
+pre-1997 coverage and for narrative comparison.

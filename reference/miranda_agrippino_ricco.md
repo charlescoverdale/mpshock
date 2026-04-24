@@ -1,0 +1,63 @@
+# Miranda-Agrippino-Ricco informationally-robust MP shock
+
+The informationally-robust monetary policy shock from Miranda- Agrippino
+and Ricco (2021), constructed as the component of FF4 (fourth Eurodollar
+futures) high-frequency surprises orthogonal to the Fed's Greenbook
+information set. Isolates exogenous policy moves from shifts in the
+central bank's private information about the economy. Monthly US series
+from the Degasperi and Ricco maintained extension.
+
+## Usage
+
+``` r
+miranda_agrippino_ricco
+```
+
+## Format
+
+A data frame with columns:
+
+- date:
+
+  `Date`. First day of the observation month.
+
+- shock:
+
+  `numeric`. Informationally-robust MP shock, percentage points.
+
+- info:
+
+  `numeric`. Companion information component, percentage points.
+
+- series:
+
+  `character`. Series identifier `"miranda_agrippino_ricco"`.
+
+## Source
+
+Miranda-Agrippino, S., & Ricco, G. (2021). "The Transmission of Monetary
+Policy Shocks." *American Economic Journal: Macroeconomics* 13(3):
+74-107. [doi:10.1257/mac.20180124](https://doi.org/10.1257/mac.20180124)
+. Updated data:
+<https://github.com/riccardo-degasperi/info-policy-surprises>.
+
+## Details
+
+**Construction.** The raw FF4 surprise (3-month-ahead fed-funds futures)
+is projected on the Fed's Greenbook / Tealbook forecast revisions for
+GDP, unemployment, and inflation at horizons of zero to four quarters
+(Miranda-Agrippino and Ricco 2021, Section III). The residual is the
+informationally-robust monetary policy shock.
+
+**Extension past 2013.** The published paper covers 1991 to 2009; the
+Degasperi-Ricco maintained update extends to June 2019. Because the
+Fed's Tealbook is subject to a five-year release embargo, post-2013
+observations use real-time SPF and Greenbook-equivalent series instead.
+These are not strictly on the same information basis as the published
+1991 to 2009 series.
+
+**Ramey critique.** Ramey (2018, discussion of Miranda-Agrippino-Ricco
+at the NBER Summer Institute) notes that orthogonalisation is with
+respect to the Fed's information set, not the market's. Any news markets
+infer from the announcement beyond the Tealbook remains in the residual.
+Weak-instrument F-statistics drop materially after 2007.
