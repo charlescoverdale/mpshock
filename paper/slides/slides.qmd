@@ -1,0 +1,367 @@
+---
+title: "mpshock"
+subtitle: "Cross-country monetary policy shocks in R"
+author: "Charles Coverdale"
+institute: "London, United Kingdom"
+date: "2026-04-01"
+date-format: "MMMM YYYY"
+format:
+  beamer:
+    aspectratio: 169
+    fontsize: 11pt
+    navigation: empty
+    theme: default
+    colortheme: default
+    fonttheme: default
+    pdf-engine: xelatex
+    include-in-header: header.tex
+    slide-level: 2
+    keep-tex: false
+    fig-align: center
+    classoption:
+      - t
+---
+
+
+## The question
+
+\vspace{1.5em}
+
+\begin{center}
+\Large\bfseries\color{econblue}
+How do we make identified monetary policy shock series\\[0.1em]
+reproducible, comparable, and cross-country in a single R call?
+\end{center}
+
+\vspace{1em}
+
+\begin{center}
+\normalsize\itshape
+Thirteen series, three countries, five identification strategies, one tidy schema.
+\end{center}
+
+::: notes
+Open with the question, not the package. Identified shock series are
+the standard input to IRFs, local projections, and proxy-SVARs. Right
+now they live as CSVs on personal web pages with inconsistent formats.
+We need one call.
+:::
+
+
+## Why it matters
+
+- **Empirical macroeconomists** run impulse responses under several identification strategies as a standard robustness check
+- **Policy institutions** (central banks, Treasuries) want cross-country comparability of monetary stance measures
+- **Graduate students and replicators** lose hours assembling shock files before the interesting analysis begins
+- **Forecasters and market strategists** feed shock series into nowcasting pipelines and scenario models
+
+::: notes
+Four stakeholder groups. Point at the graduate student case: every
+applied monetary paper burns time on data plumbing before the
+identification discussion even starts. 60 seconds.
+:::
+
+
+
+## What is already out there
+
+- **Personal replication files**: Nakamura-Steinsson on Harvard Dataverse, Bauer-Swanson on the SF Fed, Jarocinski-Karadi on personal pages
+- **`hfdshocks`** (GitHub): single-country, unmaintained, no provenance metadata
+- **Bank of England UKMPD spreadsheet**: live-maintained but UK-only, Excel format
+- **Individual central-bank bulletins**: Atlanta Fed (Wu-Xia), RBA (Hambur-Haque, Beckers)
+
+\vspace{0.5em}
+
+The gap: **no R package bundles shock series for more than one country in a common schema**.\footnote{\scriptsize Aeberhardt et al.\ (2024) report pairwise correlations of 0.4 to 0.7 across alternative US shock measures on common samples; reporting several identifications in parallel is now standard.}
+
+::: notes
+Respect existing archives. They work for their own series but nothing
+stitches them together. mpshock is the first multi-country bundle in R.
+45 seconds.
+:::
+
+
+
+## What mpshock offers
+
+1. **Coverage**: 13 series across US (8), UK (3), and Australia (2), spanning narrative, high-frequency, sign-restriction, informationally-robust, and shadow-rate identifications
+2. **Interface**: every series loads via `mp_shock(series, start, end)` and returns a tidy `data.frame` with the `mp_shock` S3 class; outputs compose via `rbind()`
+3. **Provenance**: each series carries DOI, source URL, licence, and download date; pure data + computation, no runtime network, 240 unit tests
+
+\vspace{0.5em}
+
+On CRAN since April 2026. Plugs directly into `lpirfs`, `BVAR`, and `vars`\footnote{\scriptsize Adammer (2019) \textit{lpirfs}, Kuschnig \& Vashold (2021) \textit{BVAR}, Pfaff (2008) \textit{vars}, all R packages for impulse response estimation.}.
+
+::: notes
+Three bullets, three selling points. Emphasise the cross-country
+coverage: that is the novel contribution. Downstream compatibility is
+the reason empirical users will adopt. 45 seconds.
+:::
+
+
+
+## US shocks: cumulative paths across four identifications
+
+```{=latex}
+\begin{center}
+\includegraphics[height=0.65\textheight]{figures/fig1_cumulative_us.pdf}
+\end{center}
+
+\vspace{-0.4em}
+
+{\footnotesize\itshape Cumulative monthly US monetary policy shocks under four identifications over a common sample.}
+```
+
+::: notes
+First gallery slide. All four identifications broadly track each other
+through the ZLB period but diverge at key inflection points. Point at
+the 2008-2009 drop. 25 seconds.
+:::
+
+
+## US shock correlations: 0.4 to 0.7 across identifications
+
+```{=latex}
+\begin{center}
+\includegraphics[height=0.65\textheight]{figures/fig2_correlations.pdf}
+\end{center}
+
+\vspace{-0.4em}
+
+{\footnotesize\itshape Pairwise Pearson correlations among seven US shock and stance series, common monthly sample 2000-02 to 2014-03.}
+```
+
+::: notes
+The empirical punchline. Correlations in the 0.4 to 0.7 block confirm
+alternative identifications capture related but distinct variation.
+Report IRFs under several shocks rather than selecting one. 25 seconds.
+:::
+
+
+## Coverage: thirteen series on one timeline
+
+```{=latex}
+\begin{center}
+\includegraphics[height=0.65\textheight]{figures/fig3_coverage.pdf}
+\end{center}
+
+\vspace{-0.4em}
+
+{\footnotesize\itshape Time coverage of all thirteen bundled series across the US (8), UK (3), and Australia (2); each row marks the native publication window.}
+```
+
+::: notes
+Second gallery slide. US series cluster around 1995-2015, UK runs
+1997-present via BoE UKMPD, AU picks up from 2004. Coverage is the
+bottleneck for cross-country work. 25 seconds.
+:::
+
+
+## Distributions: shock magnitudes by series
+
+```{=latex}
+\begin{center}
+\includegraphics[height=0.65\textheight]{figures/fig4_distribution.pdf}
+\end{center}
+
+\vspace{-0.4em}
+
+{\footnotesize\itshape Distribution of nonzero monthly shock magnitudes by series, in native units. Narrative series show heavier right tails; high-frequency surprises are tighter.}
+```
+
+::: notes
+Fourth gallery slide. Ties directly to the standardisation step on the
+hero chart. Narrative series carry larger swings than HFS surprises;
+standardisation is how you make them comparable. 25 seconds.
+:::
+
+
+## Central formulas
+
+\vspace{0.3em}
+
+\textbf{High-frequency surprise} (30-minute window around FOMC):
+\begin{equation}
+\mathrm{HFS}_t = f_t^{+} - f_t^{-}
+\end{equation}
+
+\textbf{Orthogonalised shock} (Bauer-Swanson residual):
+\begin{equation}
+\mathrm{MPS\_ORTH}_t = \mathrm{MPS}_t - X_t^{\prime}\hat{\beta}
+\end{equation}
+
+\textbf{Informationally-robust shock} (Miranda-Agrippino-Ricco):
+\begin{equation}
+u_t = \mathrm{FF4}_t - \sum_{h=0}^{4} \gamma_h \, \Delta \mathbb{E}_t^{\mathrm{GB}}[y_{t+h}]
+\end{equation}
+
+::: notes
+Three equations, three identification strategies. Do not read them
+aloud. The HFS is the primitive; the Bauer-Swanson residual removes
+predictable pre-announcement variation; MAR projects the surprise onto
+Greenbook revisions to handle the information effect. 60 seconds.
+:::
+
+
+
+## Package at a glance
+
+::: columns
+::: {.column width="58%"}
+
+Bundled series by country:
+
+- **United States**: 8 series (Nakamura-Steinsson, Bauer-Swanson, GSS target, GSS path, Jarocinski-Karadi MP and CBI, Miranda-Agrippino-Ricco, Wu-Xia)
+- **United Kingdom**: 3 series (UKMPD three-factor, Cesa-Bianchi, Cloyne-Hurtgen)
+- **Australia**: 2 series (Hambur-Haque three-factor, Beckers)
+- **Loader + metadata**: `mp_shock()`, `mp_list()`, `mp_source()`
+- **Helpers**: `mp_align()`, `mp_to_quarterly()`, `mp_cumulate()`
+
+Deps: `cli`, `stats`, `utils`. R $\geq$ 4.1.0.
+
+:::
+::: {.column width="40%"}
+
+\begin{block}{Uniform output}
+Every series returns:
+
+\texttt{date} | \texttt{shock} | \texttt{series}
+
+Multi-factor series add\\ \texttt{path}, \texttt{qe}, or \texttt{term\_premium}.
+
+Outputs compose via \texttt{rbind()} into panel data.
+\end{block}
+
+:::
+:::
+
+::: notes
+Two columns. Left lists the series by country. Right highlights the
+output schema in the blue block. The consistency is the pitch. 45
+seconds.
+:::
+
+
+
+## Minimal working example
+
+```r
+library(mpshock)
+
+# Three US identifications on a common monthly sample
+ns  <- mp_shock("nakamura_steinsson", start = "2000-02-01")
+bs  <- mp_shock("bauer_swanson",      start = "2000-02-01")
+jk  <- mp_shock("jarocinski_karadi_mp", start = "2000-02-01")
+
+# Compose into a panel for plotting or modelling
+panel <- rbind(ns, bs, jk)
+
+# Hand off to downstream IRF estimation
+lpirfs::lp_lin_iv(endog_data, shock = panel$shock)
+```
+
+\footnotesize
+All three calls share the same three-column schema, so `rbind()` works
+without reshaping or renaming.
+
+::: notes
+Live-read the code. Three calls, three data frames, one rbind, one
+handoff to lpirfs. That is the entire user experience before you start
+doing identification-robustness IRFs. 60 seconds.
+:::
+
+
+
+## Cross-country monetary policy shocks, 2005 to 2022
+
+**Data.** `bauer_swanson` (US MPS_ORTH), `ukmpd` Target factor (UK), `hambur_haque_au` action factor (AU). Each standardised by full-sample standard deviation of nonzero shocks before cumulating.
+
+**Question.** *Do identified monetary policy shocks in the US, UK, and Australia move together around major global events, or does country-specific identification dominate?*
+
+**Why this case.** First published cross-country cumulative shock chart from a single R pipeline\footnote{\scriptsize No prior R package bundles shock series for more than one country. See paper section on cross-country shocks for full discussion.}. Covers GFC, 2013 taper tantrum, COVID-19, and 2022-23 tightening cycle. Standardisation makes scales comparable despite different native units.
+
+::: notes
+Setup only. No results on this slide. Point forward: hero figure is
+next. Name the three series, the standardisation, and why the
+comparison is novel. 45 seconds.
+:::
+
+
+
+## Hero result: US, UK, and AU shocks move together through global shocks
+
+```{=latex}
+\begin{center}
+\includegraphics[height=0.68\textheight]{figures/hero_figure.pdf}
+\end{center}
+
+\vspace{-0.4em}
+
+{\footnotesize\itshape Cumulative standardised monetary policy shocks for the US, UK, and Australia. Shaded bands: GFC (Sep 2008 to Jun 2009) and COVID-19 (Mar to Jun 2020). Sources: Bauer-Swanson (US), UKMPD Target (UK), Hambur-Haque action (AU).}
+```
+
+::: notes
+The money slide. Ninety seconds. Walk through the three traces: all
+three central banks share the direction of policy around major global
+events but differ sharply in timing and magnitude. US shock variance
+compresses through the 2009-2015 ZLB period. UK target factor is
+nonzero throughout. AU moves later and shallower. Pause before moving
+on.
+:::
+
+
+
+## What mpshock does not yet do
+
+- **Three countries only**: Euro-area (Jarocinski-Karadi ECB, Altavilla EA-MPD) is the v0.2.0 priority
+- **Monthly aggregation sums event surprises**: Bu, Rogers, and Wu (2021) argue for `NA`-coding in LP-IV estimation
+- **No new identification**: mpshock is a data-curation project, not a new econometric method
+- **Licences vary**: users cite the underlying paper for any series used in academic work
+
+\vspace{0.5em}
+
+**v0.2.0 roadmap**: Euro-area shocks (Altavilla EA-MPD, JK ECB), Romer-Romer US narrative series, Bolhuis-Das-Yao cross-country panel subject to licence.
+
+::: notes
+Honest limitations. Name each one. Frame v0.2.0 as a commitment: the
+Euro-area additions will take the panel from 3 to 4 currency areas.
+Bu-Rogers-Wu NA-aggregation is already documented in each help file.
+45 seconds.
+:::
+
+
+
+## Contact, code, paper
+
+::: columns
+::: {.column width="62%"}
+
+```{=latex}
+{\large\bfseries Charles Coverdale\par}
+\vspace{0.5em}
+\texttt{charles.f.coverdale@gmail.com}\\
+\texttt{github.com/charlescoverdale/mpshock}\\
+\texttt{charlescoverdale.github.io/publications}
+\vspace{0.9em}
+
+\textbf{Acknowledgements.} I thank the authors of each bundled series for making their data publicly available: Nakamura, Steinsson, Bauer, Swanson, Gürkaynak, Sack, Jarocinski, Karadi, Miranda-Agrippino, Ricco, Wu, Xia, Braun, Saha, Cesa-Bianchi, Thwaites, Vicondoa, Cloyne, Hürtgen, Hambur, Haque, and Beckers.
+```
+
+:::
+::: {.column width="35%"}
+
+\begin{center}
+\includegraphics[width=0.85\linewidth]{figures/qrcode_paper.png}
+
+\vspace{0.3em}
+
+{\footnotesize\itshape Scan for paper PDF}
+\end{center}
+
+:::
+:::
+
+::: notes
+Close cleanly. Name, email, GitHub, publications. Point at the QR
+code. Acknowledge every author. Open for questions.
+:::
