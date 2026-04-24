@@ -31,7 +31,7 @@ Description: Provides a curated multi-country collection of monetary
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-US
-URL: https://github.com/charlescoverdale/mpshock
+URL: https://charlescoverdale.github.io/mpshock/, https://github.com/charlescoverdale/mpshock
 BugReports: https://github.com/charlescoverdale/mpshock/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
