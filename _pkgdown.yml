@@ -23,3 +23,7 @@ reference:
       - mp_to_quarterly
       - mp_cumulate
 
+
+  - title: "Package"
+    contents:
+      - mpshock-package
