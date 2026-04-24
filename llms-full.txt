@@ -1,0 +1,200 @@
+# mpshock — full API reference
+
+> Provides a curated multi-country collection of monetary policy shock and stance series from the empirical macroeconomics literature, bundled as tidy data frames with provenance metadata.
+
+- Version: 0.1.1
+- Install: `install.packages("mpshock")`
+- CRAN: https://CRAN.R-project.org/package=mpshock
+- GitHub: https://github.com/charlescoverdale/mpshock
+- Reference site: https://charlescoverdale.github.io/mpshock/
+
+This file is a self-contained reference for LLM agents: every exported
+function with its signature, arguments, return value, and example.
+
+---
+
+## `mp_align()`
+
+**Align a shock series to a target data frame by date**
+
+Left-joins a shock series onto a target data frame by its date column. Non-matching target rows receive `NA` in the shock column. Use this to line a shock series up with a macro panel before running impulse responses or local projections.
+
+**Usage**
+
+```r
+mp_align(shock, target, by = "date", fill_zero = FALSE)
+```
+
+**Arguments**
+
+- `shock` — An `mp_shock` object from `mp_shock()`.
+- `target` — A data frame containing a date column.
+- `by` — Character(1). The name of the date column in `target`. Defaults to `"date"`.
+- `fill_zero` — Logical(1). If `TRUE`, non-matching target rows get `0` in the shock column instead of `NA`. Useful when the target is a complete monthly panel and missing shocks should be treated as zero-surprise months. Defaults to `FALSE`.
+
+**Returns**
+
+A data frame with the same rows as `target` plus a `shock` column (and any other numeric columns from the shock series, prefixed with the series name).
+
+**Example**
+
+```r
+panel <- data.frame(
+  date = seq(as.Date("2010-01-01"), as.Date("2010-06-01"), by = "month"),
+  gdp_growth = rnorm(6)
+)
+aligned <- mp_align(mp_shock("nakamura_steinsson"), panel)
+head(aligned)
+```
+
+---
+
+## `mp_cumulate()`
+
+**Cumulate a shock series**
+
+Computes running sums of a shock series. With `window = NULL`, returns the full cumulative sum. With a finite `window`, returns a rolling window sum of the last `window` observations.
+
+**Usage**
+
+```r
+mp_cumulate(shock, window = NULL)
+```
+
+**Arguments**
+
+- `shock` — An `mp_shock` object from `mp_shock()`.
+- `window` — Integer, the rolling window length in observations. If `NULL` (default), computes the full cumulative sum.
+
+**Returns**
+
+A data frame with the same rows as `shock` and a new column `shock_cum` (full cumulative) or `shock_roll` (rolling window). Other columns are preserved.
+
+**Example**
+
+```r
+cum <- mp_cumulate(mp_shock("nakamura_steinsson"))
+head(cum)
+
+roll <- mp_cumulate(mp_shock("nakamura_steinsson"), window = 12)
+head(roll, 15)
+```
+
+---
+
+## `mp_list()`
+
+**List available monetary policy shock series**
+
+Returns a metadata table of every shock or stance series bundled in the package.
+
+**Usage**
+
+```r
+mp_list()
+```
+
+**Returns**
+
+A data frame with one row per series and columns: `series`: identifier used with `mp_shock()`. `author`: short author string, e.g. "Nakamura and Steinsson (2018)". `country`: ISO country code or "EA" for Euro area. `frequency`: `"monthly"`, `"quarterly"`, or `"event"`. `type`: `"shock"` for identified monetary policy shocks, `"shadow_rate"` for shadow-rate stance measures, `"surprise"` for high-frequency event-window surprises. `start`, `end`: coverage span as `Date` (first and last bundled observation). `n`: number of non-missing shock observations. `doi`: DOI of the source paper. `source_url`: canonical URL for the published series. `description`: short prose description.
+
+**Example**
+
+```r
+mp_list()
+```
+
+---
+
+## `mp_shock()`
+
+**Load a monetary policy shock series**
+
+Loads a named shock series bundled with the package as a tidy data frame with class `mp_shock`. Optionally filters by date range.
+
+**Usage**
+
+```r
+mp_shock(series, start = NULL, end = NULL)
+```
+
+**Arguments**
+
+- `series` — Character(1). Name of the series. See `mp_list()` for available series.
+- `start, end` — Optional `Date` or character (YYYY-MM-DD) filters on the returned series. If `NULL`, returns the full bundled span.
+
+**Returns**
+
+A data frame with class `c("mp_shock", "data.frame")` and columns: `date`: `Date`, first day of the observation month. `shock`: `numeric`, the shock value in the units published by the source (see `mp_source()` and the per-series help files for units and scaling conventions). `series`: `character`, the series identifier. Some series carry additional columns. bauer_swanson returns `mps_raw` alongside `shock` (the orthogonalised surprise); miranda_agrippino_ricco returns `info`; wu_xia returns `shadow_rate` and `effr`.
+
+**Example**
+
+```r
+ns <- mp_shock("nakamura_steinsson")
+head(ns)
+
+# Filter to a specific window
+ns_gfc <- mp_shock("nakamura_steinsson",
+                   start = "2007-01-01", end = "2009-12-31")
+```
+
+---
+
+## `mp_source()`
+
+**Citation and provenance for a shock series**
+
+Returns a single-row data frame with the author, DOI, source URL, and short description for the named series. Also prints the citation to the console.
+
+**Usage**
+
+```r
+mp_source(series)
+```
+
+**Arguments**
+
+- `series` — Character(1). Name of the series. See `mp_list()` for available series.
+
+**Returns**
+
+Invisibly, a one-row data frame with columns `series`, `author`, `doi`, `source_url`, `description`.
+
+**Example**
+
+```r
+mp_source("nakamura_steinsson")
+```
+
+---
+
+## `mp_to_quarterly()`
+
+**Aggregate a monthly shock series to quarterly frequency**
+
+Converts a monthly `mp_shock` object to quarterly observations using one of three aggregation methods.
+
+**Usage**
+
+```r
+mp_to_quarterly(shock, method = c("sum", "mean", "end"))
+```
+
+**Arguments**
+
+- `shock` — An `mp_shock` object from `mp_shock()` at monthly frequency.
+- `method` — Character(1). One of `"sum"` (the default, usual choice for additive shocks), `"mean"` (arithmetic mean of months in the quarter), or `"end"` (last month's value, useful for stock-like measures such as shadow rates).
+
+**Returns**
+
+A data frame with one row per quarter, containing a `date` column set to the first day of the quarter, the aggregated `shock` column, and the series identifier. Class `c("mp_shock", "data.frame")`.
+
+**Example**
+
+```r
+ns_q <- mp_to_quarterly(mp_shock("nakamura_steinsson"), method = "sum")
+head(ns_q)
+```
+
+---
+

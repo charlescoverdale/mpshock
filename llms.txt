@@ -2,6 +2,8 @@
 
 > Provides a curated multi-country collection of monetary policy shock and stance series from the empirical macroeconomics literature, bundled as tidy data frames with provenance metadata. Install with `install.packages("mpshock")`.
 
+Full API reference (for agents): https://raw.githubusercontent.com/charlescoverdale/mpshock/main/llms-full.txt
+
 Version: 0.1.1. License: MIT.
 
 ## Functions
