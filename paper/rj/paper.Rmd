@@ -2,10 +2,10 @@
 title: "mpshock: An R Package for Cross-Country Monetary Policy Shock Analysis"
 author:
   - name: Charles Coverdale
-    affiliation: Independent
-    address:
-      - London, United Kingdom
+    affiliation: "London, United Kingdom"
+    address: "United Kingdom"
     email: charles.f.coverdale@gmail.com
+    url: https://github.com/charlescoverdale/mpshock
 abstract: >
   Empirical monetary economics relies on identified policy shock series
   as the exogenous input to impulse response functions, local
