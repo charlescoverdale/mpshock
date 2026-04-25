@@ -163,7 +163,7 @@ Journal: Macroeconomics*, **8**(4), 75-102.
 Hambur J, Haque Q (2024). “Can we Use High-Frequency Data to Better
 Understand the Effects of Monetary Policy and its Communication? Yes and
 No!” *Economic Record*.
-[doi:10.1111/1475-4932.12786](https://doi.org/10.1111/1475-4932.12786),
+[doi:10.1111/1475-4932.12786](https://doi.org/10.1111/1475-4932.12786).
 Reserve Bank of Australia Research Discussion Paper 2023-04.
 
     @Article{hambur_haque_2023,
