@@ -277,14 +277,15 @@ Original two-factor GSS: Gurkaynak, Sack, and Swanson (2005), *International Jou
 
 ## Related packages
 
-| Package | What it covers |
+| Package | Description |
 |---|---|
 | [`fred`](https://github.com/charlescoverdale/fred) | Federal Reserve Economic Data (US macro inputs for IRFs and LPs) |
-| [`nowcast`](https://github.com/charlescoverdale/nowcast) | Economic nowcasting with bridge equations |
-| [`inflationkit`](https://github.com/charlescoverdale/inflationkit) | CPI decomposition, persistence, Phillips curve |
-| [`yieldcurves`](https://github.com/charlescoverdale/yieldcurves) | Nelson-Siegel and Svensson yield curves |
-| [`readecb`](https://github.com/charlescoverdale/readecb) | European Central Bank data (Euro-area IRF panels) |
 | [`boe`](https://github.com/charlescoverdale/boe) | Bank of England data (UK rates and financial conditions) |
+| [`readecb`](https://github.com/charlescoverdale/readecb) | European Central Bank data (Euro-area IRF panels) |
+| [`yieldcurves`](https://github.com/charlescoverdale/yieldcurves) | Nelson-Siegel and Svensson yield curves |
+| [`inflationkit`](https://github.com/charlescoverdale/inflationkit) | CPI decomposition, persistence, Phillips curve |
+| [`nowcast`](https://github.com/charlescoverdale/nowcast) | Economic nowcasting with bridge equations |
+| [`ivcheck`](https://github.com/charlescoverdale/ivcheck) | IV diagnostics for shock identification |
 
 ## Issues and requests
 
