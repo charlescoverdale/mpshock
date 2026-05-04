@@ -47,6 +47,7 @@ supplies it.
 ## Installation
 
 ``` r
+
 install.packages("mpshock")
 
 # Or install the development version from GitHub
@@ -64,6 +65,7 @@ will see in your console.
 ### 1. See what’s available
 
 ``` r
+
 # Attach the package
 library(mpshock)
 
@@ -84,6 +86,7 @@ mp_list()[, c("series", "author", "type", "start", "end", "n")]
 ### 2. Load a series
 
 ``` r
+
 # Load the Nakamura-Steinsson policy news shock into the object `ns`
 ns <- mp_shock("nakamura_steinsson")
 
@@ -108,6 +111,7 @@ releases.
 ### 3. Check the citation
 
 ``` r
+
 # mp_source() prints the paper, DOI, source URL, and method description
 mp_source("nakamura_steinsson")
 #> nakamura_steinsson
@@ -125,6 +129,7 @@ See [Citation](#citation) for the full list.
 ### 4. Filter by date window
 
 ``` r
+
 # Subset to the 2008 financial-crisis months using start and end arguments
 crisis <- mp_shock("nakamura_steinsson",
                    start = "2008-01-01",
@@ -146,6 +151,7 @@ cuts that stand out as the largest surprises of the GFC window.
 ### 5. Aggregate to quarterly
 
 ``` r
+
 # Aggregate the monthly series to quarterly by summing within each quarter
 ns_q <- mp_to_quarterly(ns, method = "sum")
 
@@ -167,6 +173,7 @@ the Wu-Xia shadow rate) are also supported.
 ### 6. Compute a running cumulative shock
 
 ``` r
+
 # mp_cumulate() adds a `shock_cum` column with the running cumulative sum
 ns_cum <- mp_cumulate(ns)
 head(ns_cum)
@@ -190,6 +197,7 @@ pipeline compatibility, the level `shadow_rate`, and the effective
 federal funds rate `effr` for reference.
 
 ``` r
+
 # Load the Wu-Xia shadow rate over the first GFC zero-lower-bound episode
 wx <- mp_shock("wu_xia", start = "2008-01-01", end = "2008-06-30")
 
@@ -211,6 +219,7 @@ identification strategies and see whether the impulse responses line up.
 Here’s how to line up two shock series on a common monthly grid.
 
 ``` r
+
 # Load two alternative US monetary policy shocks over the same window
 ns <- mp_shock("nakamura_steinsson", start = "2005-01-01", end = "2013-12-31")
 bs <- mp_shock("bauer_swanson",      start = "2005-01-01", end = "2013-12-31")
@@ -239,31 +248,31 @@ series for robustness (Brennan, Jacobson, Matthes, and Walker 2024, FEDS
 
 ### United States
 
-| Series                    | Author(s)                          | Type                    | Frequency | Span               |
-|---------------------------|------------------------------------|-------------------------|-----------|--------------------|
-| `nakamura_steinsson`      | Nakamura and Steinsson (2018)      | Identified shock        | Monthly   | 2000-02 to 2014-03 |
-| `bauer_swanson`           | Bauer and Swanson (2023)           | Orthogonalised surprise | Monthly   | 1988-02 to 2023-12 |
-| `gss_target`              | Swanson (2021), GSS (2005)         | Target factor           | Monthly   | 1991-07 to 2015-10 |
-| `gss_path`                | Swanson (2021), GSS (2005)         | Forward-guidance factor | Monthly   | 1991-07 to 2015-10 |
-| `jarocinski_karadi_mp`    | Jarocinski and Karadi (2020)       | Pure MP shock           | Monthly   | 1990-02 to 2024-01 |
-| `jarocinski_karadi_cbi`   | Jarocinski and Karadi (2020)       | CB information shock    | Monthly   | 1990-02 to 2024-01 |
-| `miranda_agrippino_ricco` | Miranda-Agrippino and Ricco (2021) | Info-robust MP shock    | Monthly   | 1991-01 to 2019-06 |
-| `wu_xia`                  | Wu and Xia (2016)                  | Shadow rate (stance)    | Monthly   | 1960-01 to 2022-02 |
+| Series | Author(s) | Type | Frequency | Span |
+|----|----|----|----|----|
+| `nakamura_steinsson` | Nakamura and Steinsson (2018) | Identified shock | Monthly | 2000-02 to 2014-03 |
+| `bauer_swanson` | Bauer and Swanson (2023) | Orthogonalised surprise | Monthly | 1988-02 to 2023-12 |
+| `gss_target` | Swanson (2021), GSS (2005) | Target factor | Monthly | 1991-07 to 2015-10 |
+| `gss_path` | Swanson (2021), GSS (2005) | Forward-guidance factor | Monthly | 1991-07 to 2015-10 |
+| `jarocinski_karadi_mp` | Jarocinski and Karadi (2020) | Pure MP shock | Monthly | 1990-02 to 2024-01 |
+| `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020) | CB information shock | Monthly | 1990-02 to 2024-01 |
+| `miranda_agrippino_ricco` | Miranda-Agrippino and Ricco (2021) | Info-robust MP shock | Monthly | 1991-01 to 2019-06 |
+| `wu_xia` | Wu and Xia (2016) | Shadow rate (stance) | Monthly | 1960-01 to 2022-02 |
 
 ### United Kingdom
 
-| Series              | Author(s)                               | Type                                  | Frequency | Span                             |
-|---------------------|-----------------------------------------|---------------------------------------|-----------|----------------------------------|
-| `ukmpd`             | Braun, Miranda-Agrippino, Saha (2025)   | Three-factor HFI (Target / Path / QE) | Monthly   | 1997-06 onwards (BoE-maintained) |
-| `cesa_bianchi_uk`   | Cesa-Bianchi, Thwaites, Vicondoa (2020) | High-frequency surprise               | Monthly   | 1997-06 to 2015-01               |
-| `cloyne_hurtgen_uk` | Cloyne and Hurtgen (2016)               | Narrative shock                       | Monthly   | 1997-06 to 2009-02               |
+| Series | Author(s) | Type | Frequency | Span |
+|----|----|----|----|----|
+| `ukmpd` | Braun, Miranda-Agrippino, Saha (2025) | Three-factor HFI (Target / Path / QE) | Monthly | 1997-06 onwards (BoE-maintained) |
+| `cesa_bianchi_uk` | Cesa-Bianchi, Thwaites, Vicondoa (2020) | High-frequency surprise | Monthly | 1997-06 to 2015-01 |
+| `cloyne_hurtgen_uk` | Cloyne and Hurtgen (2016) | Narrative shock | Monthly | 1997-06 to 2009-02 |
 
 ### Australia
 
-| Series            | Author(s)               | Type                                               | Frequency | Span               |
-|-------------------|-------------------------|----------------------------------------------------|-----------|--------------------|
-| `hambur_haque_au` | Hambur and Haque (2023) | Three-component HFI (action / path / term premium) | Monthly   | 2001-04 to 2019-12 |
-| `beckers_au`      | Beckers (2020)          | Narrative shock (Bishop-Tulip + credit spreads)    | Quarterly | 1994-Q1 to 2018-Q4 |
+| Series | Author(s) | Type | Frequency | Span |
+|----|----|----|----|----|
+| `hambur_haque_au` | Hambur and Haque (2023) | Three-component HFI (action / path / term premium) | Monthly | 2001-04 to 2019-12 |
+| `beckers_au` | Beckers (2020) | Narrative shock (Bishop-Tulip + credit spreads) | Quarterly | 1994-Q1 to 2018-Q4 |
 
 The Wu-Xia series ends in February 2022 because the Atlanta Fed paused
 the update once policy rates normalised. The series remains the standard
@@ -315,14 +324,14 @@ etc.) discusses these in more depth.
 
 ## Functions
 
-| Function                                                                                       | Purpose                                       |
-|------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| [`mp_shock()`](https://charlescoverdale.github.io/mpshock/reference/mp_shock.md)               | Load a named series as a tidy data frame      |
-| [`mp_list()`](https://charlescoverdale.github.io/mpshock/reference/mp_list.md)                 | Metadata table of available series            |
-| [`mp_source()`](https://charlescoverdale.github.io/mpshock/reference/mp_source.md)             | Citation and source URL for a series          |
-| [`mp_align()`](https://charlescoverdale.github.io/mpshock/reference/mp_align.md)               | Align a series to a target data frame by date |
-| [`mp_to_quarterly()`](https://charlescoverdale.github.io/mpshock/reference/mp_to_quarterly.md) | Aggregate monthly series to quarterly         |
-| [`mp_cumulate()`](https://charlescoverdale.github.io/mpshock/reference/mp_cumulate.md)         | Cumulative or rolling-window shock sums       |
+| Function | Purpose |
+|----|----|
+| [`mp_shock()`](https://charlescoverdale.github.io/mpshock/reference/mp_shock.md) | Load a named series as a tidy data frame |
+| [`mp_list()`](https://charlescoverdale.github.io/mpshock/reference/mp_list.md) | Metadata table of available series |
+| [`mp_source()`](https://charlescoverdale.github.io/mpshock/reference/mp_source.md) | Citation and source URL for a series |
+| [`mp_align()`](https://charlescoverdale.github.io/mpshock/reference/mp_align.md) | Align a series to a target data frame by date |
+| [`mp_to_quarterly()`](https://charlescoverdale.github.io/mpshock/reference/mp_to_quarterly.md) | Aggregate monthly series to quarterly |
+| [`mp_cumulate()`](https://charlescoverdale.github.io/mpshock/reference/mp_cumulate.md) | Cumulative or rolling-window shock sums |
 
 ## Citation
 
@@ -330,38 +339,40 @@ Cite both the package and the underlying paper(s) for the series you
 use. Package citation:
 
 ``` r
+
 citation("mpshock")
 ```
 
 Series citations:
 
-| Series                                          | Reference                                                                            | DOI                                                                                  |
-|-------------------------------------------------|--------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| `nakamura_steinsson`                            | Nakamura and Steinsson (2018). *Quarterly Journal of Economics* 133(3): 1283-1330.   | [10.1093/qje/qjy004](https://doi.org/10.1093/qje/qjy004)                             |
-| `bauer_swanson`                                 | Bauer and Swanson (2023). *NBER Macroeconomics Annual* 37: 87-155.                   | [10.1086/723574](https://doi.org/10.1086/723574)                                     |
-| `gss_target`, `gss_path`                        | Swanson (2021). *Journal of Monetary Economics* 118: 32-53.                          | [10.1016/j.jmoneco.2020.09.003](https://doi.org/10.1016/j.jmoneco.2020.09.003)       |
-| `jarocinski_karadi_mp`, `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020). *AEJ: Macroeconomics* 12(2): 1-43.                     | [10.1257/mac.20180090](https://doi.org/10.1257/mac.20180090)                         |
-| `miranda_agrippino_ricco`                       | Miranda-Agrippino and Ricco (2021). *AEJ: Macroeconomics* 13(3): 74-107.             | [10.1257/mac.20180124](https://doi.org/10.1257/mac.20180124)                         |
-| `wu_xia`                                        | Wu and Xia (2016). *Journal of Money, Credit and Banking* 48(2-3): 253-291.          | [10.1111/jmcb.12300](https://doi.org/10.1111/jmcb.12300)                             |
-| `ukmpd`                                         | Braun, Miranda-Agrippino, and Saha (2025). *Journal of Monetary Economics* 149.      | [10.1016/j.jmoneco.2024.103645](https://doi.org/10.1016/j.jmoneco.2024.103645)       |
-| `cesa_bianchi_uk`                               | Cesa-Bianchi, Thwaites, and Vicondoa (2020). *European Economic Review* 123: 103375. | [10.1016/j.euroecorev.2020.103375](https://doi.org/10.1016/j.euroecorev.2020.103375) |
-| `cloyne_hurtgen_uk`                             | Cloyne and Hurtgen (2016). *AEJ: Macroeconomics* 8(4): 75-102.                       | [10.1257/mac.20150093](https://doi.org/10.1257/mac.20150093)                         |
-| `hambur_haque_au`                               | Hambur and Haque (2023, RDP 2023-04); published in *Economic Record* 2024.           | [10.1111/1475-4932.12786](https://doi.org/10.1111/1475-4932.12786)                   |
-| `beckers_au`                                    | Beckers (2020). RBA Research Discussion Paper 2020-01.                               | [link](https://www.rba.gov.au/publications/rdp/2020/2020-01/)                        |
+| Series | Reference | DOI |
+|----|----|----|
+| `nakamura_steinsson` | Nakamura and Steinsson (2018). *Quarterly Journal of Economics* 133(3): 1283-1330. | [10.1093/qje/qjy004](https://doi.org/10.1093/qje/qjy004) |
+| `bauer_swanson` | Bauer and Swanson (2023). *NBER Macroeconomics Annual* 37: 87-155. | [10.1086/723574](https://doi.org/10.1086/723574) |
+| `gss_target`, `gss_path` | Swanson (2021). *Journal of Monetary Economics* 118: 32-53. | [10.1016/j.jmoneco.2020.09.003](https://doi.org/10.1016/j.jmoneco.2020.09.003) |
+| `jarocinski_karadi_mp`, `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020). *AEJ: Macroeconomics* 12(2): 1-43. | [10.1257/mac.20180090](https://doi.org/10.1257/mac.20180090) |
+| `miranda_agrippino_ricco` | Miranda-Agrippino and Ricco (2021). *AEJ: Macroeconomics* 13(3): 74-107. | [10.1257/mac.20180124](https://doi.org/10.1257/mac.20180124) |
+| `wu_xia` | Wu and Xia (2016). *Journal of Money, Credit and Banking* 48(2-3): 253-291. | [10.1111/jmcb.12300](https://doi.org/10.1111/jmcb.12300) |
+| `ukmpd` | Braun, Miranda-Agrippino, and Saha (2025). *Journal of Monetary Economics* 149. | [10.1016/j.jmoneco.2024.103645](https://doi.org/10.1016/j.jmoneco.2024.103645) |
+| `cesa_bianchi_uk` | Cesa-Bianchi, Thwaites, and Vicondoa (2020). *European Economic Review* 123: 103375. | [10.1016/j.euroecorev.2020.103375](https://doi.org/10.1016/j.euroecorev.2020.103375) |
+| `cloyne_hurtgen_uk` | Cloyne and Hurtgen (2016). *AEJ: Macroeconomics* 8(4): 75-102. | [10.1257/mac.20150093](https://doi.org/10.1257/mac.20150093) |
+| `hambur_haque_au` | Hambur and Haque (2023, RDP 2023-04); published in *Economic Record* 2024. | [10.1111/1475-4932.12786](https://doi.org/10.1111/1475-4932.12786) |
+| `beckers_au` | Beckers (2020). RBA Research Discussion Paper 2020-01. | [link](https://www.rba.gov.au/publications/rdp/2020/2020-01/) |
 
 Original two-factor GSS: Gurkaynak, Sack, and Swanson (2005),
 *International Journal of Central Banking* 1(1): 55-93.
 
 ## Related packages
 
-| Package                                                            | What it covers                                                   |
-|--------------------------------------------------------------------|------------------------------------------------------------------|
-| [`fred`](https://github.com/charlescoverdale/fred)                 | Federal Reserve Economic Data (US macro inputs for IRFs and LPs) |
-| [`nowcast`](https://github.com/charlescoverdale/nowcast)           | Economic nowcasting with bridge equations                        |
-| [`inflationkit`](https://github.com/charlescoverdale/inflationkit) | CPI decomposition, persistence, Phillips curve                   |
-| [`yieldcurves`](https://github.com/charlescoverdale/yieldcurves)   | Nelson-Siegel and Svensson yield curves                          |
-| [`readecb`](https://github.com/charlescoverdale/readecb)           | European Central Bank data (Euro-area IRF panels)                |
-| [`boe`](https://github.com/charlescoverdale/boe)                   | Bank of England data (UK rates and financial conditions)         |
+| Package | Description |
+|----|----|
+| [`fred`](https://github.com/charlescoverdale/fred) | Federal Reserve Economic Data (US macro inputs for IRFs and LPs) |
+| [`boe`](https://github.com/charlescoverdale/boe) | Bank of England data (UK rates and financial conditions) |
+| [`readecb`](https://github.com/charlescoverdale/readecb) | European Central Bank data (Euro-area IRF panels) |
+| [`yieldcurves`](https://github.com/charlescoverdale/yieldcurves) | Nelson-Siegel and Svensson yield curves |
+| [`inflationkit`](https://github.com/charlescoverdale/inflationkit) | CPI decomposition, persistence, Phillips curve |
+| [`nowcast`](https://github.com/charlescoverdale/nowcast) | Economic nowcasting with bridge equations |
+| [`ivcheck`](https://github.com/charlescoverdale/ivcheck) | IV diagnostics for shock identification |
 
 ## Issues and requests
 
