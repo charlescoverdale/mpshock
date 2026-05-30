@@ -4,6 +4,8 @@
 [![CRAN status](https://www.r-pkg.org/badges/version/mpshock)](https://CRAN.R-project.org/package=mpshock) [![CRAN downloads](https://cranlogs.r-pkg.org/badges/mpshock)](https://cran.r-project.org/package=mpshock) [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/mpshock)](https://CRAN.R-project.org/package=mpshock) [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
+A technical working paper for this package can be found [here](https://charlescoverdale.github.io/files/coverdale_mpshock_2026.pdf).
+
 Monetary policy shock and stance series for the United States, United Kingdom, and Australia, bundled in R.
 
 ## What is a monetary policy shock?
