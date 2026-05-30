@@ -1,5 +1,8 @@
 # mpshock
 
+A technical working paper for this package can be found
+[here](https://charlescoverdale.github.io/files/coverdale_mpshock_2026.pdf).
+
 Monetary policy shock and stance series for the United States, United
 Kingdom, and Australia, bundled in R.
 
