@@ -1,5 +1,22 @@
 # Changelog
 
+## mpshock 0.1.1
+
+- Corrected the source attribution for the `bauer_swanson` series. The
+  series is MPS_ORTH, the orthogonalised monetary policy surprise, whose
+  construction comes from Bauer and Swanson, “A Reassessment of Monetary
+  Policy Surprises and High-Frequency Identification”, NBER
+  Macroeconomics Annual 37:87-155 (2023), (10.1086/723574). The package
+  previously cited the authors’ other 2023 paper, “An Alternative
+  Explanation for the ‘Fed Information Effect’” (American Economic
+  Review 113(3):664-700), which addresses the Fed-information-effect
+  debate rather than the MPS_ORTH construction. Fixed in the package
+  description, `inst/CITATION`, the series documentation, the series
+  metadata returned by `mp_series()`, and the README citation table.
+
+- Added a URL-verification test covering the bundled DOIs, and
+  advertised the pkgdown site in `DESCRIPTION`.
+
 ## mpshock 0.1.0
 
 CRAN release: 2026-04-21
