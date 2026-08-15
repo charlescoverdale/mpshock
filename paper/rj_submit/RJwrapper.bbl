@@ -1,0 +1,147 @@
+\begin{thebibliography}{24}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Acosta(2024)]{acosta2023perceived}
+M.~Acosta.
+\newblock The perceived causes of monetary policy surprises.
+\newblock Working paper, University of Wisconsin-Madison. Revise and resubmit, \textit{Journal of Political Economy}, 2024.
+
+\bibitem[Ad{\"a}mmer(2019)]{adammer2019lpirfs}
+P.~Ad{\"a}mmer.
+\newblock \texttt{lpirfs}: An r package to estimate impulse response functions by local projections.
+\newblock \emph{R Journal}, 11\penalty0 (2):\penalty0 421--438, 2019.
+
+\bibitem[Bauer and Swanson(2023{\natexlab{a}})]{bauer2023alternative}
+M.~D. Bauer and E.~T. Swanson.
+\newblock An alternative explanation for the ``fed information effect''.
+\newblock \emph{American Economic Review}, 113\penalty0 (3):\penalty0 664--700, 2023{\natexlab{a}}.
+\newblock \doi{10.1257/aer.20201220}.
+
+\bibitem[Bauer and Swanson(2023{\natexlab{b}})]{bauer2023reassessment}
+M.~D. Bauer and E.~T. Swanson.
+\newblock A reassessment of monetary policy surprises and high-frequency identification.
+\newblock \emph{NBER Macroeconomics Annual}, 37:\penalty0 87--155, 2023{\natexlab{b}}.
+\newblock \doi{10.1086/723574}.
+
+\bibitem[Beckers(2020)]{beckers2020credit}
+B.~Beckers.
+\newblock Credit spreads, monetary policy and the price puzzle in australia.
+\newblock Technical Report Research Discussion Paper 2020-01, Reserve Bank of Australia, 2020.
+
+\bibitem[Bolhuis et~al.(2024)Bolhuis, Das, and Yao]{bolhuis2024new}
+M.~A. Bolhuis, S.~Das, and B.~Yao.
+\newblock A new dataset of high-frequency monetary policy shocks.
+\newblock IMF Working Paper 24/224, International Monetary Fund, 2024.
+
+\bibitem[Braun et~al.(2025)Braun, Miranda-Agrippino, and Saha]{braun2025measuring}
+R.~Braun, S.~Miranda-Agrippino, and T.~Saha.
+\newblock Measuring monetary policy in the uk: The uk monetary policy event-study database.
+\newblock \emph{Journal of Monetary Economics}, 149, 2025.
+\newblock \doi{10.1016/j.jmoneco.2024.103645}.
+
+\bibitem[Brennan et~al.(2024)Brennan, Jacobson, Matthes, and Walker]{brennan2024monetary}
+C.~M. Brennan, M.~M. Jacobson, C.~Matthes, and T.~B. Walker.
+\newblock Monetary policy shocks: Data or methods?
+\newblock Finance and Economics Discussion Series 2024-011, Board of Governors of the Federal Reserve System, 2024.
+
+\bibitem[Bu et~al.(2021)Bu, Rogers, and Wu]{bu2021unified}
+C.~Bu, J.~Rogers, and W.~Wu.
+\newblock A unified measure of fed monetary policy shocks.
+\newblock \emph{Journal of Monetary Economics}, 118:\penalty0 331--349, 2021.
+\newblock \doi{10.1016/j.jmoneco.2020.11.002}.
+
+\bibitem[Cesa-Bianchi et~al.(2020)Cesa-Bianchi, Thwaites, and Vicondoa]{cesabianchi2020monetary}
+A.~Cesa-Bianchi, G.~Thwaites, and A.~Vicondoa.
+\newblock Monetary policy transmission in the united kingdom: A high frequency identification approach.
+\newblock \emph{European Economic Review}, 123:\penalty0 103375, 2020.
+\newblock \doi{10.1016/j.euroecorev.2020.103375}.
+
+\bibitem[Cloyne and H{\"u}rtgen(2016)]{cloyne2016macroeconomic}
+J.~Cloyne and P.~H{\"u}rtgen.
+\newblock The macroeconomic effects of monetary policy: A new measure for the united kingdom.
+\newblock \emph{American Economic Journal: Macroeconomics}, 8\penalty0 (4):\penalty0 75--102, 2016.
+\newblock \doi{10.1257/mac.20150093}.
+
+\bibitem[Gertler and Karadi(2015)]{gertler2015monetary}
+M.~Gertler and P.~Karadi.
+\newblock Monetary policy surprises, credit costs, and economic activity.
+\newblock \emph{American Economic Journal: Macroeconomics}, 7\penalty0 (1):\penalty0 44--76, 2015.
+\newblock \doi{10.1257/mac.20130329}.
+
+\bibitem[G{\"u}rkaynak et~al.(2005)G{\"u}rkaynak, Sack, and Swanson]{gurkaynak2005actions}
+R.~S. G{\"u}rkaynak, B.~Sack, and E.~T. Swanson.
+\newblock Do actions speak louder than words? the response of asset prices to monetary policy actions and statements.
+\newblock \emph{International Journal of Central Banking}, 1\penalty0 (1):\penalty0 55--93, 2005.
+
+\bibitem[Hambur and Haque(2024)]{hambur2023monetary}
+J.~Hambur and Q.~Haque.
+\newblock Monetary policy transmission, real interest rates and credit spreads: Evidence from australia.
+\newblock \emph{Economic Record}, 2024.
+\newblock \doi{10.1111/1475-4932.12786}.
+\newblock Reserve Bank of Australia Research Discussion Paper 2023-04.
+
+\bibitem[Jaroci{\'n}ski and Karadi(2020)]{jarocinski2020deconstructing}
+M.~Jaroci{\'n}ski and P.~Karadi.
+\newblock Deconstructing monetary policy surprises: The role of information shocks.
+\newblock \emph{American Economic Journal: Macroeconomics}, 12\penalty0 (2):\penalty0 1--43, 2020.
+\newblock \doi{10.1257/mac.20180090}.
+
+\bibitem[Krippner(2020)]{krippner2020comparison}
+L.~Krippner.
+\newblock A note of caution on shadow rate estimates.
+\newblock \emph{Journal of Money, Credit and Banking}, 52\penalty0 (4):\penalty0 951--962, 2020.
+\newblock \doi{10.1111/jmcb.12613}.
+
+\bibitem[Kuschnig and Vashold(2021)]{kuschnig2021bvar}
+N.~Kuschnig and L.~Vashold.
+\newblock \texttt{BVAR}: Bayesian vector autoregressions with hierarchical prior selection in \texttt{R}.
+\newblock \emph{Journal of Statistical Software}, 100\penalty0 (14):\penalty0 1--27, 2021.
+\newblock \doi{10.18637/jss.v100.i14}.
+
+\bibitem[Kuttner(2001)]{kuttner2001monetary}
+K.~N. Kuttner.
+\newblock Monetary policy surprises and interest rates: Evidence from the fed funds futures market.
+\newblock \emph{Journal of Monetary Economics}, 47\penalty0 (3):\penalty0 523--544, 2001.
+\newblock \doi{10.1016/S0304-3932(01)00055-1}.
+
+\bibitem[Miranda-Agrippino and Ricco(2021)]{miranda2021transmission}
+S.~Miranda-Agrippino and G.~Ricco.
+\newblock The transmission of monetary policy shocks.
+\newblock \emph{American Economic Journal: Macroeconomics}, 13\penalty0 (3):\penalty0 74--107, 2021.
+\newblock \doi{10.1257/mac.20180124}.
+
+\bibitem[Nakamura and Steinsson(2018)]{nakamura2018high}
+E.~Nakamura and J.~Steinsson.
+\newblock High-frequency identification of monetary non-neutrality: The information effect.
+\newblock \emph{Quarterly Journal of Economics}, 133\penalty0 (3):\penalty0 1283--1330, 2018.
+\newblock \doi{10.1093/qje/qjy004}.
+
+\bibitem[Pfaff(2008)]{pfaff2008var}
+B.~Pfaff.
+\newblock Var, svar and svec models: Implementation within \texttt{R} package \texttt{vars}.
+\newblock \emph{Journal of Statistical Software}, 27\penalty0 (4):\penalty0 1--32, 2008.
+\newblock \doi{10.18637/jss.v027.i04}.
+
+\bibitem[Romer and Romer(2004)]{romer2004new}
+C.~D. Romer and D.~H. Romer.
+\newblock A new measure of monetary shocks: Derivation and implications.
+\newblock \emph{American Economic Review}, 94\penalty0 (4):\penalty0 1055--1084, 2004.
+\newblock \doi{10.1257/0002828042002651}.
+
+\bibitem[Swanson(2021)]{swanson2021measuring}
+E.~T. Swanson.
+\newblock Measuring the effects of federal reserve forward guidance and asset purchases on financial markets.
+\newblock \emph{Journal of Monetary Economics}, 118:\penalty0 32--53, 2021.
+\newblock \doi{10.1016/j.jmoneco.2020.09.003}.
+
+\bibitem[Wu and Xia(2016)]{wu2016measuring}
+J.~C. Wu and F.~D. Xia.
+\newblock Measuring the macroeconomic impact of monetary policy at the zero lower bound.
+\newblock \emph{Journal of Money, Credit and Banking}, 48\penalty0 (2-3):\penalty0 253--291, 2016.
+\newblock \doi{10.1111/jmcb.12300}.
+
+\end{thebibliography}
