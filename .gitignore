@@ -10,7 +10,6 @@ docs/
 mpshock.Rcheck/
 mpshock*.tar.gz
 mpshock*.tgz
-CRAN-SUBMISSION
 
 # Raw downloads used by data-raw scripts (scripts documented; downloads are
 # reproducible from source URLs and don't need to be in git)
