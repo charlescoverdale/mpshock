@@ -10,3 +10,5 @@
 ^pkgdown$
 ^LICENSE\.md$
 ^\.gitignore$
+^llms.*\.txt$
+^paper$
