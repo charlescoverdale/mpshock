@@ -69,6 +69,7 @@ Working Paper} 2024-011.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://charlescoverdale.github.io/mpshock/}
   \item \url{https://github.com/charlescoverdale/mpshock}
   \item Report bugs at \url{https://github.com/charlescoverdale/mpshock/issues}
 }
