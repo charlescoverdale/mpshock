@@ -88,6 +88,8 @@ Paper* 2024-011.
 
 Useful links:
 
+- <https://charlescoverdale.github.io/mpshock/>
+
 - <https://github.com/charlescoverdale/mpshock>
 
 - Report bugs at <https://github.com/charlescoverdale/mpshock/issues>
