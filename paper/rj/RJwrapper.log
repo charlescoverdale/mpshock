@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2026.4.18)  19 APR 2026 16:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2026.4.18)  26 APR 2026 09:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -791,58 +791,58 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 {/Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 100.
+(Font)              scaled to size 9.37807pt on input line 104.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 100.
+(Font)              scaled to size 7.29405pt on input line 104.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 100.
+(Font)              scaled to size 5.21004pt on input line 104.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 100.
+(Font)              scaled to size 9.37807pt on input line 104.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 100.
+(Font)              scaled to size 7.29405pt on input line 104.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 100.
+(Font)              scaled to size 5.21004pt on input line 104.
 
 
 [2]
 
 pdfTeX warning: pdflatex (file ./figures/cumulative_us.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/cumulative_us.pdf, id=187, 397.485pt x 244.915pt>
+<figures/cumulative_us.pdf, id=184, 397.485pt x 244.915pt>
 File: figures/cumulative_us.pdf Graphic file (type pdf)
 <use figures/cumulative_us.pdf>
-Package pdftex.def Info: figures/cumulative_us.pdf  used on input line 255.
+Package pdftex.def Info: figures/cumulative_us.pdf  used on input line 262.
 (pdftex.def)             Requested size: 398.33858pt x 245.44878pt.
-
-
-pdfTeX warning: pdflatex (file ./figures/us_correlations.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/us_correlations.pdf, id=191, 361.35pt x 259.97125pt>
-File: figures/us_correlations.pdf Graphic file (type pdf)
-<use figures/us_correlations.pdf>
-Package pdftex.def Info: figures/us_correlations.pdf  used on input line 269.
-(pdftex.def)             Requested size: 338.59021pt x 243.59947pt.
 
 
 [3]
 
-[4 <./figures/cumulative_us.pdf> <./figures/us_correlations.pdf
+pdfTeX warning: pdflatex (file ./figures/us_correlations.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/us_correlations.pdf, id=196, 361.35pt x 259.97125pt>
+File: figures/us_correlations.pdf Graphic file (type pdf)
+<use figures/us_correlations.pdf>
+Package pdftex.def Info: figures/us_correlations.pdf  used on input line 276.
+(pdftex.def)             Requested size: 338.59021pt x 243.59947pt.
 
-pdfTeX warning: pdflatex (file ./figures/us_correlations.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
 
 pdfTeX warning: pdflatex (file ./figures/cross_country.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/cross_country.pdf, id=216, 397.485pt x 244.915pt>
+<figures/cross_country.pdf, id=202, 397.485pt x 244.915pt>
 File: figures/cross_country.pdf Graphic file (type pdf)
 <use figures/cross_country.pdf>
-Package pdftex.def Info: figures/cross_country.pdf  used on input line 285.
+Package pdftex.def Info: figures/cross_country.pdf  used on input line 292.
 (pdftex.def)             Requested size: 398.33858pt x 245.44878pt.
 
 
-[5 <./figures/cross_country.pdf>] (./RJwrapper.bbl (./RJwrapper.brf)
+[4 <./figures/cumulative_us.pdf>]
+
+[5 <./figures/us_correlations.pdf> <./figures/cross_country.pdf
+
+pdfTeX warning: pdflatex (file ./figures/cross_country.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>] (./RJwrapper.bbl (./RJwrapper.brf)
 \tf@brf=\write6
 \openout6 = `RJwrapper.brf'.
 
 
-Underfull \hbox (badness 2717) in paragraph at lines 45--45
+Underfull \hbox (badness 2717) in paragraph at lines 46--46
 []\T1/ppl/m/n/9 (+20) R. Braun, S. Miranda-Agrippino, and T. Saha.  Mea-sur-ing mon-e-tary pol-icy in the uk:
  []
 
@@ -858,24 +858,24 @@ L3 programming layer <2025-01-18>
 Package rerunfilecheck Info: File `RJwrapper.out' has not changed.
 (rerunfilecheck)             Checksum: ABD990BBA42AA960DAADD228732A87EB;2105.
 Package rerunfilecheck Info: File `RJwrapper.brf' has not changed.
-(rerunfilecheck)             Checksum: 7F634DE2A7DFDE243D802703B1E9A2B0;2396.
+(rerunfilecheck)             Checksum: 72562DB552D9A68F4270F42ABA63B00C;2331.
  ) 
 Here is how much of TeX's memory you used:
- 27180 strings out of 475172
- 499975 string characters out of 5764229
- 905252 words of memory out of 5000000
- 49363 multiletter control sequences out of 15000+600000
- 606811 words of font info for 278 fonts, out of 8000000 for 9000
+ 27190 strings out of 475172
+ 500178 string characters out of 5764229
+ 906298 words of memory out of 5000000
+ 49369 multiletter control sequences out of 15000+600000
+ 607036 words of font info for 280 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 117i,11n,131p,1014b,832s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,11n,131p,1014b,826s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 </Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></Users/charlescoverdale/Library/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on RJwrapper.pdf (7 pages, 519516 bytes).
+Output written on RJwrapper.pdf (7 pages, 521121 bytes).
 PDF statistics:
- 361 PDF objects out of 1000 (max. 8388607)
- 330 compressed objects within 4 object streams
- 61 named destinations out of 1000 (max. 500000)
+ 360 PDF objects out of 1000 (max. 8388607)
+ 329 compressed objects within 4 object streams
+ 62 named destinations out of 1000 (max. 500000)
  63108 words of extra memory for PDF output out of 74296 (max. 10000000)
 
