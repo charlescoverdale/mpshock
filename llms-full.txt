@@ -1,4 +1,4 @@
-# mpshock — full API reference
+# mpshock: full API reference
 
 > Provides a curated multi-country collection of monetary policy shock and stance series from the empirical macroeconomics literature, bundled as tidy data frames with provenance metadata.
 
@@ -27,10 +27,10 @@ mp_align(shock, target, by = "date", fill_zero = FALSE)
 
 **Arguments**
 
-- `shock` — An `mp_shock` object from `mp_shock()`.
-- `target` — A data frame containing a date column.
-- `by` — Character(1). The name of the date column in `target`. Defaults to `"date"`.
-- `fill_zero` — Logical(1). If `TRUE`, non-matching target rows get `0` in the shock column instead of `NA`. Useful when the target is a complete monthly panel and missing shocks should be treated as zero-surprise months. Defaults to `FALSE`.
+- `shock`: An `mp_shock` object from `mp_shock()`.
+- `target`: A data frame containing a date column.
+- `by`: Character(1). The name of the date column in `target`. Defaults to `"date"`.
+- `fill_zero`: Logical(1). If `TRUE`, non-matching target rows get `0` in the shock column instead of `NA`. Useful when the target is a complete monthly panel and missing shocks should be treated as zero-surprise months. Defaults to `FALSE`.
 
 **Returns**
 
@@ -63,8 +63,8 @@ mp_cumulate(shock, window = NULL)
 
 **Arguments**
 
-- `shock` — An `mp_shock` object from `mp_shock()`.
-- `window` — Integer, the rolling window length in observations. If `NULL` (default), computes the full cumulative sum.
+- `shock`: An `mp_shock` object from `mp_shock()`.
+- `window`: Integer, the rolling window length in observations. If `NULL` (default), computes the full cumulative sum.
 
 **Returns**
 
@@ -120,8 +120,8 @@ mp_shock(series, start = NULL, end = NULL)
 
 **Arguments**
 
-- `series` — Character(1). Name of the series. See `mp_list()` for available series.
-- `start, end` — Optional `Date` or character (YYYY-MM-DD) filters on the returned series. If `NULL`, returns the full bundled span.
+- `series`: Character(1). Name of the series. See `mp_list()` for available series.
+- `start, end`: Optional `Date` or character (YYYY-MM-DD) filters on the returned series. If `NULL`, returns the full bundled span.
 
 **Returns**
 
@@ -154,7 +154,7 @@ mp_source(series)
 
 **Arguments**
 
-- `series` — Character(1). Name of the series. See `mp_list()` for available series.
+- `series`: Character(1). Name of the series. See `mp_list()` for available series.
 
 **Returns**
 
@@ -182,8 +182,8 @@ mp_to_quarterly(shock, method = c("sum", "mean", "end"))
 
 **Arguments**
 
-- `shock` — An `mp_shock` object from `mp_shock()` at monthly frequency.
-- `method` — Character(1). One of `"sum"` (the default, usual choice for additive shocks), `"mean"` (arithmetic mean of months in the quarter), or `"end"` (last month's value, useful for stock-like measures such as shadow rates).
+- `shock`: An `mp_shock` object from `mp_shock()` at monthly frequency.
+- `method`: Character(1). One of `"sum"` (the default, usual choice for additive shocks), `"mean"` (arithmetic mean of months in the quarter), or `"end"` (last month's value, useful for stock-like measures such as shadow rates).
 
 **Returns**
 
