@@ -5,7 +5,7 @@
 # Journal: Macroeconomics 12(2): 1-43. DOI: 10.1257/mac.20180090
 #
 # Data: Marek Jarocinski's maintained update for the US Fed,
-# https://github.com/marekjarocinski/jkshocks_update_fed_202401
+# https://github.com/marekjarocinski/jkshocks_update_fed
 # File: shocks_fed_jk_m.csv
 #
 # The Jarocinski-Karadi decomposition identifies two shocks on FOMC dates
@@ -44,7 +44,7 @@ build_one <- function(series_id, value_col) {
   attr(out, "frequency") <- "monthly"
   attr(out, "units") <- "percentage points"
   attr(out, "source_doi") <- "10.1257/mac.20180090"
-  attr(out, "source_url") <- "https://github.com/marekjarocinski/jkshocks_update_fed_202401"
+  attr(out, "source_url") <- "https://github.com/marekjarocinski/jkshocks_update_fed"
   attr(out, "license") <- "Academic research data; cite Jarocinski and Karadi (2020)"
   attr(out, "downloaded") <- Sys.Date()
   out

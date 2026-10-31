@@ -1,6 +1,6 @@
 Package: mpshock
 Title: Monetary Policy Shock Series for Empirical Macroeconomics
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: person("Charles", "Coverdale", email = "charlesfcoverdale@gmail.com",
     role = c("aut", "cre", "cph"))
 Description: Provides a curated multi-country collection of monetary
@@ -34,7 +34,6 @@ Language: en-US
 URL: https://charlescoverdale.github.io/mpshock/, https://github.com/charlescoverdale/mpshock
 BugReports: https://github.com/charlescoverdale/mpshock/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 Depends: R (>= 4.1.0)
 Imports:
     cli (>= 3.6.0),
@@ -46,3 +45,4 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 LazyData: true
+Config/roxygen2/version: 8.1.0

@@ -2,7 +2,7 @@
 
 > Provides a curated multi-country collection of monetary policy shock and stance series from the empirical macroeconomics literature, bundled as tidy data frames with provenance metadata.
 
-- Version: 0.1.1
+- Version: 0.1.2
 - Install: `install.packages("mpshock")`
 - CRAN: https://CRAN.R-project.org/package=mpshock
 - GitHub: https://github.com/charlescoverdale/mpshock

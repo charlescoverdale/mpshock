@@ -219,7 +219,7 @@
 #'   Policy Surprises: The Role of Information Shocks." *American
 #'   Economic Journal: Macroeconomics* 12(2): 1-43.
 #'   \doi{10.1257/mac.20180090}. Updated data:
-#'   \url{https://github.com/marekjarocinski/jkshocks_update_fed_202401}.
+#'   \url{https://github.com/marekjarocinski/jkshocks_update_fed}.
 "jarocinski_karadi_mp"
 
 #' Jarocinski-Karadi central bank information shock
@@ -257,7 +257,7 @@
 #'   Policy Surprises: The Role of Information Shocks." *American
 #'   Economic Journal: Macroeconomics* 12(2): 1-43.
 #'   \doi{10.1257/mac.20180090}. Updated data:
-#'   \url{https://github.com/marekjarocinski/jkshocks_update_fed_202401}.
+#'   \url{https://github.com/marekjarocinski/jkshocks_update_fed}.
 "jarocinski_karadi_cbi"
 
 #' Miranda-Agrippino-Ricco informationally-robust MP shock

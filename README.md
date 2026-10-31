@@ -48,8 +48,8 @@ mp_list()[, c("series", "author", "type", "start", "end", "n")]
 #> 2           bauer_swanson                         Bauer and Swanson (2023)       shock 1988-02-01 2023-12-01 431
 #> 3              gss_target Gurkaynak, Sack, Swanson (2005) / Swanson (2021)       shock 1991-07-01 2015-10-01 292
 #> 4                gss_path Gurkaynak, Sack, Swanson (2005) / Swanson (2021)       shock 1991-07-01 2015-10-01 292
-#> 5    jarocinski_karadi_mp                     Jarocinski and Karadi (2020)       shock 1990-02-01 2024-01-01 404
-#> 6   jarocinski_karadi_cbi                     Jarocinski and Karadi (2020) information 1990-02-01 2024-01-01 404
+#> 5    jarocinski_karadi_mp                     Jarocinski and Karadi (2020)       shock 1990-02-01 2026-09-01 440
+#> 6   jarocinski_karadi_cbi                     Jarocinski and Karadi (2020) information 1990-02-01 2026-09-01 440
 #> 7 miranda_agrippino_ricco               Miranda-Agrippino and Ricco (2021)       shock 1991-01-01 2019-06-01 342
 #> 8                  wu_xia                                Wu and Xia (2016) shadow_rate 1960-01-01 2022-02-01 385
 ```

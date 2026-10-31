@@ -32,8 +32,8 @@ United States:
 \item \link{bauer_swanson}: orthogonalised MP surprise, 1988-02 to 2023-12.
 \item \link{gss_target}: GSS target factor (Swanson extended), 1991-07 to 2015-10.
 \item \link{gss_path}: GSS path factor (Swanson extended), 1991-07 to 2015-10.
-\item \link{jarocinski_karadi_mp}: pure MP shock, 1990-02 to 2024-01.
-\item \link{jarocinski_karadi_cbi}: CB information shock, 1990-02 to 2024-01.
+\item \link{jarocinski_karadi_mp}: pure MP shock, 1990-02 to 2026-09.
+\item \link{jarocinski_karadi_cbi}: CB information shock, 1990-02 to 2026-09.
 \item \link{miranda_agrippino_ricco}: informationally-robust MP shock, 1991-01 to 2019-06.
 \item \link{wu_xia}: shadow federal funds rate, 1960-01 to 2022-02.
 }
@@ -77,6 +77,11 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Charles Coverdale \email{charlesfcoverdale@gmail.com} [copyright holder]
+
+Authors:
+\itemize{
+  \item Charles Coverdale \email{charlesfcoverdale@gmail.com} [copyright holder]
+}
 
 }
 \keyword{internal}
