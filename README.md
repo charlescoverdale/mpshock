@@ -191,7 +191,7 @@ cor(panel$shock_ns, panel$shock_bs, use = "pairwise.complete.obs")
 
 A correlation in the 0.4 to 0.7 range is typical: the series agree on the biggest FOMC surprises but diverge on the harder-to-classify meetings. Papers should report IRF results under at least two shock series for robustness (Brennan, Jacobson, Matthes, and Walker 2024, FEDS 2024-011).
 
-## Series included in v0.1.0
+## Series included
 
 ### United States
 
@@ -201,8 +201,8 @@ A correlation in the 0.4 to 0.7 range is typical: the series agree on the bigges
 | `bauer_swanson` | Bauer and Swanson (2023) | Orthogonalised surprise | Monthly | 1988-02 to 2023-12 |
 | `gss_target` | Swanson (2021), GSS (2005) | Target factor | Monthly | 1991-07 to 2015-10 |
 | `gss_path` | Swanson (2021), GSS (2005) | Forward-guidance factor | Monthly | 1991-07 to 2015-10 |
-| `jarocinski_karadi_mp` | Jarocinski and Karadi (2020) | Pure MP shock | Monthly | 1990-02 to 2024-01 |
-| `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020) | CB information shock | Monthly | 1990-02 to 2024-01 |
+| `jarocinski_karadi_mp` | Jarocinski and Karadi (2020) | Pure MP shock | Monthly | 1990-02 to 2026-09 |
+| `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020) | CB information shock | Monthly | 1990-02 to 2026-09 |
 | `miranda_agrippino_ricco` | Miranda-Agrippino and Ricco (2021) | Info-robust MP shock | Monthly | 1991-01 to 2019-06 |
 | `wu_xia` | Wu and Xia (2016) | Shadow rate (stance) | Monthly | 1960-01 to 2022-02 |
 
@@ -210,7 +210,7 @@ A correlation in the 0.4 to 0.7 range is typical: the series agree on the bigges
 
 | Series | Author(s) | Type | Frequency | Span |
 |---|---|---|---|---|
-| `ukmpd` | Braun, Miranda-Agrippino, Saha (2025) | Three-factor HFI (Target / Path / QE) | Monthly | 1997-06 onwards (BoE-maintained) |
+| `ukmpd` | Braun, Miranda-Agrippino, Saha (2025) | Three-factor HFI (Target / Path / QE) | Monthly | 1997-06 to 2026-04 (BoE-maintained) |
 | `cesa_bianchi_uk` | Cesa-Bianchi, Thwaites, Vicondoa (2020) | High-frequency surprise | Monthly | 1997-06 to 2015-01 |
 | `cloyne_hurtgen_uk` | Cloyne and Hurtgen (2016) | Narrative shock | Monthly | 1997-06 to 2009-02 |
 
