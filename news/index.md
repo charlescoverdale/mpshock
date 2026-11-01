@@ -1,6 +1,24 @@
 # Changelog
 
+## mpshock 0.1.2
+
+Data refresh. No code changes.
+
+- `jarocinski_karadi_mp` and `jarocinski_karadi_cbi` now run to
+  September 2026 (previously January 2024). They were built from
+  Jarocinski’s frozen January 2024 snapshot repository; they now come
+  from his maintained repository, `jkshocks_update_fed`, which he
+  updates after FOMC meetings. Because the policy factor is re-estimated
+  on the longer sample, earlier values are revised slightly (the first
+  observation moves from 0.0087 to 0.0089).
+- `ukmpd` now runs to April 2026 (previously February 2026), from the
+  current Bank of England workbook.
+- `bauer_swanson` is unchanged: the San Francisco Fed workbook is still
+  the 2023 update.
+
 ## mpshock 0.1.1
+
+CRAN release: 2026-09-08
 
 - Corrected the source attribution for the `bauer_swanson` series. The
   series is MPS_ORTH, the orthogonalised monetary policy surprise, whose

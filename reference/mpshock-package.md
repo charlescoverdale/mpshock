@@ -42,10 +42,10 @@ United States:
   GSS path factor (Swanson extended), 1991-07 to 2015-10.
 
 - [jarocinski_karadi_mp](https://charlescoverdale.github.io/mpshock/reference/jarocinski_karadi_mp.md):
-  pure MP shock, 1990-02 to 2024-01.
+  pure MP shock, 1990-02 to 2026-09.
 
 - [jarocinski_karadi_cbi](https://charlescoverdale.github.io/mpshock/reference/jarocinski_karadi_cbi.md):
-  CB information shock, 1990-02 to 2024-01.
+  CB information shock, 1990-02 to 2026-09.
 
 - [miranda_agrippino_ricco](https://charlescoverdale.github.io/mpshock/reference/miranda_agrippino_ricco.md):
   informationally-robust MP shock, 1991-01 to 2019-06.
@@ -98,3 +98,7 @@ Useful links:
 
 **Maintainer**: Charles Coverdale <charlesfcoverdale@gmail.com>
 \[copyright holder\]
+
+Authors:
+
+- Charles Coverdale <charlesfcoverdale@gmail.com> \[copyright holder\]

@@ -60,11 +60,11 @@ mp_list()
 #> 2       US   monthly       shock 1988-02-01 2023-12-01 431
 #> 3       US   monthly       shock 1991-07-01 2015-10-01 292
 #> 4       US   monthly       shock 1991-07-01 2015-10-01 292
-#> 5       US   monthly       shock 1990-02-01 2024-01-01 404
-#> 6       US   monthly information 1990-02-01 2024-01-01 404
+#> 5       US   monthly       shock 1990-02-01 2026-09-01 440
+#> 6       US   monthly information 1990-02-01 2026-09-01 440
 #> 7       US   monthly       shock 1991-01-01 2019-06-01 342
 #> 8       US   monthly shadow_rate 1960-01-01 2022-02-01 385
-#> 9       UK   monthly       shock 1997-06-01 2026-02-01 345
+#> 9       UK   monthly       shock 1997-06-01 2026-04-01 347
 #> 10      UK   monthly       shock 1997-06-01 2015-01-01 212
 #> 11      UK   monthly   narrative 1997-06-01 2009-02-01 141
 #> 12      AU   monthly       shock 2001-04-01 2019-12-01 225
@@ -88,8 +88,8 @@ mp_list()
 #> 2    https://www.frbsf.org/research-and-insights/data-and-indicators/monetary-policy-surprises/
 #> 3                                                       https://sites.socsci.uci.edu/~swanson2/
 #> 4                                                       https://sites.socsci.uci.edu/~swanson2/
-#> 5                                 https://github.com/marekjarocinski/jkshocks_update_fed_202401
-#> 6                                 https://github.com/marekjarocinski/jkshocks_update_fed_202401
+#> 5                                        https://github.com/marekjarocinski/jkshocks_update_fed
+#> 6                                        https://github.com/marekjarocinski/jkshocks_update_fed
 #> 7                                   https://github.com/riccardo-degasperi/info-policy-surprises
 #> 8                     https://www.atlantafed.org/cqer/research/wu-xia-shadow-federal-funds-rate
 #> 9  https://www.bankofengland.co.uk/working-paper/2023/measuring-monetary-policy-in-the-uk-ukmpd

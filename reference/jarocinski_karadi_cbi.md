@@ -35,8 +35,7 @@ Jarocinski, M., & Karadi, P. (2020). "Deconstructing Monetary Policy
 Surprises: The Role of Information Shocks." *American Economic Journal:
 Macroeconomics* 12(2): 1-43.
 [doi:10.1257/mac.20180090](https://doi.org/10.1257/mac.20180090) .
-Updated data:
-<https://github.com/marekjarocinski/jkshocks_update_fed_202401>.
+Updated data: <https://github.com/marekjarocinski/jkshocks_update_fed>.
 
 ## Details
 

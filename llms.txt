@@ -74,16 +74,21 @@ library(mpshock)
 
 # mp_list() returns a metadata table with one row per bundled series
 # (we select a subset of columns here for a readable display)
-mp_list()[, c("series", "author", "type", "start", "end", "n")]
-#>                    series                                           author        type      start        end   n
-#> 1      nakamura_steinsson                    Nakamura and Steinsson (2018)       shock 2000-02-01 2014-03-01 170
-#> 2           bauer_swanson                         Bauer and Swanson (2023)       shock 1988-02-01 2023-12-01 431
-#> 3              gss_target Gurkaynak, Sack, Swanson (2005) / Swanson (2021)       shock 1991-07-01 2015-10-01 292
-#> 4                gss_path Gurkaynak, Sack, Swanson (2005) / Swanson (2021)       shock 1991-07-01 2015-10-01 292
-#> 5    jarocinski_karadi_mp                     Jarocinski and Karadi (2020)       shock 1990-02-01 2024-01-01 404
-#> 6   jarocinski_karadi_cbi                     Jarocinski and Karadi (2020) information 1990-02-01 2024-01-01 404
-#> 7 miranda_agrippino_ricco               Miranda-Agrippino and Ricco (2021)       shock 1991-01-01 2019-06-01 342
-#> 8                  wu_xia                                Wu and Xia (2016) shadow_rate 1960-01-01 2022-02-01 385
+mp_list()[, c("series", "type", "start", "end", "n")]
+#>                   series        type      start        end   n
+#>       nakamura_steinsson       shock 2000-02-01 2014-03-01 170
+#>            bauer_swanson       shock 1988-02-01 2023-12-01 431
+#>               gss_target       shock 1991-07-01 2015-10-01 292
+#>                 gss_path       shock 1991-07-01 2015-10-01 292
+#>     jarocinski_karadi_mp       shock 1990-02-01 2026-09-01 440
+#>    jarocinski_karadi_cbi information 1990-02-01 2026-09-01 440
+#>  miranda_agrippino_ricco       shock 1991-01-01 2019-06-01 342
+#>                   wu_xia shadow_rate 1960-01-01 2022-02-01 385
+#>                    ukmpd       shock 1997-06-01 2026-04-01 347
+#>          cesa_bianchi_uk       shock 1997-06-01 2015-01-01 212
+#>        cloyne_hurtgen_uk   narrative 1997-06-01 2009-02-01 141
+#>          hambur_haque_au       shock 2001-04-01 2019-12-01 225
+#>               beckers_au   narrative 1994-03-01 2018-11-01 100
 ```
 
 ### 2. Load a series
@@ -247,7 +252,7 @@ meetings. Papers should report IRF results under at least two shock
 series for robustness (Brennan, Jacobson, Matthes, and Walker 2024, FEDS
 2024-011).
 
-## Series included in v0.1.0
+## Series included
 
 ### United States
 
@@ -257,8 +262,8 @@ series for robustness (Brennan, Jacobson, Matthes, and Walker 2024, FEDS
 | `bauer_swanson` | Bauer and Swanson (2023) | Orthogonalised surprise | Monthly | 1988-02 to 2023-12 |
 | `gss_target` | Swanson (2021), GSS (2005) | Target factor | Monthly | 1991-07 to 2015-10 |
 | `gss_path` | Swanson (2021), GSS (2005) | Forward-guidance factor | Monthly | 1991-07 to 2015-10 |
-| `jarocinski_karadi_mp` | Jarocinski and Karadi (2020) | Pure MP shock | Monthly | 1990-02 to 2024-01 |
-| `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020) | CB information shock | Monthly | 1990-02 to 2024-01 |
+| `jarocinski_karadi_mp` | Jarocinski and Karadi (2020) | Pure MP shock | Monthly | 1990-02 to 2026-09 |
+| `jarocinski_karadi_cbi` | Jarocinski and Karadi (2020) | CB information shock | Monthly | 1990-02 to 2026-09 |
 | `miranda_agrippino_ricco` | Miranda-Agrippino and Ricco (2021) | Info-robust MP shock | Monthly | 1991-01 to 2019-06 |
 | `wu_xia` | Wu and Xia (2016) | Shadow rate (stance) | Monthly | 1960-01 to 2022-02 |
 
@@ -266,7 +271,7 @@ series for robustness (Brennan, Jacobson, Matthes, and Walker 2024, FEDS
 
 | Series | Author(s) | Type | Frequency | Span |
 |----|----|----|----|----|
-| `ukmpd` | Braun, Miranda-Agrippino, Saha (2025) | Three-factor HFI (Target / Path / QE) | Monthly | 1997-06 onwards (BoE-maintained) |
+| `ukmpd` | Braun, Miranda-Agrippino, Saha (2025) | Three-factor HFI (Target / Path / QE) | Monthly | 1997-06 to 2026-04 (BoE-maintained) |
 | `cesa_bianchi_uk` | Cesa-Bianchi, Thwaites, Vicondoa (2020) | High-frequency surprise | Monthly | 1997-06 to 2015-01 |
 | `cloyne_hurtgen_uk` | Cloyne and Hurtgen (2016) | Narrative shock | Monthly | 1997-06 to 2009-02 |
 
