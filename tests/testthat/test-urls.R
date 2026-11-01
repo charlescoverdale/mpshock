@@ -44,19 +44,36 @@ test_that("every source_url in mp_list() returns an OK-ish HTTP status", {
 
   urls <- mp_list()$source_url
   ua <- "Mozilla/5.0 (compatible; mpshock-test)"
-  for (url in urls) {
-    resp <- tryCatch(
+  status_of <- function(url) {
+    tryCatch(
       curl::curl_fetch_memory(url,
-        handle = curl::new_handle(useragent = ua, nobody = TRUE)),
-      error = function(e) list(status_code = 0L)
+        handle = curl::new_handle(useragent = ua, nobody = TRUE))$status_code,
+      error = function(e) 0L
     )
+  }
+  # Transport errors, rate limits and 5xx (including Cloudflare's 520-524)
+  # say the server is having trouble, not that the URL is wrong.
+  transient <- function(code) code == 0L || code == 429L || code >= 500L
+
+  unreachable <- character(0)
+  for (url in urls) {
+    status <- status_of(url)
+    if (transient(status)) {
+      Sys.sleep(2)
+      status <- status_of(url)
+    }
+    if (transient(status)) {
+      unreachable <- c(unreachable, paste0(url, " (", status, ")"))
+      next
+    }
     # Accept 2xx, 3xx, and 401/403 (openICPSR and similar auth-walled
     # pages are valid; they just require login to view). 404 is the
     # real failure mode we want to catch.
-    ok <- (resp$status_code >= 200L && resp$status_code < 400L) ||
-      resp$status_code %in% c(401L, 403L)
-    expect_true(ok,
-                info = paste("URL failed with",
-                             resp$status_code, ":", url))
+    ok <- (status >= 200L && status < 400L) || status %in% c(401L, 403L)
+    expect_true(ok, info = paste("URL failed with", status, ":", url))
+  }
+  if (length(unreachable) > 0L) {
+    skip(paste("Server-side errors, not checked:",
+               paste(unreachable, collapse = "; ")))
   }
 })
