@@ -47,7 +47,7 @@ Wu, J. C., & Xia, F. D. (2016). "Measuring the Macroeconomic Impact of
 Monetary Policy at the Zero Lower Bound." *Journal of Money, Credit and
 Banking* 48(2-3): 253-291.
 [doi:10.1111/jmcb.12300](https://doi.org/10.1111/jmcb.12300) . Data:
-<https://www.atlantafed.org/cqer/research/wu-xia-shadow-federal-funds-rate>.
+<https://www.atlantafed.org/research-and-data/data/wu-xia-shadow-federal-funds-rate>.
 US Federal Reserve research output; not subject to copyright under 17
 U.S.C. s. 105.
 

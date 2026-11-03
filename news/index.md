@@ -13,6 +13,8 @@ Data refresh. No code changes.
   observation moves from 0.0087 to 0.0089).
 - `ukmpd` now runs to April 2026 (previously February 2026), from the
   current Bank of England workbook.
+- The `wu_xia` source link points to the Atlanta Fed’s new address for
+  the Wu-Xia shadow rate page; the old address now returns 404.
 - `bauer_swanson` is unchanged: the San Francisco Fed workbook is still
   the 2023 update.
 

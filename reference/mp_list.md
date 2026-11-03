@@ -91,7 +91,7 @@ mp_list()
 #> 5                                        https://github.com/marekjarocinski/jkshocks_update_fed
 #> 6                                        https://github.com/marekjarocinski/jkshocks_update_fed
 #> 7                                   https://github.com/riccardo-degasperi/info-policy-surprises
-#> 8                     https://www.atlantafed.org/cqer/research/wu-xia-shadow-federal-funds-rate
+#> 8            https://www.atlantafed.org/research-and-data/data/wu-xia-shadow-federal-funds-rate
 #> 9  https://www.bankofengland.co.uk/working-paper/2023/measuring-monetary-policy-in-the-uk-ukmpd
 #> 10                                           https://sites.google.com/site/ambropo/publications
 #> 11                           https://www.openicpsr.org/openicpsr/project/114114/version/V1/view
