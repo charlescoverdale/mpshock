@@ -5,7 +5,7 @@
 # Banking 48(2-3): 253-291. DOI: 10.1111/jmcb.12300
 #
 # Data maintained by the Federal Reserve Bank of Atlanta at
-# https://www.atlantafed.org/cqer/research/wu-xia-shadow-federal-funds-rate
+# https://www.atlantafed.org/research-and-data/data/wu-xia-shadow-federal-funds-rate
 # The series is produced as part of US Federal Reserve research and is
 # therefore not subject to copyright under 17 U.S.C. S 105 (public domain).
 # Bundleable.
@@ -54,7 +54,7 @@ attr(out, "series") <- "wu_xia"
 attr(out, "frequency") <- "monthly"
 attr(out, "units") <- "percentage points per annum"
 attr(out, "source_doi") <- "10.1111/jmcb.12300"
-attr(out, "source_url") <- "https://www.atlantafed.org/cqer/research/wu-xia-shadow-federal-funds-rate"
+attr(out, "source_url") <- "https://www.atlantafed.org/research-and-data/data/wu-xia-shadow-federal-funds-rate"
 attr(out, "license") <- "Public domain (US Federal Reserve research output)"
 attr(out, "downloaded") <- Sys.Date()
 attr(out, "note") <- "shock = first difference of shadow_rate"

@@ -76,7 +76,7 @@
       "https://github.com/marekjarocinski/jkshocks_update_fed",
       "https://github.com/marekjarocinski/jkshocks_update_fed",
       "https://github.com/riccardo-degasperi/info-policy-surprises",
-      "https://www.atlantafed.org/cqer/research/wu-xia-shadow-federal-funds-rate",
+      "https://www.atlantafed.org/research-and-data/data/wu-xia-shadow-federal-funds-rate",
       "https://www.bankofengland.co.uk/working-paper/2023/measuring-monetary-policy-in-the-uk-ukmpd",
       "https://sites.google.com/site/ambropo/publications",
       "https://www.openicpsr.org/openicpsr/project/114114/version/V1/view",
